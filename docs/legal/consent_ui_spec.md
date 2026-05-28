@@ -111,7 +111,7 @@ CREATE TABLE user_consents (
     id              BIGSERIAL PRIMARY KEY,
     user_id         UUID NOT NULL REFERENCES users(id) ON DELETE CASCADE,
     consent_type    TEXT NOT NULL,           -- "tos" | "privacy" | "intl_transfer" | "age_14" | "copyright_self" | "marketing"
-    version         TEXT NOT NULL,           -- "2026-05-28-v0.1"  (각 약관 파일의 시행일 + 버전)
+    version         TEXT NOT NULL,           -- "2026-05-29-v1.0"  (각 약관 파일의 시행일 + 버전)
     granted         BOOLEAN NOT NULL,
     granted_at      TIMESTAMPTZ NOT NULL DEFAULT NOW(),
     revoked_at      TIMESTAMPTZ,

@@ -9,7 +9,7 @@ import { useAuth } from "@/lib/useAuth";
 // 약관 시행 버전 — `docs/legal/*.md` 의 시행일+버전과 일치해야 함.
 // 약관 개정 시 여기 + 백엔드 화이트리스트(CONSENT_TYPES)는 그대로, 새
 // 버전만 발행하면 사용자가 재동의 화면 진입.
-const POLICY_VERSION = "2026-05-28-v0.1";
+const POLICY_VERSION = "2026-05-29-v1.0";
 
 const REQUIRED_CONSENTS = [
   { id: "tos",            label: "서비스 이용약관 동의",       docHref: "/legal/terms" },
