@@ -16,6 +16,12 @@
  */
 
 import { useEffect, useState } from "react";
+import {
+  isSupabaseConfigured,
+  onAuthChange,
+  getSupabase,
+  signOut as sbSignOut,
+} from "./supabase";
 
 
 const TOKEN_KEY = "rechord:auth:token";
@@ -31,7 +37,9 @@ function loadToken() {
 
 export function useAuth() {
   const provider = (import.meta.env.VITE_AUTH_PROVIDER || "").toLowerCase();
-  const phaseA = !provider;
+  // Phase A iff no provider env AND no Supabase config — either flips
+  // us into Phase B with the auth menu / consent flow visible.
+  const phaseA = !provider && !isSupabaseConfigured;
 
   const [token, setTokenState] = useState(loadToken);
   const [user, setUser] = useState(() =>
@@ -57,6 +65,34 @@ export function useAuth() {
     }
   }, [token, phaseA]);
 
+  // Supabase: subscribe to session changes so the token state stays
+  // in sync after OAuth redirect, token refresh, or sign-out.
+  useEffect(() => {
+    if (phaseA || !isSupabaseConfigured) return undefined;
+    let unsubscribe = () => {};
+    let cancelled = false;
+    (async () => {
+      const sb = await getSupabase();
+      if (!sb || cancelled) return;
+      // Seed with the existing session on mount.
+      const { data: { session } } = await sb.auth.getSession();
+      if (session?.access_token) {
+        try { localStorage.setItem(TOKEN_KEY, session.access_token); } catch { /* ignore */ }
+        setTokenState(session.access_token);
+      }
+      // Then keep in sync.
+      unsubscribe = await onAuthChange(({ session: s }) => {
+        const tk = s?.access_token ?? null;
+        try {
+          if (tk) localStorage.setItem(TOKEN_KEY, tk);
+          else localStorage.removeItem(TOKEN_KEY);
+        } catch { /* ignore */ }
+        setTokenState(tk);
+      });
+    })();
+    return () => { cancelled = true; unsubscribe(); };
+  }, [phaseA]);
+
   const signIn = (newToken) => {
     if (phaseA) return;        // no-op in Phase A
     try { localStorage.setItem(TOKEN_KEY, newToken); } catch { /* ignore */ }
@@ -67,6 +103,10 @@ export function useAuth() {
     try { localStorage.removeItem(TOKEN_KEY); } catch { /* ignore */ }
     setTokenState(null);
     if (phaseA) setUser({ id: "guest", isGuest: true, name: "guest" });
+    // Supabase signOut runs lazily; fire-and-forget so the UI stays snappy.
+    if (isSupabaseConfigured) {
+      sbSignOut().catch(() => { /* ignore */ });
+    }
   };
 
   return {

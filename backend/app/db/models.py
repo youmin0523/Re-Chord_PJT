@@ -139,6 +139,39 @@ if _HAS_SQLALCHEMY:
         )
         job:          Mapped[Job] = relationship(back_populates="notes")
 
+    class UserConsent(Base):
+        """User consent log for ToS / privacy policy / age / marketing.
+
+        One row PER user × consent_type × policy version. Old rows stay
+        forever (PIPA audit trail). When a user revokes, we set
+        ``revoked_at`` instead of deleting.
+
+        ``ip_address`` is stored as String not INET so SQLite (dev /
+        tests) can hold it too; Postgres will accept either.
+        """
+        __tablename__ = "user_consents"
+        id:           Mapped[int] = mapped_column(
+            BigInteger, primary_key=True, autoincrement=True,
+        )
+        user_id:      Mapped[str] = mapped_column(
+            ForeignKey("users.id", ondelete="CASCADE"),
+            nullable=False, index=True,
+        )
+        # tos | privacy | intl_transfer | age_14 | copyright_self | marketing
+        consent_type: Mapped[str] = mapped_column(String(32), nullable=False)
+        # Policy version (e.g. "2026-05-28-v0.1") — see docs/legal/*.md.
+        version:      Mapped[str] = mapped_column(String(40), nullable=False)
+        granted:      Mapped[bool] = mapped_column(Boolean, nullable=False)
+        granted_at:   Mapped[datetime] = mapped_column(
+            DateTime(timezone=True), server_default=func.now(), nullable=False,
+        )
+        revoked_at:   Mapped[datetime | None] = mapped_column(
+            DateTime(timezone=True), nullable=True,
+        )
+        # Best-effort consent provenance (PIPA evidentiary value).
+        ip_address:   Mapped[str | None] = mapped_column(String(64), nullable=True)
+        user_agent:   Mapped[str | None] = mapped_column(Text, nullable=True)
+
     class AuxPatch(Base):
         """User-uploaded reference patch for the AUX classifier.
 

@@ -23,7 +23,13 @@ from fastapi import Depends, Header, HTTPException, status
 PROVIDER = os.environ.get("AUTH_PROVIDER", "").strip().lower()
 CLERK_ISSUER = os.environ.get("CLERK_ISSUER", "").strip()
 CLERK_JWKS_URL = os.environ.get("CLERK_JWKS_URL", "").strip()
+# Supabase supports two flavours:
+#   - legacy HS256 with shared JWT_SECRET (older projects)
+#   - modern RS256 with JWKS endpoint (preferred for new projects)
+# We try JWKS first when SUPABASE_JWKS_URL is set; otherwise HS256.
 SUPABASE_JWT_SECRET = os.environ.get("SUPABASE_JWT_SECRET", "").strip()
+SUPABASE_JWKS_URL = os.environ.get("SUPABASE_JWKS_URL", "").strip()
+SUPABASE_ISSUER = os.environ.get("SUPABASE_URL", "").strip()
 
 
 @dataclass
@@ -95,17 +101,53 @@ def _decode_supabase(token: str) -> User:
         from jose import jwt  # type: ignore
     except ImportError as e:
         raise HTTPException(status_code=503, detail="python-jose not installed") from e
-    if not SUPABASE_JWT_SECRET:
-        raise HTTPException(status_code=503, detail="SUPABASE_JWT_SECRET not set")
-    try:
-        claims = jwt.decode(token, SUPABASE_JWT_SECRET,
-                             algorithms=["HS256"], options={"verify_aud": False})
-    except Exception as e:
-        raise HTTPException(status_code=401, detail=f"Invalid token: {e}") from e
+
+    # Prefer JWKS (RS256) when configured — that's how modern Supabase
+    # projects (with rotating asymmetric keys) verify tokens. Fall back
+    # to HS256 with the shared JWT_SECRET for legacy / older projects.
+    if SUPABASE_JWKS_URL:
+        jwks = _fetch_jwks(SUPABASE_JWKS_URL)
+        try:
+            unverified_header = jwt.get_unverified_header(token)
+            kid = unverified_header.get("kid")
+            key = next((k for k in jwks.get("keys", []) if k.get("kid") == kid), None)
+            if not key:
+                raise HTTPException(status_code=401, detail="Unknown signing key")
+            claims = jwt.decode(
+                token, key,
+                algorithms=[unverified_header.get("alg", "RS256")],
+                issuer=SUPABASE_ISSUER or None,
+                options={"verify_aud": False},
+            )
+        except HTTPException:
+            raise
+        except Exception as e:
+            raise HTTPException(status_code=401, detail=f"Invalid token: {e}") from e
+    elif SUPABASE_JWT_SECRET:
+        try:
+            claims = jwt.decode(token, SUPABASE_JWT_SECRET,
+                                algorithms=["HS256"], options={"verify_aud": False})
+        except Exception as e:
+            raise HTTPException(status_code=401, detail=f"Invalid token: {e}") from e
+    else:
+        raise HTTPException(
+            status_code=503,
+            detail="Supabase auth not configured: set SUPABASE_JWKS_URL or SUPABASE_JWT_SECRET",
+        )
+
+    meta = claims.get("user_metadata") or {}
+    # Kakao via Supabase exposes nickname under user_metadata.nickname /
+    # display_name / preferred_username depending on the provider config.
+    name = (
+        meta.get("full_name")
+        or meta.get("nickname")
+        or meta.get("preferred_username")
+        or meta.get("name")
+    )
     return User(
         id=str(claims.get("sub") or ""),
         email=claims.get("email"),
-        name=(claims.get("user_metadata") or {}).get("full_name"),
+        name=name,
     )
 
 

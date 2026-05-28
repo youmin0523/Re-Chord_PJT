@@ -28,15 +28,12 @@ export function AuthMenu({ className = "" }) {
     );
   }
 
-  // Phase B paths — these need the actual SDK wired up. For now the
-  // buttons exist but signin is a placeholder; integrators replace
-  // ``handleSignIn`` with their SDK call.
+  // Phase B: route to the /login page. The page itself wires the
+  // Supabase Kakao OAuth flow (lib/supabase.js::signInWithKakao).
   const handleSignIn = () => {
-    // e.g. Clerk: openSignIn(); Supabase: supabase.auth.signInWithOAuth(...).
-    // Left blank intentionally — see docs/auth-integration.md.
-    alert(
-      `Sign-in path placeholder. Wire ${provider} SDK into AuthMenu.handleSignIn.`,
-    );
+    // useNavigate would require a router-aware component; for the
+    // header menu a plain anchor-style navigation is sufficient.
+    window.location.assign("/login");
   };
 
   if (isGuest || !user) {

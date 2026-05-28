@@ -42,6 +42,7 @@ export default defineConfig({
           if (id.includes("lucide-react")) return "vendor-icons";
           if (id.includes("i18next")) return "vendor-i18n";
           if (id.includes("wavesurfer")) return "vendor-wavesurfer";
+          if (id.includes("@supabase")) return "vendor-supabase";
           return "vendor";
         },
       },

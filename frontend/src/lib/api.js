@@ -5,16 +5,53 @@ export const API_BASE =
 
 export const WS_BASE = API_BASE.replace(/^http/, "ws");
 
+const TOKEN_KEY = "rechord:auth:token";
+
+// Read the latest token at call time (NOT at module load) so a sign-in
+// during the session is picked up by the next request without a reload.
+function _authHeaders() {
+  try {
+    const t = localStorage.getItem(TOKEN_KEY);
+    return t ? { Authorization: `Bearer ${t}` } : {};
+  } catch {
+    return {};
+  }
+}
+
 async function jfetch(path, init) {
   const r = await fetch(`${API_BASE}${path}`, {
     ...init,
-    headers: { "Content-Type": "application/json", ...(init?.headers ?? {}) },
+    headers: {
+      "Content-Type": "application/json",
+      ..._authHeaders(),
+      ...(init?.headers ?? {}),
+    },
   });
   if (!r.ok) {
     const body = await r.text().catch(() => "");
     throw new Error(`${r.status} ${r.statusText} ${body}`);
   }
   return r.json();
+}
+
+// ── Consents API (Phase B) ──────────────────────────────────────
+
+/** Record (or update) a single user consent. Requires authentication. */
+export function grantConsent({ consent_type, version, granted = true }) {
+  return jfetch("/consents", {
+    method: "POST",
+    body: JSON.stringify({ consent_type, version, granted }),
+  });
+}
+
+/** Return every consent row for the current user. */
+export function listMyConsents() {
+  return jfetch("/consents/me");
+}
+
+/** Revoke all active grants of a consent_type. Returns `{revoked: <count>}`. */
+export function revokeConsent(consent_type) {
+  return jfetch(`/consents/${consent_type}`, { method: "DELETE" });
 }
 
 export function getFormats() {

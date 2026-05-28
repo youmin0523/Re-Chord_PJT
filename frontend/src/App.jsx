@@ -11,6 +11,11 @@ const Home = lazy(() => import("@/pages/Home"));
 const Job = lazy(() => import("@/pages/Job"));
 const LibraryPage = lazy(() => import("@/pages/LibraryPage"));
 const PerformanceView = lazy(() => import("@/pages/PerformanceView"));
+const Login = lazy(() => import("@/pages/Login"));
+const AuthCallback = lazy(() => import("@/pages/AuthCallback"));
+const SignupConsent = lazy(() =>
+  import("@/components/auth/SignupConsent").then((m) => ({ default: m.SignupConsent })),
+);
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -43,6 +48,9 @@ export default function App() {
               <Route path="/job/:id" element={<Job />} />
               <Route path="/perform/job/:id" element={<PerformanceView />} />
               <Route path="/perform/setlist/:setlistId" element={<PerformanceView />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/auth/callback" element={<AuthCallback />} />
+              <Route path="/signup-consent" element={<SignupConsent />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Suspense>

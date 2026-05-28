@@ -17,6 +17,7 @@ if hasattr(sys.stdout, "reconfigure"):
 
 from .api import billing as billing_api
 from .api import chat as chat_api
+from .api import consents as consents_api
 from .api import feedback as feedback_api
 from .api import formats as formats_api
 from .api import jobs as jobs_api
@@ -148,6 +149,7 @@ app.include_router(notes_api.router)
 app.include_router(performance_api.router)
 app.include_router(billing_api.router)
 app.include_router(chat_api.router)
+app.include_router(consents_api.router)
 app.include_router(feedback_api.router)
 
 
