@@ -21,6 +21,17 @@ import sys
 from pathlib import Path
 
 
+# Match measure_real_accuracy_v4.py: keep stdout/stderr on utf-8 so the
+# em-dash in `[warn] real-world measurement failed —` doesn't crash on
+# Windows cp949.
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
+
 ROOT = Path(__file__).resolve().parent.parent
 THRESHOLDS = ROOT / "tests" / "fixtures" / "accuracy_thresholds.json"
 

@@ -38,6 +38,17 @@ import urllib.request
 from pathlib import Path
 
 
+# Force UTF-8 on Windows so em-dash / Korean fall-through in print() lines
+# stop crashing the run with "cp949 can't encode" UnicodeEncodeError.
+# Reconfigure works on Python 3.7+ and is a no-op on POSIX (already utf-8).
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
+
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 TEMPLATE = PROJECT_ROOT / "data" / "qa" / "ground_truth_template.json"
 OUTPUT = PROJECT_ROOT / "data" / "qa" / f"real_accuracy_v4_{dt.date.today().isoformat()}.json"

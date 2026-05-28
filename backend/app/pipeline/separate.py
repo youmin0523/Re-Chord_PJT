@@ -7,12 +7,47 @@ D4 will add Roformer + htdemucs_ft for ensemble.
 from __future__ import annotations
 
 import gc
+import logging
+import os
 import time
 from dataclasses import dataclass, field
 from pathlib import Path
 
 from ..config import settings
 from ..core.paths import ensure_dir
+
+
+log = logging.getLogger(__name__)
+
+
+# ── CPU-only override ─────────────────────────────────────────────
+#
+# Set ``RECHORD_FORCE_CPU=1`` when the GPU is fully occupied by another
+# workload (or simply absent — Cloud Run CPU instances, CI, …). This
+# patches both PyTorch and onnxruntime so audio-separator's *auto-detect*
+# logic falls back to CPU even when the env-var ``CUDA_VISIBLE_DEVICES``
+# alone isn't enough (some onnxruntime builds still try CUDA provider
+# even with that empty, then crash with "Invalid device id").
+#
+# Slower than GPU (~10-30× per stem) but produces identical SDR.
+_FORCE_CPU = os.environ.get("RECHORD_FORCE_CPU", "").strip() in ("1", "true", "yes")
+if _FORCE_CPU:
+    log.warning("separate: RECHORD_FORCE_CPU=1 → forcing CPU-only inference")
+    os.environ["CUDA_VISIBLE_DEVICES"] = "-1"          # belt
+    try:                                                # …and suspenders
+        import torch as _torch
+        _torch.cuda.is_available = lambda: False
+    except ImportError:
+        pass
+    try:
+        import onnxruntime as _ort
+        _ort_init = _ort.InferenceSession.__init__
+        def _cpu_only_init(self, *args, **kwargs):
+            kwargs["providers"] = ["CPUExecutionProvider"]
+            return _ort_init(self, *args, **kwargs)
+        _ort.InferenceSession.__init__ = _cpu_only_init
+    except ImportError:
+        pass
 
 
 # Canonical model filenames (from audio-separator's model registry).
