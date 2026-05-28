@@ -1,0 +1,45 @@
+{
+  "name": "Re:Chord — AR to MR",
+  "short_name": "Re:Chord",
+  "description": "AI 보컬 분리, 키·템포·코드·섹션·악보·가사 자동 분석. 워십·연습·스튜디오 통합 도구.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#0a0a16",
+  "theme_color": "#8b5cf6",
+  "orientation": "portrait-primary",
+  "categories": ["music", "productivity", "utilities"],
+  "lang": "ko-KR",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "any",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "새 변환 시작",
+      "url": "/app",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "라이브러리",
+      "url": "/library",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    }
+  ]
+}

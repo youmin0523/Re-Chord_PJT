@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- OG image — 1200 x 630, dark with Re:Chord gradient. Designers can
+     replace this with a branded PNG (same filename, swap extension via
+     <meta>) before launch. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img"
+     aria-label="Re:Chord — 듣는 음악에서, 직접 연주하는 음악으로">
+  <defs>
+    <radialGradient id="bg1" cx="0.2" cy="0.2" r="0.6">
+      <stop offset="0%" stop-color="#1a1230"/>
+      <stop offset="100%" stop-color="#0a0a16"/>
+    </radialGradient>
+    <radialGradient id="orb1" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb2" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.50"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="orb3" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0%" stop-color="#ec4899" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#ec4899" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="titleGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#c4b5fd"/>
+      <stop offset="50%" stop-color="#67e8f9"/>
+      <stop offset="100%" stop-color="#f9a8d4"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg1)"/>
+
+  <!-- Gradient orbs -->
+  <circle cx="220" cy="180" r="320" fill="url(#orb1)"/>
+  <circle cx="990" cy="220" r="280" fill="url(#orb2)"/>
+  <circle cx="700" cy="560" r="280" fill="url(#orb3)"/>
+
+  <!-- Branded wordmark -->
+  <g font-family="'Pretendard Variable','Inter',sans-serif" font-weight="800">
+    <text x="80" y="290" font-size="120" letter-spacing="-3"
+          fill="url(#titleGrad)">Re:Chord</text>
+    <text x="80" y="360" font-size="34" fill="#cfd2ee" letter-spacing="-0.5">
+      듣는 음악에서, 직접 연주하는 음악으로
+    </text>
+  </g>
+
+  <!-- Feature pills -->
+  <g font-family="'JetBrains Mono','Inter',monospace" font-size="22"
+     fill="#e9ebf6">
+    <g transform="translate(80 450)">
+      <rect width="260" height="46" rx="23" fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.12)"/>
+      <text x="22" y="31">🎙️ 보컬 분리 SOTA</text>
+    </g>
+    <g transform="translate(360 450)">
+      <rect width="240" height="46" rx="23" fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.12)"/>
+      <text x="22" y="31">🎼 악보 · 가사 · 코드</text>
+    </g>
+    <g transform="translate(620 450)">
+      <rect width="240" height="46" rx="23" fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.12)"/>
+      <text x="22" y="31">🎚️ 키 · 템포 · 마스터링</text>
+    </g>
+    <g transform="translate(880 450)">
+      <rect width="240" height="46" rx="23" fill="rgba(255,255,255,0.06)"
+            stroke="rgba(255,255,255,0.12)"/>
+      <text x="22" y="31">⛪ 공연 모드 + 셋리스트</text>
+    </g>
+  </g>
+
+  <!-- Tagline -->
+  <g font-family="'JetBrains Mono','Inter',monospace" font-size="18"
+     fill="#9b9fbf" letter-spacing="4">
+    <text x="80" y="560">RE · RECORD · RE · CHORD</text>
+  </g>
+</svg>

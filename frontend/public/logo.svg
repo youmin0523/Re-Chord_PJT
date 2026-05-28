@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" role="img" aria-label="Re:Chord">
+  <defs>
+    <!-- Wordmark gradient (cool violet → cyan → magenta) -->
+    <linearGradient id="rcWord" x1="0" y1="0.1" x2="1" y2="0.9">
+      <stop offset="0%"  stop-color="#c4b5fd"/>
+      <stop offset="50%" stop-color="#67e8f9"/>
+      <stop offset="100%" stop-color="#f9a8d4"/>
+    </linearGradient>
+
+    <!-- Mark gradient (saturated, stronger) -->
+    <linearGradient id="rcMark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#8b5cf6"/>
+      <stop offset="55%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#ec4899"/>
+    </linearGradient>
+
+    <!-- Soft outer glow -->
+    <filter id="rcGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="2.4" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- A faint inner stroke for the vinyl rings -->
+    <linearGradient id="rcRing" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="rgba(196,181,253,0.85)"/>
+      <stop offset="100%" stop-color="rgba(103,232,249,0.7)"/>
+    </linearGradient>
+  </defs>
+
+  <!-- ─── Brand mark (vinyl + waveform spire) ─────────────────────────── -->
+  <g transform="translate(70 70)" filter="url(#rcGlow)">
+    <!-- Outer disc ring -->
+    <circle cx="0" cy="0" r="44" fill="none" stroke="url(#rcRing)" stroke-width="1.5" opacity="0.35"/>
+    <circle cx="0" cy="0" r="36" fill="none" stroke="url(#rcRing)" stroke-width="1.2" opacity="0.45"/>
+    <circle cx="0" cy="0" r="28" fill="none" stroke="url(#rcRing)" stroke-width="1.1" opacity="0.55"/>
+
+    <!-- Center "label" -->
+    <circle cx="0" cy="0" r="20" fill="url(#rcMark)"/>
+    <circle cx="0" cy="0" r="6"  fill="rgba(10,10,22,0.95)"/>
+
+    <!-- A short waveform that breaks out of the disc — "audio escapes the record" -->
+    <path d="M -34 0
+             Q -28 -16 -22 0
+             Q -16  16 -10 0
+             Q  -4 -22  2 0
+             Q   8  22 14 0
+             Q  20 -14 26 0
+             Q  32  14 38 0"
+          fill="none" stroke="url(#rcMark)" stroke-width="3.2"
+          stroke-linecap="round" stroke-linejoin="round"
+          opacity="0.95"
+          transform="translate(0 -64)"/>
+
+    <!-- Tiny eighth note nodding off the wave -->
+    <g transform="translate(38 -78)">
+      <ellipse cx="0" cy="0" rx="5" ry="4" fill="url(#rcMark)" transform="rotate(-18)"/>
+      <line x1="4" y1="-1" x2="4" y2="-18" stroke="url(#rcMark)" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M 4 -18 Q 14 -22 10 -8" fill="none"
+            stroke="url(#rcMark)" stroke-width="2.4" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <!-- ─── Wordmark ────────────────────────────────────────────────────── -->
+  <g font-family="'Pretendard Variable','Inter',sans-serif"
+     font-weight="800" font-size="72" letter-spacing="-2.5"
+     fill="url(#rcWord)">
+    <text x="140" y="86">Re</text>
+    <text x="234" y="86">Chord</text>
+  </g>
+
+  <!-- ":" rendered as two musical note-heads so the colon visually carries meaning -->
+  <g transform="translate(215 56)">
+    <ellipse cx="0" cy="0"  rx="6.5" ry="5"  fill="#a78bfa" transform="rotate(-20)"/>
+    <ellipse cx="0" cy="22" rx="6.5" ry="5"  fill="#67e8f9" transform="rotate(-20)"/>
+  </g>
+
+  <!-- Tagline -->
+  <g font-family="'JetBrains Mono','Inter',monospace"
+     font-size="11" letter-spacing="3" fill="rgba(235,236,246,0.55)">
+    <text x="140" y="116">RE · RECORD · RE · CHORD</text>
+  </g>
+</svg>

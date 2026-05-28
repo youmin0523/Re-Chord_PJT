@@ -1,0 +1,62 @@
+{
+  "_doc": "Commercial-release accuracy thresholds. Updated 2026-05-27. Each metric has 'min' (hard fail) and 'target' (warn if below).",
+  "version": 1,
+  "separation": {
+    "musdb_vocal_si_sdr_db":         {"min": 8.0,  "target": 12.0, "unit": "dB", "source": "MUSDB18-7s, improved ensemble. measured 10.66 (2026-05-27)"},
+    "musdb_instrumental_si_sdr_db":  {"min": 10.0, "target": 13.0, "unit": "dB", "source": "MUSDB18-7s, improved ensemble. measured 15.06 (2026-05-27)"},
+    "si_sdr_vocal_db_mean":          {"min": 8.0,  "target": 10.5, "unit": "dB",   "source": "MUSDB18 first 10 tracks"},
+    "si_sdr_instrumental_db_mean":   {"min": 9.0,  "target": 11.5, "unit": "dB",   "source": "MUSDB18 first 10 tracks"},
+    "regression_slack_db":           {"min": 0.3,  "target": 0.3,  "unit": "dB",   "source": "max baseline drop"},
+    "null_residual_dbfs":            {"min": -25,  "target": -35,  "unit": "dBFS", "source": "live job quality.py"},
+    "reconstruction_corr":           {"min": 0.9,  "target": 0.98, "unit": "ratio","source": "live job quality.py"},
+    "vocal_leak_dbfs":               {"min": -5,   "target": -15,  "unit": "dB",   "source": "live job quality.py (lower=better)"},
+    "stem_xcorr_abs":                {"min": 0.15, "target": 0.05, "unit": "ratio","source": "live job quality.py (lower=better)"}
+  },
+  "analyze": {
+    "key_exact_acc":                 {"min": 0.65, "target": 0.85, "unit": "ratio", "source": "synth 12-note key set (known GT). NOTE: no worship audio on disk — real-song key accuracy unmeasured"},
+    "key_relative_acc":              {"min": 0.85, "target": 0.95, "unit": "ratio", "source": "relative major/minor counted, synth set"},
+    "bpm_within_4pct_acc":           {"min": 0.80, "target": 0.95, "unit": "ratio", "source": "synth click track (known BPM). NOTE: no real-song BPM accuracy measured"},
+    "bpm_band_plausible_rate":       {"min": 0.92, "target": 0.99, "unit": "ratio", "source": "fraction of songs whose detected BPM lands in the 50-180 plausibility band — a sanity check, NOT 8% accuracy. Real 8% accuracy needs external BPM GT (sparse): see external_bpm_8pct_mean in real_accuracy_v4 reports"}
+  },
+  "chord": {
+    "transposition_invariant_recall":{"min": 0.70, "target": 0.85, "unit": "ratio", "source": "URL-grounded v4 measure"},
+    "f1_simple":                     {"min": 0.65, "target": 0.80, "unit": "F1",    "source": "synth 5 triad set"},
+    "root_accuracy_synth":           {"min": 0.70, "target": 0.90, "unit": "ratio", "source": "synth progression. measured 0.80 (2026-05-27); triads 6/6, 7ths weak w/o CREMA"},
+    "root_quality_accuracy_synth":   {"min": 0.60, "target": 0.85, "unit": "ratio", "source": "synth. measured 0.70 (2026-05-27)"},
+    "seventh_chord_detected_rate":   {"min": 0.0,  "target": 0.50, "unit": "ratio", "source": "CREMA-required set"},
+    "_vocab_ceiling_note":           {"min": 0, "target": 0, "unit": "doc", "source": "CREMA model vocab = 14 qualities (maj/min/aug/dim/7/maj7/min7/dim7/hdim7/minmaj7/maj6/min6/sus2/sus4). A chroma-energy post-processor (chord_tension.py) now ADDS add9/6/sus and 9/11/13 and altered (7b9/7#9/7#11/7#5/maj7#11) on top — verified on SYNTHETIC chords (18/18) only. First real-audio evidence 2026-05-27 (worship slice: add9/m7 fired plausibly), but real-music EXTENSION/ALTERED accuracy is still UNMEASURED (no labeled corpus). Altered spelling is heuristic; user-editable in lead-sheet."}
+  },
+  "autotune": {
+    "correction_improved_rate":      {"min": 0.75, "target": 0.90, "unit": "ratio", "source": "synth detuned tones, natural preset. measured 0.875 (2026-05-27)"},
+    "mean_residual_cents":           {"min": 35.0, "target": 15.0, "unit": "cents", "source": "residual vs nearest scale tone. measured 21.1 (2026-05-27)"}
+  },
+  "section": {
+    "boundary_hit_rate_3s":          {"min": 0.60, "target": 0.85, "unit": "ratio", "source": "synth clear-structure song, ±3s. measured 0.75 (2026-05-27); short intros absorbed"}
+  },
+  "transcribe": {
+    "onset_f1_50ms":                 {"min": 0.85, "target": 0.95, "unit": "F1",    "source": "synth note onsets"},
+    "note_accuracy_pitch":           {"min": 0.70, "target": 0.85, "unit": "ratio", "source": "basic-pitch vocals"},
+    "note_f1_synth":                 {"min": 0.85, "target": 0.95, "unit": "F1",    "source": "synth harmonic melody → basic-pitch. measured 1.00 (2026-05-27)"},
+    "drum_f1":                       {"min": 0.80, "target": 0.90, "unit": "F1",    "source": "heuristic + polyphonic hat emission. measured 0.886 (2026-05-27, was 0.781 before polyphonic)"}
+  },
+  "transform": {
+    "pitch_shift_mean_abs_cents":    {"min": 25.0, "target": 5.0,  "unit": "cents", "source": "±7 st sine, Rubber Band. measured 0.1 (2026-05-27)"},
+    "pitch_shift_max_abs_cents":     {"min": 50.0, "target": 15.0, "unit": "cents", "source": "worst-case across shifts. measured 0.2 (2026-05-27)"}
+  },
+  "lyrics": {
+    "word_timing_iou":               {"min": 0.55, "target": 0.75, "unit": "IoU",   "source": "whisper word-stamp"},
+    "word_timing_iou_after_polish":  {"min": 0.80, "target": 0.90, "unit": "IoU",   "source": "lyrics_align_iou measured 0.884 (2026-05-27)"},
+    "korean_doctrine_correct_rate":  {"min": 0.85, "target": 0.95, "unit": "ratio", "source": "하나님/주님 priming"}
+  },
+  "loudness": {
+    "lufs_error_db":                 {"min": 1.5,  "target": 0.5,  "unit": "dB",    "source": "BS.1770 measured vs target"},
+    "true_peak_max_dbtp":            {"min": -0.5, "target": -1.0, "unit": "dBTP",  "source": "ITU-R BS.1770 inter-sample peak"}
+  },
+  "score": {
+    "timemap_drift_sec_per_min":     {"min": 0.5,  "target": 0.15, "unit": "sec",   "source": "variable-tempo songs"}
+  },
+  "aux_classifier": {
+    "leave_one_out_overall":         {"min": 0.90, "target": 0.97, "unit": "ratio", "source": "5178-vector reference DB, top-16 cosine vote. measured 0.983 (2026-05-27)"},
+    "well_populated_category_min":   {"min": 0.90, "target": 0.95, "unit": "ratio", "source": "min accuracy across categories with >=40 refs. measured 0.967 (2026-05-27)"}
+  }
+}

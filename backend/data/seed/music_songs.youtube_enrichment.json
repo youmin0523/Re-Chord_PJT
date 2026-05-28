@@ -1,0 +1,3057 @@
+{
+  "schema": "rechord.music_songs.youtube_enrichment.v1",
+  "generated_at": "2026-05-21T15:29:48",
+  "songs": {
+    "way-maker": {
+      "primary_title": "Way Maker",
+      "translations": {
+        "예람워십 Yeram Worship": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=QSdlAz1Togo",
+            "title": "WAY MAKER(한국어 공식번안) 길을 만드시는 분 | SOUTH KOREA | Put on a Mask and Distanced | Yeram Worship",
+            "channel": "YERAM WORSHIP [편곡자 NAM D]",
+            "source_tag": "both",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "예람워십 WAY MAKER M/V는 인터넷예배와 온라인예배 찬양으로 사용하실 수 있습니다.",
+              "| 후원계좌  |",
+              "국민은행 555301-01-366019 김민찬(예람워십)",
+              "코로나로 인해 많은 것들이 변하고 멈추고 있습니다.",
+              "우리는 마스크를 착용하고, 거리를 두어야하지만,",
+              "우리가 주님을 찬양할 때, 마스크는 우리의 찬양을 막을 수 없고,",
+              "거리두기는 우리와 하나님의 사이를 멀게 할 수 없습니다.",
+              "오늘 우리가 함께 부를 이 찬양이 전 세계에 아픔을 겪고 있는 이들에게,",
+              "희망을 잃고 힘들어하는 이들에게, 주님의 위로와 평안이 전해지길 소망합니다.",
+              "WAY MAKER 길을 만드시는 분 (큰 길을 만드시는 주)",
+              "Executive Pastor : 전혁 목사 @hispeaker",
+              "Worship Producer : 전혁 목사 @hispeaker",
+              "Worship Leader : 박혜진 간사 @Yeram_hyejin",
+              "Project Supervisor : 김민찬",
+              "Arrange Director : 남재선(NAMD) @yeramworship",
+              "Sound Designer : 권주석",
+              "Synthesizer : 남재선(NAMD) @yeramworship",
+              "Singers : 고하은, 구진용, 김지민, 김지수, 박성진, 박수연, 이준열, 이한얼, 정재환",
+              "Choir : 동래중앙교회 청년교회",
+              "Live Camera Director 이우형",
+              "Camera Operators : 김민찬",
+              "Camera Assistant : 차우혁",
+              "Camera Assistant : 허다은",
+              "Live Engineer : 허다은",
+              "Worship Planner : 박지영",
+              ":: 사역 및 문의",
+              "Youtube : 예람워십 동래중앙교회 청년교회",
+              "#길을만드시는분 #예람워십 #사송영락교회"
+            ],
+            "subtitle_lyrics": [
+              "주 여기 운행하시네",
+              "주 여기 역사하시네",
+              "MY GOD 그는 하나님",
+              "주 우리 마음 만지네",
+              "주 우리 치유하시네",
+              "주 우리 새롭게 하네",
+              "주 우리 회복시키네",
+              "주의 일하심 볼 수 없어도",
+              "주의 일하심 알 수 없어도",
+              "주는 결코 멈추지 않네",
+              "그는 하나님"
+            ]
+          },
+          "fetched_at": "2026-05-21T15:20:30"
+        },
+        "아가파오 워십 AGAPAO Worship": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=PRLOLdrgZSA",
+            "title": "길을 만드시는 분(Way Maker) | AGAPAO Worship | 1시간 연속듣기",
+            "channel": "레몬트리뮤직 Lemon Tree Music",
+            "source_tag": "description",
+            "confidence": 0.97,
+            "description_lyrics": [
+              "★본 영상에서 나오는 모든 광고(들)는(은) 레몬트리뮤직과는 무관합니다.",
+              "주 여기 운행하시네 주 경배해 주 경배해",
+              "주 여기 역사하시네 주 경배해 주 경배해",
+              "주 여기 운행하시네 주 경배해 주 경배해",
+              "주 여기 역사하시네 주 경배해 주 경배해",
+              "주님 새 길을 만드시는 분",
+              "큰 기적을 행하시는 분",
+              "그는 우리 하나님",
+              "주님 약속을 지키시는 분",
+              "어둠 속을 밝히시는 빛",
+              "그는 우리 하나님",
+              "주 우리 마음 만지네 주 경배해 주 경배해",
+              "주 우리 치유하시네 주 경배해 주 경배해",
+              "주 우리 새롭게 하네 주 경배해 주 경배해",
+              "주 우리 회복시키네 주 경배해 주 경배해",
+              "주님 새 길을 만드시는 분",
+              "큰 기적을 행하시는 분",
+              "그는 우리 하나님",
+              "주님 약속을 지키시는 분",
+              "어둠 속을 밝히시는 빛",
+              "그는 우리 하나님",
+              "그는 하나님 그는 하나님",
+              "그는 하나님 그는 하나님",
+              "주 눈물 닦으며 주 상처 치유해",
+              "내 삶의 모든 응답 예수",
+              "주 눈물 닦으며 주 상처 치유해",
+              "내 삶의 모든 응답 예수",
+              "주의 일하심 볼 수 없어도",
+              "주의 일하심 알 수 없어도",
+              "주는 결코 멈추지 않네",
+              "주는 결코 멈추지 않네",
+              "주의 일하심 볼 수 없어도",
+              "주의 일하심 알 수 없어도",
+              "주는 결코 멈추지 않네",
+              "주는 결코 멈추지 않네",
+              "주의 일하심 볼 수 없어도",
+              "주의 일하심 알 수 없어도",
+              "주는 결코 멈추지 않네",
+              "주는 결코 멈추지 않네",
+              "주의 일하심 볼 수 없어도",
+              "주의 일하심 알 수 없어도",
+              "주는 결코 멈추지 않네",
+              "주는 결코 멈추지 않네",
+              "주님 새 길을 만드시는 분",
+              "큰 기적을 행하시는 분",
+              "그는 우리 하나님",
+              "주님 약속을 지키시는 분",
+              "어둠 속을 밝히시는 빛",
+              "그는 우리 하나님",
+              "그는 하나님 그는 하나님",
+              "그는 하나님 그는 하나님",
+              "Agapao Worship 아가파오 워십",
+              "오늘도 레몬트리뮤직과 함께해주셔서 감사합니다.",
+              "모든 영상은 여러분의 사랑과 기도와 후원으로 제작 됩니다.",
+              "'알람설정'으로 매일 올라오는 찬양을 시청해주세요.",
+              "레몬트리뮤직 후원",
+              "모든 영상들은 자체제작 출시된 음반으로 제작하였습니다.",
+              "혹시 영상업로드을 원치 않으시면 아래 이메일로 연락주시기 바랍니다.",
+              "레몬트리뮤직은 본 콘텐트에서 나오는 광고(들)와(과) 무관합니다.",
+              "레몬트리뮤직은 본 콘텐트에서 나오는 광고(들)로부터 어떠한 수익을 얻고 있지 않고 있으며"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:20:45"
+        },
+        "김예은 완역판 (성가대 보급)": {
+          "fetched_ok": false,
+          "error": "no hits"
+        },
+        "어노인팅": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=GUtpzixccpM",
+            "title": "| 가슴벅찬🤩찬양 | 박기영 | 길을 만드시는 주 | with 오케스트라 버전 |  Way Maker | 웨이메이커 | 2021 극동방송 가을음악회 | 롯데콘서트홀",
+            "channel": "극동방송 아뮤 FEBC A:MU",
+            "source_tag": "description",
+            "confidence": 0.82,
+            "description_lyrics": [
+              "#새해찬양",
+              "#새길을만드시는분",
+              "#큰길을만드시는주",
+              "전 세계인의 영혼에 울림을 주고 있는 명곡!",
+              "누적 조회수 5억을 돌파한",
+              "시나치 (Osinachi Okoro) 작곡의",
+              "[Way Maker-길을 만드시는 주]가",
+              "가수 박기영과  60인조 오케스트라와 만났습니다.",
+              "어둠 속에서도 길을 만드시고",
+              "큰 일을 행하실 하나님을 기대하며 부르는 찬양!",
+              "지금 고통 가운데 계시는 분 있다면",
+              "약속은 반드시 지키신다는",
+              "메시지를 통해",
+              "큰 소망과  위로 얻으시기를",
+              "기도합니다🙏",
+              "[ 이사야43 :19 개역개정 ]",
+              "'너희는 이전 일을 기억하지 말며",
+              "옛날 일을 생각하지 말라",
+              "보라 내가 새 일을 행하리니",
+              "이제 나타낼 것이라",
+              "너희가 그것을 알지 못하겠느냐",
+              "반드시 내가 광야에 길을",
+              "사막에 강을 내리니",
+              "가수 : 박기영",
+              "협연 : 모스틀리필하모닉오케스트라 (지휘: 박상현)",
+              "원곡 : Osinachi Kalu Okoro Egbu (나아지리아 가스펠 싱어, 시나치)",
+              "주 여기 함께 하시네",
+              "나 예배해, 나 예배해",
+              "우리 맘 치유 하시네",
+              "나 예배해, 나 예배해",
+              "주 여기 함께 하시네",
+              "나 예배해, 나 예배해",
+              "우리 맘 치유 하시네",
+              "나 예배해, 나 예배해",
+              "큰 길을 만드시는 주",
+              "큰 기적을 행하시는 주",
+              "주는 나의 하나님",
+              "큰 길을 만드시는 주",
+              "큰 기적을 행하시는 주",
+              "주는 나의 하나님",
+              "비록 내게 보이지 않아도",
+              "비록 내게 느껴지잖아도",
+              "하나님은 멈추시지 않네",
+              "하나님은 새 일 행하시네",
+              "* 모든 저작권은 극동방송 아뮤 FEBC A:Mu에 있으며, 이 콘텐츠는 무단 다운로드 및 재배포를 금합니다."
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:21:07"
+        },
+        "제이어스 J-US": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=OR6co7jlclg",
+            "title": "[찬양가사] 제이어스 (J-Us) - 위대하신 주",
+            "channel": "CksDid 찬양 플레이리스트",
+            "source_tag": "description",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "제이어스 (J-Us) - 위대하신 주"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:21:20"
+        }
+      }
+    },
+    "goodness-of-god": {
+      "primary_title": "Goodness of God",
+      "translations": {
+        "마커스 워십 (인도: 소진영)": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=z0abDE6noXU",
+            "title": "주님의 선하심 Goodness of God- 마커스워십 𝑳𝒊𝒗𝒆 𝑪𝒍𝒊𝒑 | Ab Key",
+            "channel": "MARKERS WORSHIP",
+            "source_tag": "description",
+            "confidence": 0.85,
+            "description_lyrics": [
+              "마커스 목요예배 𝑳𝒊𝒗𝒆 𝑪𝒍𝒊𝒑 | Arrange Ver",
+              "\" 주님의 선하심 (Goodness of God) \"",
+              "Arrange 이민영",
+              "| Worship Leader | 소진영",
+              "Piano 김민지 | Aux Keys 박찬민",
+              "E.Guitar 한새별 | B.Guitar 정진웅 | Drums 김현성",
+              "Sop 박은선 김가영 | Alto 박은미 박소예 | Tenor 곽현승 김이환",
+              "#마커스워십 #소진영 #주님의선하심"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:21:35"
+        },
+        "어노인팅": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=QxZOHetEf5Q",
+            "title": "[한국어자막] Goodness Of God LIVE  | Bethel Music VICTORY",
+            "channel": "Thatssoyou 외국찬양번역",
+            "source_tag": "description",
+            "confidence": 0.85,
+            "description_lyrics": [
+              "[묵상]",
+              "우리를 인도하시고 섭리하시는 하나님의 방법이",
+              "우리가 기대하고 원하는 방법보다 훨씬 더 합당하십니다",
+              "말씀을 의지함으로 믿음의 발걸음을 걸어갈 때",
+              "하나님께서 우리의 발걸음을 그분의 손길 가운데",
+              "가장 선하신 길로 인도하여 주실 것입니다."
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:21:48"
+        }
+      }
+    },
+    "reckless-love": {
+      "primary_title": "Reckless Love",
+      "translations": {
+        "마커스 워십": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=i_tRtUS5reU",
+            "title": "[한국어자막] Reckless Love Spontaneous  - Steffany Gretzinger  | Bethel Music",
+            "channel": "Thatssoyou 외국찬양번역",
+            "source_tag": "description",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "[묵상]",
+              "내가 예수님을 바라보고 있는 것 같지 않을 때에도",
+              "예수님은 우리를 위해 싸우고 계시며 우리를 그분의 품으로 인도하고 계신다는 것입니다.",
+              "예수님의 사랑은 우리가 끊고 싶다고 해서 끊을 수 있는 것이 아니라",
+              "예수님은 우리를 언제나 찾고 계십니다🙌❗️"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:22:00"
+        }
+      }
+    },
+    "build-my-life": {
+      "primary_title": "Build My Life",
+      "translations": {
+        "위러브": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=LdZs0aMXUhk",
+            "title": "Build My Life (주 사랑 위에 세우리) - Housefires || 1시간 찬양 / 1 Hour Worship Piano",
+            "channel": "매일의 호흡 Daily Breath",
+            "source_tag": "description",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "Build My Life (주 사랑 위에 세우리) - Housefires 1h. ver.",
+              "찬양 받기에 합당하신 주",
+              "모든 찬양을 주님께 드리네",
+              "모든 호흡이 주님을 경배해",
+              "주를 위해",
+              "모든 이름 위에 뛰어나신 분",
+              "예수, 유일한 구원자 되신 주",
+              "모든 호흡이 주님을 높이네",
+              "주를 위해",
+              "거룩, 주 같은 분 없네, 비교할 수 없네",
+              "경이로 내 눈 여소서",
+              "주를 보기 원해 내 맘 채우소서",
+              "주의 사랑으로 이끄소서",
+              "나의 삶을 주 사랑 위에 세우리",
+              "이것이 내 반석",
+              "나의 믿음 주께 있네",
+              "결코 흔들리지 않네"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:22:13"
+        }
+      }
+    },
+    "oceans-where-feet-may-fail": {
+      "primary_title": "Oceans (Where Feet May Fail)",
+      "translations": {
+        "마커스 워십": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=qU-WJG9IIC0",
+            "title": "오션 스킷 드라마 bgm : Hillsong United - Oceans (Where Feet May Fail) 한글자막 가사번역 (eng & korean lyrics)",
+            "channel": "현재호",
+            "source_tag": "description",
+            "confidence": 0.7,
+            "description_lyrics": [
+              "오션 스킷 드라마용으로 제작하였습니다."
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:22:29"
+        }
+      }
+    },
+    "what-a-beautiful-name": {
+      "primary_title": "What a Beautiful Name",
+      "translations": {
+        "어노인팅": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=L380sPdt6os",
+            "title": "우릴 결코 놓지 않네 What A Beautiful Name | 예람워십",
+            "channel": "YERAM WORSHIP [편곡자 NAM D]",
+            "source_tag": "both",
+            "confidence": 0.914,
+            "description_lyrics": [
+              "2023 예람워십 TOUR에서 고백한",
+              "우릴 결코 놓지 않네 What A Beautiful Name 입니다.",
+              "로마서 4장 18-24절",
+              "아브라함이 바랄 수 없는 중에 바라고 믿었으니",
+              "이는 네 후손이 이같으리라 하신 말씀대로 많은 민족의 조상이 되게 하려 하심이라",
+              "약속하신 그것을 또한 능히 이루실 줄을 확신하였으니",
+              "| 후원계좌  |",
+              "국민은행 555301-01-366019 김민찬(예람워십)",
+              "Composed by 전 혁, 남재선(NAM D)",
+              "Lyrics by 전 혁, 박지영, 박혜진, 허다은, 김민찬, 남재선(NAM D)",
+              "Producer 전 혁 남재선(NAM D)",
+              "Arranger 전 혁 남재선(NAM D)",
+              "Sound Designer 권주석",
+              "Worship Leader 박혜진",
+              "Vocal 고하은 김지원 심관보 이한얼",
+              "Synthesizer 남재선(NAMD)",
+              "Piano 전영례",
+              "Drum 이동준",
+              "Bass 박지영",
+              "Choir 2023 예람투어 예배자들",
+              "Live Engineer & Recording 허다은",
+              "Creative Art Director 김민찬",
+              "Camera Assistant 차우혁 김미경 박민송 노민창 오윤주",
+              "권오희 김미향 김은영 박창원 박용철 박주명 박흥주 이기복 오규현 이동창 이일광 오윤주 오하영",
+              "박종호(마텍산업 Martec Industries Co., Ltd), 김차순",
+              "Venue 제주삼양교회, 순천제일교회, 대구동신교회",
+              "Cooperation 좋은공간, 복음이벤트",
+              "Lighting 좋은공간",
+              "English 영어 | 김지원",
+              "Portuguese 포르투갈 | Kgsongs",
+              "Indonesian 인도네시아어 | Jesse Fevriery",
+              "Chinese 중국어 | 진정혜",
+              "Spanish 스페인어 | Wânny Fiúza",
+              "Japanese 일본어 | Heejuring",
+              "Polish 폴란드어 | Michał Noworolnik",
+              "French 프랑스어 | Ara BoBae",
+              "Romanian 루마니아어 | Spin Sara Naomi",
+              "Russian 러시아어 | natasha",
+              "▶ 사역 및 문의",
+              "#예람워십 #우릴결코놓지않네 #사송영락교회"
+            ],
+            "subtitle_lyrics": [
+              "예수 내 기쁨 되신 주",
+              "그 이름 찬양해",
+              "나의 유일한 참된 안식",
+              "예수 완전한 그 이름",
+              "능력의 하나님",
+              "내 맘 주의 나라 이루시네",
+              "예수 영원히 함께하시고",
+              "우리 다시 세우시네",
+              "그 사랑 무엇도 끊을 수 없네",
+              "예수 완전한 소망되시고",
+              "무너진 맘 채우시네",
+              "그 약속 우릴 결코 놓지 않네",
+              "그 이름 예수",
+              "그 이름 부르네"
+            ]
+          },
+          "fetched_at": "2026-05-21T15:22:41"
+        }
+      }
+    },
+    "cornerstone": {
+      "primary_title": "Cornerstone",
+      "translations": {}
+    },
+    "10000-reasons-bless-the-lord": {
+      "primary_title": "10,000 Reasons (Bless the Lord)",
+      "translations": {}
+    },
+    "great-are-you-lord": {
+      "primary_title": "Great Are You Lord",
+      "translations": {
+        "어노인팅": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=Ly0sbXDtL0g",
+            "title": "12 크신 내 주 (Lyrics) | 어노인팅예배캠프2025",
+            "channel": "ANOINTING",
+            "source_tag": "both",
+            "confidence": 0.93,
+            "description_lyrics": [
+              "12. 크신 내 주 – Greater than Great",
+              "(Tommy Walker 작사·작곡)",
+              "___연주 & 편곡",
+              "예배인도 | 소병찬",
+              "베이스 | 유예찬 / 드럼 | 박승규",
+              "키보드 | 권예은 / 신디사이저 | 채푸른 / 일렉 | 정성권",
+              "싱어 | 백나혜 장승우 조아라 홍정빈 현효섭",
+              "[음원/음반/악보 동시 발매]  2026.2.3.(화) 12PM",
+              "EXECUTIVE PRODUCER_ 박기범",
+              "PRODUCER_ 박기범",
+              "PROJECT MANAGER_ 김승빈",
+              "ARRANGEMENT_ 어노인팅",
+              "LIVE ENGINEER_ 박유만",
+              "LIVE MONITOR ENGINEER_ 김영원",
+              "LIVE ASSISTANT ENGINEER_ 김지선 박지해 박태준 한은광",
+              "강우종(153audiolab) 이재혁(레드컴퍼니)",
+              "LIVE RECORDING ENGINEERS_ 김형준 (AudioAZ) 최준희 (NiceChois)",
+              "STUDIO RECORDING ENGINEER_ 박유만 @ 어노인팅 스튜디오",
+              "MIXING ENGINEER_ 박유만 @ 어노인팅 스튜디오",
+              "MASTERING ENGINEER_ 권남우 @ 821 Sound Mastering",
+              "예배인도자_ 강슬기 소병찬 양민호",
+              "싱어_ 강희찬 권오준 김건희 김찬미 백나혜 이경진",
+              "이주희 장승우 조아라 최혜진 현효섭 홍정빈",
+              "메인건반_ 권예은 한경숙",
+              "신디사이저_ 김다혜 채푸른",
+              "일렉 & 어쿠스틱 기타_ 남인성 정성권",
+              "베이스기타_ 유예찬 한상도",
+              "드럼_ 박승규 서광석",
+              "퍼커션 (additional)_ 박상찬",
+              "무대 연출_ 김영무",
+              "무대 감독_ 박상찬",
+              "무대 디자인_ 김영무 조영기 (asOne)",
+              "무대_ 권혁인",
+              "카메라 스위처_ 변준영",
+              "카메라 오퍼레이터_ 한연수 강정한 박성수 송우빈 안재형",
+              "양원혁 오나단 이유리 이가연 이관재 정필선 최경진 한정호",
+              "레일캠_ 이철민 백준혁",
+              "라이브 스크린 프레젠테이션_ 이은지",
+              "라이브 스크린 VJ_ 최현영 옥진호 (Mightyblessing)",
+              "LED SYSTEM_ 조영기 신은섭 신현기 이나영 정혜의",
+              "영상편집_ 김영무 변준영 한연수",
+              "조명_ 박정배 두지웅",
+              "발전차_ 장두성 (두성발전)",
+              "프로덕션 매니저_ 김승빈",
+              "유튜브 & 저작권 매니저_ 오화영 박상찬",
+              "사진촬영_ 권지원 오병환 (Saramsazin)",
+              "앨범 아트웍_ 진리 (J-US)",
+              "LED 아트웍_ 김영무 옥진호 최현영 (Mightyblessing)",
+              "캠프 굿즈 제작_ 채푸른 이단비 (sonmat cali)",
+              "협찬_ 레드컴퍼니(음향) 주식회사 애즈원(LED) 153audioLAB(강우종) 도림교회",
+              "Supervisor_ 이동범",
+              "Developer_ 최현영 (Mightyblessing)",
+              "디자이너_ 이채은 (Mightyblessing)",
+              "도림교회 정명철 담임목사님 양태왕 목사님",
+              "김승용 국장님 정해국 집사님 김영현 집사님",
+              "레드컴퍼니 김효진 대표님 정현석 이사님",
+              "LED 주식회사 애즈원 이정재 대표님 이정용 대표님",
+              "레이허 – 두손시스템 이규만 방원석 손관준 이상원",
+              "게스트  Most Dear(박승규 정성권 한상도) 조유진 님",
+              "박한별 정원경"
+            ],
+            "subtitle_lyrics": [
+              "[음악]",
+              "신내 주신",
+              "높으신 [음악] 주 지혜로우신 신",
+              "놀라운",
+              "나의 주 [음악]",
+              "무엇보다",
+              "무엇보다 [음악]",
+              "깊고 넓은",
+              "옷을 없는 혼자 베푸시는 [음악]",
+              "나의 주",
+              "모든 것을 가능케 하신",
+              "[음악] 모든 것을 함께하신",
+              "내 생각보다 큰일 행하신",
+              "우리 가운데 역사하시는 [음악]",
+              "나의 주 하나님 찬양에",
+              "다시 한번 [음악] 크신 내 주신",
+              "내 주의",
+              "지혜로우신",
+              "나의 [음악] 주",
+              "깊고 [음악] 넓은",
+              "하루 없는 혼자 베푸시는 그들",
+              "나의 주 모든 것을 가능케 하실",
+              "내 생각보다 큰일 행하신 [음악]",
+              "우리 가운데 역사하시는",
+              "나의 주 하나님 찬양해 모든 것을",
+              "[음악] 모든 것을 가득케 하시 내",
+              "생각보다 내 생각보다 [음악]",
+              "큰일 행하시 우리 가운데",
+              "는 [음악] 나의 주 하나님 찬양해.",
+              "내 주 같은",
+              "내 주 같은 [음악] 없네.",
+              "내 주 같은 구 [음악] 없네.",
+              "주 앞에 나옵. 내 주 같은",
+              "없네. [음악]",
+              "건 없네 [음악]",
+              "주만 의지하리라.",
+              "&gt;&gt; 할렐루야. 우리의 삶에 주님과 같은",
+              "분이 없음을 고백합니다. [음악]",
+              "우리의 평생에 오직 주분만을 찬송하며",
+              "살기를 간절히 소망합니다.",
+              "모든 [음악] 것을",
+              "모든 것을 가득케 하실",
+              "내 생각보다 큰일 행하실",
+              "나의 주 하나님 찬양해. 다시 한번",
+              "모든 것을",
+              "&gt;&gt; 모든 [음악] 것을 가게 하신",
+              "&gt;&gt; 내 생각보다",
+              "&gt;&gt; 내 생각보다 큰일 행하신",
+              "나의 주 하나님 찬양해 [음악]",
+              "내주 같은 [음악]",
+              "내 주 같은데",
+              "내주 같은",
+              "주 앞에 [음악]",
+              "나옵 내주 같은",
+              "내 주 같은 [음악]",
+              "부는 없네",
+              "주 같은 부는 없네",
+              "수많이지만",
+              "&gt;&gt; 다시 한번 [음악] 내주 같은",
+              "내 주 같은 두는 없네"
+            ]
+          },
+          "fetched_at": "2026-05-21T15:23:00"
+        }
+      }
+    },
+    "how-great-is-our-god": {
+      "primary_title": "How Great Is Our God",
+      "translations": {
+        "마커스 워십": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=zAgpjp57TyA",
+            "title": "How Great is Our God(Korean lyrics) 위대 하신주 (한국어)",
+            "channel": "김요한",
+            "source_tag": "description",
+            "confidence": 0.971,
+            "description_lyrics": [
+              "위대 하신주 (한국어)",
+              "빛나는 왕의 왕~ 영광의 주님",
+              "온 땅 기뻐하라~ 온 땅 기뻐하라",
+              "광채의 옷 입고~ 어둠 물리쳐",
+              "저 원수는 떠네~  원수는 떠네",
+              "위대 하신 주",
+              "찬양해~   위대 하신 주",
+              "다~ 알게 되리라",
+              "위대~ 하신 주",
+              "영원한 주의 주~ 시간의 주관자",
+              "알파와 오메가~ 알파와 오메가",
+              "삼위의 하나님~ 아바 성령 예수",
+              "사자와 어린 양~ 사자와 어린 양",
+              "모든 이름 위에~ 뛰어난 이름",
+              "다 찬양해~ 위대 하신 주",
+              "[다번역성경찬송]",
+              "개역개정 시편 148장",
+              "1. 할렐루야 하늘에서 여호와를 찬양하며 높은 데서 그를 찬양할지어다",
+              "2. 그의 모든 천사여 찬양하며 모든 군대여 그를 찬양할지어다",
+              "3. 해와 달아 그를 찬양하며 밝은 별들아 다 그를 찬양할지어다",
+              "4. 하늘의 하늘도 그를 찬양하며 하늘 위에 있는 물들도 그를 찬양할지어다"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:23:12"
+        }
+      }
+    },
+    "holy-spirit-bryan-katie": {
+      "primary_title": "Holy Spirit",
+      "translations": {
+        "제이어스 J-US": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=PklFusQuQ0Q",
+            "title": "10 성령의 바람 Wind of the Holy Spirit | 제이어스 J-US | 𝐀𝐑𝐈𝐒𝐄, 𝑺𝒉𝒊𝒏𝒆 (KOR / ENG / VIET Sub)",
+            "channel": "J-US Ministry",
+            "source_tag": "both",
+            "confidence": 0.925,
+            "description_lyrics": [
+              "10 성령의 바람 Wind of the Holy Spirit",
+              "\"일어나라 빛을 발하라 이는 네 빛이 이르렀고 여호와의 영광이 네 위에 임하였음이니라\"",
+              "🎧국내외 각종 음원사이트에서 들으실 수 있습니다!",
+              "💿 앨범 구매는 제이스토어에서 가능합니다!",
+              "작사/작곡 | 주민정 • 현지혜",
+              "편곡 | 제이어스(J-US)",
+              "#제이어스 #ariseshine #성령의바람"
+            ],
+            "subtitle_lyrics": [
+              "무덤 문이 열리고 마른 뼈 살아나네 주로 인해",
+              "거짓은 무너지고 진리가 선포되네 이 곳에",
+              "오- 생기가 불어오네",
+              "오- 성령이 일하시네",
+              "오- 회복이 일어나네",
+              "부흥이 시작되네",
+              "성령의 바람 여기 불어와 권능으로 임하시네",
+              "거룩한 세대 여기 일어나 주님의 뜻 이루시네"
+            ]
+          },
+          "fetched_at": "2026-05-21T15:23:30"
+        }
+      }
+    },
+    "same-god": {
+      "primary_title": "Same God",
+      "translations": {
+        "마커스 워십": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=JMcoYGxwAkc",
+            "title": "Same God 동일하신 주║Porters Worship #예수전도단 #포터스워십",
+            "channel": "예수전도단 인천지부 YWAM INCHEON",
+            "source_tag": "description",
+            "confidence": 0.925,
+            "description_lyrics": [
+              "#예수전도단 #포터스워십",
+              "Same God 동일하신 주⎪Elevation Worship",
+              "이 세대와 도시, 온 열방을",
+              "주님께 연결하는 포터스워십🛫",
+              "PORTERS WORSHIP(인천화요모임)",
+              "📌 예배 안내 : 매주 화요일 저녁 7시║참된교회 'THE 공감'",
+              "⛪️ 경기도 부천시 중동로 49번길 35 (중동역 1번 출구)",
+              "#PORTERS #포터스 #YWAMINCHEON #예수전도단​ #인천화요모임​ #참된교회"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:23:42"
+        }
+      }
+    },
+    "surrounded-fight-my-battles": {
+      "primary_title": "Surrounded (Fight My Battles)",
+      "translations": {
+        "루아 RUACH × 더크로스 TCC": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=_7vcNZm-ris",
+            "title": "SURROUNDED ( Fight My Battles ) | 루아 RUACH | 한국어 | 더크로스 TCC 번역 | Living Room Session",
+            "channel": "루아 RUACH",
+            "source_tag": "description",
+            "confidence": 0.8,
+            "description_lyrics": [
+              "안녕하세요 ! #싱어송라이터 #루아 #RUACH 입니다. 🦙",
+              "주님께서는, 내 원수들이 보는 앞에서 내게 잔칫상을 차려 주시고, 내 머리에 기름 부으시어 나를 귀한 손님으로 맞아 주시니, 내 잔이 넘칩니다.",
+              "(시편 23편 5절)"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:23:56"
+        },
+        "어노인팅": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=jBRXPWx3bLs",
+            "title": "Surrounded (Fight My Battles) 그것으로 난 맞서네║Porters Worship #예수전도단 #포터스워십",
+            "channel": "예수전도단 인천지부 YWAM INCHEON",
+            "source_tag": "description",
+            "confidence": 0.973,
+            "description_lyrics": [
+              "#예수전도단 #포터스워십",
+              "그것으로 난 맞서네",
+              "모든 전쟁에 능하신 승리의 주님을 찬양합니다!",
+              "주님을 바라보며 예배할 때,",
+              "그 승리가 우리의 것입니다!",
+              "이 세대와 도시, 온 열방을",
+              "주님께 연결하는 포터스워십🛫",
+              "PORTERS WORSHIP(인천화요모임)",
+              "📌 예배 안내 : 매주 화요일 저녁 7시║참된교회 'THE 공감'",
+              "⛪️ 경기도 부천시 중동로 49번길 35 (중동역 1번 출구)",
+              "#PORTERS #포터스 #YWAMINCHEON #예수전도단​ #인천화요모임​ #참된교회"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:24:11"
+        }
+      }
+    },
+    "champion-bethel": {
+      "primary_title": "Champion",
+      "translations": {}
+    },
+    "praise-elevation": {
+      "primary_title": "Praise",
+      "translations": {}
+    },
+    "graves-into-gardens": {
+      "primary_title": "Graves Into Gardens",
+      "translations": {
+        "SHAKE CITY": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=vQ7yA07atZc",
+            "title": "Graves Into Gardens (Elevation Worship) - 예수보다 더 귀한분은 없네 SHAKE CITY 번역",
+            "channel": "SHAKE CITY",
+            "source_tag": "description",
+            "confidence": 0.9,
+            "description_lyrics": [
+              "Live from Holy Spirit Korea 2023 (성령한국 2023)"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:24:23"
+        },
+        "AWORSHP": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=vQ7yA07atZc",
+            "title": "Graves Into Gardens (Elevation Worship) - 예수보다 더 귀한분은 없네 SHAKE CITY 번역",
+            "channel": "SHAKE CITY",
+            "source_tag": "description",
+            "confidence": 0.9,
+            "description_lyrics": [
+              "Live from Holy Spirit Korea 2023 (성령한국 2023)"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:24:36"
+        },
+        "마커스 워십": {
+          "fetched_ok": false,
+          "error": "no hits"
+        }
+      }
+    },
+    "see-a-victory": {
+      "primary_title": "See A Victory",
+      "translations": {
+        "MYC WORSHIP": {
+          "fetched_ok": false,
+          "error": "no hits"
+        }
+      }
+    },
+    "battle-belongs": {
+      "primary_title": "Battle Belongs",
+      "translations": {
+        "로드웨이브 Lord Wave": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=rMk_SZm7WJY",
+            "title": "Battle Belongs 전쟁은 주의 것║Porters Worship #예수전도단 #포터스워십",
+            "channel": "예수전도단 인천지부 YWAM INCHEON",
+            "source_tag": "description",
+            "confidence": 0.925,
+            "description_lyrics": [
+              "#예수전도단 #포터스워십",
+              "Battle Belongs 전쟁은 주의 것⎪Phil Wickham",
+              "이 세대와 도시, 온 열방을",
+              "주님께 연결하는 포터스워십🛫",
+              "PORTERS WORSHIP(인천화요모임)",
+              "📌 예배 안내 : 매주 화요일 저녁 7시║참된교회 'THE 공감'",
+              "⛪️ 경기도 부천시 중동로 49번길 35 (중동역 1번 출구)",
+              "#PORTERS #포터스 #YWAMINCHEON #예수전도단​ #인천화요모임​ #참된교회"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:25:13"
+        },
+        "Open Heaven Worship · 서동원": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=rMk_SZm7WJY",
+            "title": "Battle Belongs 전쟁은 주의 것║Porters Worship #예수전도단 #포터스워십",
+            "channel": "예수전도단 인천지부 YWAM INCHEON",
+            "source_tag": "description",
+            "confidence": 0.925,
+            "description_lyrics": [
+              "#예수전도단 #포터스워십",
+              "Battle Belongs 전쟁은 주의 것⎪Phil Wickham",
+              "이 세대와 도시, 온 열방을",
+              "주님께 연결하는 포터스워십🛫",
+              "PORTERS WORSHIP(인천화요모임)",
+              "📌 예배 안내 : 매주 화요일 저녁 7시║참된교회 'THE 공감'",
+              "⛪️ 경기도 부천시 중동로 49번길 35 (중동역 1번 출구)",
+              "#PORTERS #포터스 #YWAMINCHEON #예수전도단​ #인천화요모임​ #참된교회"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:25:25"
+        },
+        "아가페 시그널": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=UuAAu9zcMjE",
+            "title": "Battle Belongs - Phil Wickham 한국어 번역 - 전쟁은 주의 것 - 아가페 시그널",
+            "channel": "아가페 시그널 💒",
+            "source_tag": "description",
+            "confidence": 0.876,
+            "description_lyrics": [
+              "#찬양 #말씀 #예배",
+              "Battle Belongs - Phil Wickham 한국어 번역 - 전쟁은 주의 것 - 아가페 시그널",
+              "시편 121:1-3",
+              "전쟁은 주의 것",
+              "전쟁에  임하신 주는",
+              "내 승리를 보내",
+              "천산만수를 옮겨",
+              "날 인도 하시네",
+              "음침한 골짜기에서",
+              "주 날 에워싸니",
+              "난 두렵지 않네",
+              "주와 함께라면",
+              "내 싸움은 오직 무뤂으로",
+              "두손들고 외치리",
+              "예수 전쟁은 주의 것",
+              "모든 두렴 주님께 맡겨",
+              "밤새 외치리",
+              "예수 전쟁은 주의 것",
+              "주가 날 위하신다면",
+              "누가 날 대적하리",
+              "주 예수께는 없네",
+              "불 가능한 것은!",
+              "유골에 생기를 부어.",
+              "부활케 하시니",
+              "저주의 나무에 달려",
+              "인류 구원 하셨네",
+              "내 싸움은 오직 무뤂으로",
+              "두손들고 외치리",
+              "예수 전쟁은 주의 것",
+              "모든 두렴 주님께 맡겨",
+              "밤새 외치리",
+              "예수 전쟁은 주의 것",
+              "거대한 요새요, 내 앞서 나가니",
+              "주앞에 맞서는자 아무도 없네",
+              "천지의 창조자",
+              "영원한 통치자",
+              "주앞에 맞서는 자 아무도 없네~",
+              "내 싸움은 오직 무뤂으로",
+              "두손들고 외치리",
+              "예수 전쟁은 주의 것",
+              "모든 두렴 주님께 맡겨",
+              "밤새 외치리",
+              "예수 전쟁은 주의 것",
+              "시편 121:1-3",
+              "내가 산을 향하여 눈을 들리라",
+              "나의 도움이 어디서 올꼬",
+              "나의 도움이 천지를 지으신",
+              "여호와에게서로다",
+              "여호와께서 너로 실족지 않게 하시며",
+              "너를 지키시는 자가",
+              "졸지 아니하시리로다"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:25:38"
+        }
+      }
+    },
+    "living-hope": {
+      "primary_title": "Living Hope",
+      "translations": {
+        "Levistance": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=v_i0iU6a-sE",
+            "title": "[한국어자막] Living Hope - Brian Johnson Bethel Music",
+            "channel": "Thatssoyou 외국찬양번역",
+            "source_tag": "description",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "우리의 사슬을 끊으시고 자유케 하신 주님을 찬양합니다",
+              "예수 그리스도만이 내 산 소망입니다"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:25:51"
+        },
+        "어노인팅": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=ld55iisPcxc",
+            "title": "【합창】주 예수 나의 산 소망(레위지파) / Living Hope Brian Johnson & Phil Wickham 파트연습.",
+            "channel": "Holy praise",
+            "source_tag": "both",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "주 예수 나의 산 소망 (Phil Wickham & Brian Johnson 레위지파)  레위지파 버전",
+              "깊은 절망의 수렁 가운데 주님께 닿을 수 없던 우리",
+              "✔주 예수 나의 산 소망(레위지파) 파트 연습곡 모음",
+              "주 예수 나의 산 소망(Arr. Lloyd Larson) 파트 연습곡 모음",
+              "주 예수 나의 산 소망(Arr. David Wise) 파트 연습곡 모음",
+              "주 예수 나의 산 소망(문민정) 파트 연습곡 모음",
+              "✔홀리프레이즈의 합창곡 모두듣기",
+              "주 예수 나의 산 소망(레위지파) 파트연습 링크입니다.",
+              "1. 깊은 절망의 수렁 가운데 주님께 닿을 수 없던 우리",
+              "어둔 밤 중에 하늘을 향해 주의 이름 나 부를 때",
+              "어둠을 뚫고 오신 주 사랑 나의 절망 거두셨네",
+              "주님의 공로 다 이루셨네 주 예수 나의 산 소망",
+              "2. 그 누가 주의 자비를 알아 한 없는 은혜 측량할까?",
+              "영광을 떠나 이 땅에 오사 죄를 지신 구주 예수",
+              "주의 십자가 내게 말하네 영원히 난 용서됐네",
+              "아름다우신 왕 나는 주의 것 그리스도 나의 산 소망",
+              "Chorus. 할렐루야 주를 찬양하여라",
+              "할렐루야 자유케 하셨도다",
+              "죄의 저주 끊으신 주께 구원 있도다",
+              "주 예수 나의 산 소망",
+              "3. 언약된 아침 장사된 몸에 부활의 호흡 시작됐네",
+              "유다의 사자 위엄찬 선포 사망이 무너졌도다",
+              "이제 사망의 무덤이 더는 우리를 주장할 수 없네",
+              "유다의 사자 위엄찬 포효 사망이 무너졌도다",
+              "주 예수 승리하셨네",
+              "Chorus. 할렐루야 주를 찬양하여라",
+              "할렐루야 자유케 하셨도다",
+              "죄의 저주 끊으신 주께 구원 있도다",
+              "주 예수 나의 산 소망",
+              "#. 그리스도 나의 산 소망",
+              "주님은 나의 산 소망",
+              "#홀리프레이즈#성가연습#파트연습"
+            ],
+            "subtitle_lyrics": [
+              "깊은 절망의 수렁 가운데 주님께 닿을 수 없던 우리",
+              "어둔 밤 중에 하늘을 향해 주의 이름 나 부를 때",
+              "어둠을 뚫고 오신 주 사랑 나의 절망 거두셨네",
+              "주님의 공로 다 이루셨네 주 예수 나의 산 소망",
+              "그 누가 주의 자비를 알아 한 없는 은혜 측량할까?",
+              "영광을 떠나 이 땅에 오사 죄를 지신 구주 예수",
+              "주의 십자가 내게 말하네 영원히 난 용서됐네",
+              "아름다우신 왕 나는 주의 것 그리스도 나의 산 소망",
+              "할렐루야 주를 찬양하여라",
+              "할렐루야 자유케 하셨도다",
+              "죄의 저주 끊으신 주께 구원 있도다",
+              "주 예수 나의 산 소망",
+              "찬양~~ 위워워~~",
+              "찬양 하여라",
+              "나의 소망~~ 워워워~~",
+              "자유 주셨네~ 자유케 하셨도다",
+              "워워워, 워~ 주 예수 나의 산 소망",
+              "언약된 아침 장사된 몸에 부활의 호흡 시작됐네",
+              "유다의 사자 위엄찬 선포 사망이 무너졌도다",
+              "이제 사망의 무덤이 더는 우리를 주장할 수 없네",
+              "유다의 사자 위엄찬 포효 사망이 무너졌도다",
+              "사망이 무너졌도다",
+              "주 예수 승리하셨네",
+              "그리스도 나의 산 소망",
+              "주님은 나의 산 소망"
+            ]
+          },
+          "fetched_at": "2026-05-21T15:26:02"
+        }
+      }
+    },
+    "yes-i-will": {
+      "primary_title": "Yes I Will",
+      "translations": {}
+    },
+    "worthy-of-it-all": {
+      "primary_title": "Worthy Of It All",
+      "translations": {
+        "어노인팅": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=5phB9B4z1RE",
+            "title": "주는 존귀하신 분 Worthy of It All | 나는 주를 높이리라 I Exalt Thee | 스캇 브래너 & 리바이츠 | 커뮤니티 워십",
+            "channel": "리바이츠 뮤직",
+            "source_tag": "both",
+            "confidence": 0.931,
+            "description_lyrics": [
+              "#주는존귀하신분 #WorthyOfItAll #나는주를높이리라 #IExaltThee #스캇브래너 #리바이츠",
+              "온 성도와 천사 보좌에 경배해",
+              "모든 장로들 면류관을 드리네 어린 양께",
+              "주는 존귀하신 분",
+              "주는 존귀하신 분",
+              "만물 주께 나와 주께 돌아가니",
+              "영광 받으소서",
+              "주야로 기도의 향 올라가네",
+              "나는 주를 높이리라",
+              "높이리라 오 주님",
+              "| 온라인 헌금 계좌 안내 |",
+              "하나은행 901-910015-09104 (레위지파 미니스트리)",
+              "보내주신 귀중한 헌금은 리바이츠 미디어 사역에 소중하게 사용됩니다. 감사합니다."
+            ],
+            "subtitle_lyrics": [
+              "온 성도와 천사",
+              "보좌에 경배해",
+              "모든 장로들",
+              "면류관을 드리네 어린 양께",
+              "주는 존귀하신 분",
+              "만물 주께 나와 주께 돌아가니",
+              "영광 받으소서",
+              "주야로 기도의 향 올라가네",
+              "나는 주를 높이리라",
+              "높이리라",
+              "오 주님",
+              "높이리라 오 주님"
+            ]
+          },
+          "fetched_at": "2026-05-21T15:26:15"
+        }
+      }
+    },
+    "tremble": {
+      "primary_title": "Tremble",
+      "translations": {}
+    },
+    "no-longer-slaves": {
+      "primary_title": "No Longer Slaves",
+      "translations": {
+        "예수전도단 서울화요모임": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=7KMvS1iSreE",
+            "title": "[예수전도단 서울화요모임] 두려움의 멍에 벗네(No Longer Slaves)",
+            "channel": "YWAM Worship Korea",
+            "source_tag": "description",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "20180501 화요모임",
+              "두려움의 멍에 벗네_No Longer Slaves",
+              "나를 밝히는 주의 멜로디 그 노래 날 감싸네",
+              "원수로부터 나를 건지사 모든 두렴 사라져",
+              "두려움의 멍에 벗네 난 주의 자녀라",
+              "두려움의 멍에 벗네 난 주의 자녀라",
+              "모태로부터 나를 택하여 내 이름을 부르네",
+              "주의 자녀로 다시 태어나 예수 보혈 흐르네",
+              "두려움의 멍에 벗네 난 주의 자녀라",
+              "두려움의 멍에 벗네 난 주의 자녀라",
+              "바다를 가르신 주 따라 걷네 두려움 잠기우리라",
+              "날 구하신 사랑 노래해 난 주의 자녀라"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:26:27"
+        },
+        "마커스 워십": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=7KMvS1iSreE",
+            "title": "[예수전도단 서울화요모임] 두려움의 멍에 벗네(No Longer Slaves)",
+            "channel": "YWAM Worship Korea",
+            "source_tag": "description",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "20180501 화요모임",
+              "두려움의 멍에 벗네_No Longer Slaves",
+              "나를 밝히는 주의 멜로디 그 노래 날 감싸네",
+              "원수로부터 나를 건지사 모든 두렴 사라져",
+              "두려움의 멍에 벗네 난 주의 자녀라",
+              "두려움의 멍에 벗네 난 주의 자녀라",
+              "모태로부터 나를 택하여 내 이름을 부르네",
+              "주의 자녀로 다시 태어나 예수 보혈 흐르네",
+              "두려움의 멍에 벗네 난 주의 자녀라",
+              "두려움의 멍에 벗네 난 주의 자녀라",
+              "바다를 가르신 주 따라 걷네 두려움 잠기우리라",
+              "날 구하신 사랑 노래해 난 주의 자녀라"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:26:38"
+        }
+      }
+    },
+    "who-you-say-i-am": {
+      "primary_title": "Who You Say I Am",
+      "translations": {}
+    },
+    "so-will-i-100-billion-x": {
+      "primary_title": "So Will I (100 Billion X)",
+      "translations": {}
+    },
+    "king-of-kings-hillsong": {
+      "primary_title": "King of Kings",
+      "translations": {
+        "어노인팅": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=H22roNeZ_Jg",
+            "title": "05 지극히 높으신 주 (Official Video) ㅣ 어노인팅예배캠프2023 #Chapter1",
+            "channel": "ANOINTING",
+            "source_tag": "both",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "🎹건반총보/단선악보/리드시트",
+              "5. 지극히 높으신 주 King Of Kings",
+              "(Jason Ingram, Scott Ligertwood, Brooke Ligertwood 작사, 작곡)",
+              "| 예배인도 소병찬",
+              "| 베이스| 남정호 | 드럼 박승규 | 키보드 권예은 | 신디사이저 채푸른 | 일렉 & 어쿠스틱기타  정성권",
+              "| 싱어 백나혜 장승우 정원경 조아라 현효섭 홍정빈",
+              "EXECUTIVEPRODUCER | 박기범",
+              "PRODUCER | 박기범",
+              "PROJECT MANAGER | 김승빈",
+              "ARRANGEMENT | 어노인팅",
+              "LIVE ENGINEER | 박유만",
+              "LIVE MONITOR ENGINEER | 김영원 이재혁(Redsound)",
+              "LIVE ASSISTANT ENGINEER | 강우종(153AudioLab) 김형준(AudioAZ) 김영민 김지선 박태준",
+              "RECORDING ENGINEER (LIVE&STUDIO) | 박유만 @ 도림교회, 어노인팅스튜디오",
+              "MIXING & MASTERING ENGINEER | 김대우",
+              "예배인도자 | 강슬기 소병찬 양민호 박기범",
+              "싱어 | 김찬미 조아라 백나혜 장승우 정원경 최혜진 권오준 현효섭 홍정빈 송영준",
+              "메인건반 | 권예은 한경숙",
+              "신디사이저 | 채푸른 김다혜",
+              "일렉 & 어쿠스틱기타 | 정성권 이민성",
+              "베이스기타 | 한상도 남정호",
+              "드럼 | 박승규 서광석",
+              "퍼커션 | 박상찬",
+              "영상 디렉팅 | 김영무",
+              "무대디자인 | 김영무 박정배 조영기(asOne)",
+              "무대 | 권혁인",
+              "카메라 오퍼레이터 | 변준영 한연수 서승원 정목영 강성범(wavestudio633) 정지준 정민기 박평강",
+              "지미집 | 스토리픽쳐스(박성재 박주현 변진섭)",
+              "라이브 스크린 프레젠테이션 | 박종일 오화영",
+              "라이브 스크린 VJ | 김찬기 한정우",
+              "영상편집 | 김영무 변준영 한연수",
+              "조명 | 박정배",
+              "프로덕션매니저 | 김승빈",
+              "유튜브 & 저작권매니저 | 오화영 박상찬",
+              "사진촬영 | 오병환 권지원",
+              "앨범디자인 | 진리(J-US)",
+              "캠프굿즈제작 | 강슬기 양민호 이단비(sonmatcali)",
+              "홍보 | 채푸른",
+              "홈페이지제작 | 이동범",
+              "레드컴퍼니(음향) 주식회사 애즈원(LED) 153audioLAB(강우종) 도림교회",
+              "도림교회",
+              "정명철 담임목사님",
+              "양태왕 목사님 최지웅 목사님 정성현 목사님",
+              "정해국 집사님 김영현 집사님 이강철 집사님",
+              "레드컴퍼니 김효진 대표 정현석 이사 이재혁",
+              "LED | 주식회사 애즈원 (이정재 대표 조영기 차장)",
+              "게스트 | 조유진 님",
+              "📞02-574-6305, 3010 (어노인팅)",
+              "/저작권 문의",
+              "비상업용(어노인팅) |  anointingshop@naver.com",
+              "👉 사역신청 / 목요예배 안내 ㅣ anointing.co.kr",
+              "👉 온라인샵 (음반 악보 MR 판매) ㅣ anointingmusic.com",
+              "● 어노인팅 정기 목요예배 ●",
+              "매주 목요일 7: 30 - 9: 30PMㅣ 도림교회 '글로리아 홀'(1,2호선 신도림역)",
+              "문의: 02-574-6305 (평일 10AM-6PM 주말 공휴일 휴무)",
+              "*홈페이지에서 매월 목요예배 안내 및 매주 예배 후 송리스트를 보실 수 있습니다!",
+              "어노인팅",
+              "*어노인팅 영상물/음원의 무단 재편집, 재업로드를 금합니다."
+            ],
+            "subtitle_lyrics": [
+              "소망 없고 빛도 없는 어두운 세상을",
+              "하나님이 사랑하사 우리에게 오셨네",
+              "예언하신 약속대로 말씀이 육신 되어",
+              "하늘 영광 버리시고 이 땅으로 오셨네",
+              "찬양하세 우리 주 삼위일체 하나님",
+              "지극히 높으신 주 영원토록 찬양합니다",
+              "주가 지으신 모든 세상을 구원하려",
+              "영광의 주 예수님이 죽음을 택하셨네",
+              "그 고통 속에서도 주의 뜻 기억 하사",
+              "길을 잃은 우릴 위해 십자가를 지셨네",
+              "부활하신 그 아침 닫힌 무덤 열리고",
+              "죽임 당한 어린양 죽음을 이기셨네",
+              "생명의 길 되시는 그리스도를 통해",
+              "아버지께 오는 자 모두 회복되리라",
+              "주가 세우신 교회 성령이 이끄시네",
+              "영원한 주의 복음 무너지지 않으리",
+              "주의 보혈로 인해 나는 자유케 됐네",
+              "예수의 사랑으로 새 생명을 얻었네"
+            ]
+          },
+          "fetched_at": "2026-05-21T15:26:51"
+        },
+        "예람워십 Yeram Worship": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=Av3bgq6_FsQ",
+            "title": "Hosanna 호산나 - 예람워십",
+            "channel": "YERAM WORSHIP [편곡자 NAM D]",
+            "source_tag": "both",
+            "confidence": 0.914,
+            "description_lyrics": [
+              "Hosanna 호산나 - 예람워십",
+              "| 후원계좌  |",
+              "국민은행 555301-01-366019 김민찬(예람워십)",
+              "Executive Pastor : 전혁 목사(히즈피커 Hispeaker)",
+              "Worship Producer : 전혁 목사",
+              "Worship Leader : 박혜진 간사",
+              "Project Supervisor : 김민찬",
+              "Arrange Director : 남재선(NAMD)",
+              "Synthesizer : 남재선(NAMD)",
+              "Drum : 전혁(히즈피커 Hispeaker)",
+              "Worship Leader : 박혜진",
+              "Singers : 박수연, 이한얼, 김민성, 김재형, 이은혜",
+              "Live Camera Director 이우형",
+              "Camera Operators : 김민찬",
+              "Camera Assistant : 차우혁",
+              "Live Engineer : 허다은",
+              "Worship Planner : 박지영",
+              ":: 사역 및 문의",
+              "#Hosanna #hillsongworship #호산나"
+            ],
+            "subtitle_lyrics": [
+              "난 보네 영광의 왕",
+              "구름타고 오시네",
+              "주 위엄에 모두 떠네",
+              "난 보네 사랑의 주",
+              "우리 죄를 씻기네",
+              "노래하고 찬양하네",
+              "호산나 호산나",
+              "호산나 높은 곳에",
+              "나의 맘을 깨끗케",
+              "나의 눈 열어 보게 하소서",
+              "주 사랑으로 살게 하소서",
+              "주의 아픔 느끼며",
+              "주 나라 위해 모두 드리리",
+              "이 땅에서 영원한 그 곳까지"
+            ]
+          },
+          "fetched_at": "2026-05-21T15:27:04"
+        }
+      }
+    },
+    "this-is-amazing-grace": {
+      "primary_title": "This Is Amazing Grace",
+      "translations": {
+        "Cfive Worship": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=G2Uw881F0AU",
+            "title": "[해외찬양] Phil Wickham - This Is Amazing Grace 놀라우신 은혜 한국어 영어 번역",
+            "channel": "CCM Factory",
+            "source_tag": "description",
+            "confidence": 0.9,
+            "description_lyrics": [
+              "[해외찬양] Phil Wickham - This Is Amazing Grace 놀라우신 은혜 한국어 영어 번역",
+              "이 찬양 또한 많은 분들이 사랑하는 찬양입니다.",
+              "바로 \"놀라우신 은혜\"입니다.",
+              "이 찬양이 한국에 처음 소개된 것은 바로 미국에 있는 한인 Worship Team인 Shake City를 통해 소개되었습니다."
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:27:16"
+        }
+      }
+    },
+    "in-christ-alone": {
+      "primary_title": "In Christ Alone",
+      "translations": {
+        "마커스 워십": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=gelqmaeRpyE",
+            "title": "In Christ alone, my hope is found  예수 안에만, 내 소망있네 (한국어 가사 수정) (3 Hours)",
+            "channel": "진리 자유 Truth Freedom",
+            "source_tag": "description",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "\" In Christ Alone\"은 영국의  Keith Getty 와 Stuart Townend가 2001년에 작곡, 작사한 찬양입니다.",
+              "이 찬양은 이후에도 누군가에 의해 더 좋은 한국어 번역이 나오고, 은혜의 통로가 되길 소망합니다.",
+              "아래에 영어 원문과 기존에 번역되었던 한국어 가사,  그리고 그 아래에 제가 번역한 가사를 첨부합니다.",
+              "=== 영어 원문 ===",
+              "=== 기존 한국어 번역 ===",
+              "예수 안에 소망 있네     내 빛과 힘 나의 노래",
+              "환란 중에 도우시는      주 나의 견고한 반석",
+              "크신 사랑 크신 평화     두렴에서 날 건지네",
+              "내 위로자 내 모든 것    주 사랑 안에 서리라",
+              "완전하신 하나님이       우리와 같이 되셨네",
+              "주 사랑과 그 공의로     세상을 구원하셨네",
+              "십자가에 주 달리사      그 진노를 거두셨네",
+              "내 모든 죄 담당하신     주 은혜 안에 살리라",
+              "죽임당한 세상의 빛       어둠 속에 누이셨네",
+              "영광스런 그의 날에       무덤에서 부활했네",
+              "승리하신 우리 주님       원수들을 물리쳤네",
+              "나 주의 것 주 나의 것    주 보혈 안에 살리라",
+              "주 예수의 능력으로       내 속에 두려움 없네",
+              "나의 사는 모든 순간      주께서 다스리시네",
+              "어느 것도 주 손에서      날 빼앗지 못하리라",
+              "주 오실 날 기다리며      주 능력 안에 서리라",
+              "=== 한국어 번역 수정 ===",
+              "예수 안에만 내 소망 있네         주님은 나의 빛, 내 힘과 노래",
+              "이 반석과 견고한 땅은              극한 환란에도 확고하네",
+              "그 크신 사랑, 그 깊은 평화       두려움 없고 분투 그칠 때",
+              "나의 위로자, 나의 모든 것        주님의 사랑안에 나 서리라",
+              "주님만이, 완전한 하나님이       힘없는 아기로 육신이 되셨네",
+              "이 사랑과 의로움의 선물을       구원받을 자들이 경멸했네",
+              "십자가에서 주 죽으사                하나님 심판을 대신했네",
+              "주께서 모든 죄를 담당하신       주님의 죽음안에 나 살리라",
+              "주님의 육신이 땅에 누워있고    세상 빛이 어둠에 죽임당했네",
+              "그후 영광스런 날에 일어나        무덤에서 다시 부활하셨네",
+              "주님이 승리 하신대로                 내 죄의 저주는 사라졌네",
+              "나는 주의 것 주는 나의 것          주님의 보혈로 나를 사셨네",
+              "삶의 정죄와 죽음 공포 없는       이것이 내 안에 주의 능력이라",
+              "삶의 시작부터 호흡 끝까지        예수가 내 운명을 다스리네",
+              "지옥의 권세도, 인간의 계획도   주 손에서 날 빼앗지 못해",
+              "주 오실 때, 날 부르실 때             주님의 능력안에 나 서리라"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:27:28"
+        }
+      }
+    },
+    "mighty-to-save": {
+      "primary_title": "Mighty to Save",
+      "translations": {
+        "예수전도단": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=iRoW-ZWbLPc",
+            "title": "예수 산을 옮기시는/MIGHTY TO SAVE (Live) - LEVISTANCE (Sunday Worship 주일 예배 실황)",
+            "channel": "LEVISTANCE (레비스탕스)",
+            "source_tag": "both",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "#레비스탕스 #예수산을옮기시는 #내주는구원의주",
+              "레비스탕스 주일 예배 실황 - 내 주는 구원의 주 (예수 산을 옮기시는)",
+              "대한민국과 열방으로부터의 모든 공식 사역 문의는 아래 주소로 보내주시면 됩니다.",
+              "《다음세대를 살리기 위해 레비스탕스와 함께 하실 분들의 사역 지원 헌금을 아래 계좌로 하실 수 있습니다.》",
+              "1. 온라인 헌금계좌_ 100-031-924971  (신한은행/더크로스처치)",
+              "2. 해외 송금인을 위한 영문정보 안내",
+              "1) 신한은행 영문명_ SHINHAN BANK",
+              "2)  지점 영문명_ Gwacheon Branch",
+              "3)  지점 영문명 주소_ 10, Byeoryang sangga 1-ro,  Gwacheon -si, Gyeonggi-do, Korea",
+              "4) 신한은행 SWIFT CODE_ SHBKKRSE",
+              "5)  수취인 계좌번호_ 100-031-924971",
+              "6)  수취인 영문성명_ THE CROSS CHURCH",
+              "7)  수취인 전화번호_ +82-02-585-5670"
+            ],
+            "subtitle_lyrics": [
+              "모든 이들 필요해 완전한 주 사랑",
+              "자비 베푸소서",
+              "모든 이들 필요해 구세주의 온유함",
+              "열방의 소망",
+              "예수 산을 옮기시는",
+              "내 주는 능력의 주 그는 구원의 주",
+              "영원한 구원의 창조자",
+              "사망을 이기시고 예수 부활했네",
+              "내 실패와 두려움 주 받아주소서",
+              "날 채우소서",
+              "내 삶을 주께 드려 온전히 주 따르리",
+              "주께 순종해",
+              "비추소서 주님의 빛을",
+              "찬양해 다시 사신 왕의 영광을 (예수)",
+              "찬양해 다시 사신 왕의 영광을"
+            ]
+          },
+          "fetched_at": "2026-05-21T15:27:39"
+        },
+        "어노인팅": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=PRzmk--3QjE",
+            "title": "Mighty to Save (Lyrics) - by Hillsong Worship 내 주는 구원의 주 (예수 산을 옮기시는) 원곡",
+            "channel": "Praise God 𓏢",
+            "source_tag": "description",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "#영어찬양",
+              "#내주는구원의주",
+              "#예수산을옮기시는"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:27:51"
+        }
+      }
+    },
+    "rattle-elevation": {
+      "primary_title": "Rattle!",
+      "translations": {}
+    },
+    "jireh-elevation": {
+      "primary_title": "Jireh",
+      "translations": {
+        "Team Luke Worship 팀룩워십": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=BZVG6mjrAo0",
+            "title": "마리아의 고백 Mary’s Song(ENG/CHN) / 이삼열 X Team Luke Worship",
+            "channel": "Team Luke Worship & Creative ",
+            "source_tag": "description",
+            "confidence": 0.758,
+            "description_lyrics": [
+              "키보디스트 이삼열님과 함께한 온라인 콘서트 실황입니다.",
+              "팀룩워십이 준비한 새 찬양을 이삼열님과 함께 고백해보았습니다.",
+              "⬇⬇ 악보 링크 ⬇⬇",
+              "그의 여종의 비천함을 돌보셨음이라 보라 이제 후로는 만세에 나를 복이 있다 일컬으리로다",
+              "능하신 이가 큰 일을 내게 행하셨으니 그 이름이 거룩하시며",
+              "긍휼하심이 두려워하는 자에게 대대로 이르는도다",
+              "그의 팔로 힘을 보이사 마음의 생각이 교만한 자들을 흩으셨고",
+              "권세 있는 자를 그 위에서 내리치셨으며 비천한 자를 높이셨고",
+              "주리는 자를 좋은 것으로 배불리셨으며 부자는 빈 손으로 보내셨도다",
+              "작사 : 장호연",
+              "작곡 : 장호연, 이찬행",
+              "편곡 : 이대인",
+              "KEYs 이삼열",
+              "Vocal : 신에스더, 장호연, 이찬행",
+              "Acoustic Guitar : 이대인",
+              "가사 번역 : Team Luke Connect",
+              "영어 ENG : 임명주",
+              "중국어 CHN : 진솔",
+              "Executive Producer 심도성(소리나무)",
+              "Project Directed by 심도성(소리나무)",
+              "Live Recording 떨기나무 스튜디오",
+              "Camera Operated by 이루다, 윤상희",
+              "Stage Staff 이예슬, 박나리",
+              "Edited by 이루다 at RuBridge Studio",
+              "Venue : 대동대학교 D'Art",
+              "#마리아의고백 #팀룩워십 #새찬양"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:28:04"
+        },
+        "거실예배 Living Room Session": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=HTtnpJYsoXU",
+            "title": "[한국어자막] Jireh l 저스틴 비버 & Chandler Moore ㅣ외국찬양번역",
+            "channel": "하베스트락처치 HRCKOREA",
+            "source_tag": "description",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "#외국찬양번역 #저스틴비버찬양 #Jireh한국어"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:28:16"
+        }
+      }
+    },
+    "promises-maverick-city": {
+      "primary_title": "Promises",
+      "translations": {}
+    },
+    "do-it-again-elevation": {
+      "primary_title": "Do It Again",
+      "translations": {
+        "한국어 번안 (번안팀 미확인)": {
+          "fetched_ok": false,
+          "error": "no hits"
+        }
+      }
+    },
+    "the-blessing": {
+      "primary_title": "The Blessing",
+      "translations": {
+        "아가파오 워십 AGAPAO Worship (feat. 최시원)": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=mDK9ZrhJA34",
+            "title": "[AGAPAO Worship] The Blessing / 축복 (한국어 공식 번안)",
+            "channel": "Agapao Worship 아가파오 워십",
+            "source_tag": "description",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "#TheBlessing #축복 #아가파오워십",
+              "아가파오 워십과 예배자 최시원이 함께 부르는 The Blessing(축복).",
+              "주님의 이름으로 자녀 된 우리가 축복을 선포할 때,",
+              "한국과 온 세계 열방 가운데",
+              "다음 세대를 넘어 그 자녀의 자녀까지,",
+              "천 대까지 이어지는 하나님의 축복이 흘러가기를 믿음으로 소망합니다."
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:28:31"
+        },
+        "마커스 워십": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=mDK9ZrhJA34",
+            "title": "[AGAPAO Worship] The Blessing / 축복 (한국어 공식 번안)",
+            "channel": "Agapao Worship 아가파오 워십",
+            "source_tag": "description",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "#TheBlessing #축복 #아가파오워십",
+              "아가파오 워십과 예배자 최시원이 함께 부르는 The Blessing(축복).",
+              "주님의 이름으로 자녀 된 우리가 축복을 선포할 때,",
+              "한국과 온 세계 열방 가운데",
+              "다음 세대를 넘어 그 자녀의 자녀까지,",
+              "천 대까지 이어지는 하나님의 축복이 흘러가기를 믿음으로 소망합니다."
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:28:44"
+        }
+      }
+    },
+    "wait-on-you": {
+      "primary_title": "Wait On You",
+      "translations": {}
+    },
+    "house-of-the-lord": {
+      "primary_title": "House of the Lord",
+      "translations": {
+        "JK Music": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=vOOLT596AMU",
+            "title": "이룸워십 IRUM WORSHIP | House Of The Lord 주의 집에 기쁨 있네",
+            "channel": "이룸워십 IRUM WORSHIP",
+            "source_tag": "description",
+            "confidence": 0.901,
+            "description_lyrics": [
+              "2023년 5월 정기예배 中",
+              "- 제목 -",
+              "House Of The Lord (주의 집에 기쁨 있네)",
+              "(원곡자 : Phil Wickham)",
+              "- 곡 소개 -",
+              "Phil Wickham 의 House Of The Lord를 번안한 곡입니다",
+              "(번안 : open heaven worship)",
+              "Executive Producer | 김하은",
+              "A.G l 김호범",
+              "E.G l 박예훈",
+              "Keys l 문성은",
+              "Bass l 강민혁",
+              "Drums l 신성찬",
+              "Vocal | 김신희 김하은 김호범 복근희 이명렬 홍정호",
+              "Live Engineer | 서유덕 이현민",
+              "Mixed & Mastered | 이현민",
+              "Director | 황태근",
+              "Camera operator | 조준상",
+              "Still Photographer | 한주이",
+              "Manager | 송예성 남인현",
+              "Staff | 김유진 김하늘 김현서 신경식",
+              "윤혜영 이신우 이지형 최용원",
+              "더브렌치 스튜디오(음향)",
+              "Cowalking film(영상)",
+              "성도교회",
+              "더브렌치 스튜디오 | 송다현 대표",
+              "Cowalking film | 황태근 대표",
+              "캔디드뮤직 | 조준상 대표",
+              "메신저 | 하덕규 목사",
+              "- 가사 -",
+              "어제도 계셨고 이제도 계시며",
+              "영원히 계신 주를 경배해",
+              "감옥 문을 여시고 거친 바다 가르신",
+              "나의 주 승리의 하나님",
+              "주의 집에 기쁨 있네",
+              "주님의 집에 기쁨이 있네",
+              "잠잠할 수 없네 나 찬양하리",
+              "주의 집에 기쁨 있네",
+              "우리 주 여기 계시니",
+              "잠잠할 수 없네 나 찬양하리",
+              "치유하시는 주님 구원하시는 주님",
+              "길을 만드시는 주를 찬양해",
+              "십자가에 달렸고 무덤에서 일어나",
+              "돌을 옮기신 나의 주",
+              "주의 집에 기쁨 있네",
+              "주님의 집에 기쁨이 있네",
+              "잠잠할 수 없네 나 찬양하리",
+              "주의 집에 기쁨 있네",
+              "우리 주 여기 계시니",
+              "잠잠할 수 없네 나 찬양하리",
+              "가난한 내게 주님 오셔서",
+              "왕의 자녀로 날 부르셨네",
+              "나는 주님의 은혜로 용서받았네",
+              "주의 집에서 찬양하리",
+              "갇힌 모든 자 자유케하네",
+              "주님 나에게 자유 주셨네",
+              "나는 주님의 은혜로 용납되었네",
+              "주의 집에서 찬양하리",
+              "주의 집에 기쁨 있네",
+              "주님의 집에 기쁨이 있네"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:28:57"
+        }
+      }
+    },
+    "raise-a-hallelujah": {
+      "primary_title": "Raise a Hallelujah",
+      "translations": {
+        "사운딩 라이츠 Sounding Lights": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=fY42asGbbF0",
+            "title": "[배부른찬양] Raise a Hallelujah(한국어)가 쾌지나칭칭나네 같은 찬양곡?!",
+            "channel": "Sounding Lights",
+            "source_tag": "both",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "[배부른 찬양 #10]",
+              "배부른 찬양의 10번째 곡은",
+              "‘Raise a Hallelujah(찬양해 할렐루야)’ 입니다.",
+              "이미 우리에게 주신 승리를 믿음으로 선포하는 노래죠^^",
+              "주님의 신비함 가운데에서 우리 모두 더 크게 찬양!!",
+              "오늘도 찬양곡의 요모조모를 배우고 부르며",
+              "깊은 은혜를 경험하고 예배하시기를 소망합니다. 😊",
+              "- 국내외 음원 사이트에서 '사운딩라이츠'를 만나실 수 있습니다.",
+              "- 사운딩라이츠 외부사역 문의 : soundinglightsmusic@gmail.com",
+              "- 영상제작 : 사운딩라이츠",
+              "#RaiseAHallelujah#찬양해할렐루야#배부른찬양"
+            ],
+            "subtitle_lyrics": [
+              "이러고 놉니다",
+              "[음악]",
+              "안녕하세요 있습니다",
+              "오늘 계획을 찬양 보아 신가요 을 배부를 차량은",
+              "들어 인사하는 그 어",
+              "글이죠",
+              "중요 하십니까 다람쥐 내 잊어 하는게 아닙니다 1 2 3 4 5",
+              "봄 너무 보신 노래라고 생각합니다 그 기타 앞에 기타 솔직히 고 싶어요",
+              "그랜트",
+              "아 또 이제 이 노래 또 객실 아니겠습니까",
+              "뭐 해 봤어 뭔가요",
+              "양발로 면 100 이고 받는 동시에 예시도 않는 형식이라는",
+              "4 그 사실 근데 참 그게 큰 것 같아요 음 그 형식이 음원 3등 뭐",
+              "크게 노동 노동력으로 나오잖아요",
+              "그리고 이 힘들다 이런 그냥 이렇게 할 수 있는 거 좀 3개를 끌어올리기",
+              "위해서 4",
+              "어차피 그렇게 차이가 끌어 올려진 그런 노래인 것 같습니다",
+              "거의 비슷한 스 하면 또 이제 사실 이게 어디서 왔습니까 이제 그 단어",
+              "자체가 미국에서는 블랙가스펠 음 예전에 이제 흑인들의 또 허기도 지고",
+              "회생할 때 힘들어서",
+              "그때 부르기 시작한 그 형식 아니겠습니까",
+              "그런데 나오는데 제가 또 블랙 가 스크류 또 너와",
+              "현자 아니겠습니까 아 그렇지 또",
+              "[웃음]",
+              "외계의 20 했습니다",
+              "아 그냥 흘러 다시 블랙 카스트 료",
+              "쏘울 흑인 소마 이런 얘기 하다보면 한달 얘기 안주 풀기",
+              "사실 또 우리나라 사람들 딱 생각하기에 뭐야 상품 아니죠 보통이 생각할",
+              "때 그 소리에 사실 노래 질려 봤냐",
+              "그쵸 그런 생각 많이 하잖아요 흑인 하면 또 어디도 찢거나",
+              "아 얼마나 해요",
+              "아 라 래 옛 내세요 쓰리 때 무용",
+              "그런데 사실 흑인들을 위해 생각하지 않는것 음 뭐 어떻게 생각하나요",
+              "그게 하실 제가 이제 플레이가 스프레이 영어를 찍어 보니까 다시 점 거쳐",
+              "인상 깊었던 게 이제 어느 교회 연습하는 장면이었어요 블랙하트 테",
+              "그때 이제 연습할 오신 분들이다 이제 흑인 아주머니께",
+              "이끈 나오시고",
+              "정말 일끝나고 서서 일을 열심히 하고 아가 주고 서버 식 지 쳤으니",
+              "까사렐 하려고 하니까 뭐 그렇게 얼굴이 그렇게 파이 찡 하나의 그런 바로",
+              "그게 아니었어요 근데 이렇게 무대에 올라 왔거든요 좀",
+              "뜻인가 보다 이런 생각하고 있었는데 어제 그 음악이 시작되자 않겠습니다",
+              "뭐 이랬는데",
+              "탑재 4 를 보면 꼭 가봐야 어떻게 어 이 세상 다 오는 표정으로 물어도",
+              "되는 것입니다 패장 했겠어요 예 표정과 기운이 1밖에 쓰니까 처음에는",
+              "힘든 필요한데 갑자기 뭐 그 분이 까오 처장 키면 되게 좋은 것 같다",
+              "5 않구요 그때 제가 뛰어났습니다 블랙 가스펠을 h200 유산 음 받은",
+              "유산은 진짜 믿은 것입니다",
+              "음 왜냐면 너무 힘든 과정이다 힘들 때도 그냥 찬양 하나로 하면은 특수",
+              "깊을 수 있는데 미 유산을 받은 거 진짜 주님 하나로만 즐거울 수 있는",
+              "그런걸 받은 거구나 라는 생각이 굉장히 많이 들어오는 그 대가 스펙",
+              "소리라고 하는 것은 그래서 특히 진심에 대해 얘기하는 것은 큰 매진 씩",
+              "음악성이 야 4",
+              "음악 서운해 아니에요 음",
+              "괴산에 런 스퍼스 형식 맞섰던 지 몰라도",
+              "저희 노래는 정말 소울이 넘치는 노래가 아닙니다",
+              "이러한 쉽습니다 그래서 서울이 넘치는 왜 이제 하는데 여기 가서 한번",
+              "들어가 볼까요",
+              "네 그렇죠",
+              "에 국회일정 이어서 아이 웨이즈 하루야 인도 표정 3 red",
+              "나는 할렐루야 를 올려 드린다"
+            ]
+          },
+          "fetched_at": "2026-05-21T15:29:11"
+        },
+        "뉴크리에이션워십 New Creation Worship": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=nTlYOwTZGmc",
+            "title": "뉴크리에이션 워십 - 주 예수 이름 높이어 feat.MEJ ‪‬ 인터뷰",
+            "channel": "갓피플 찬양",
+            "source_tag": "both",
+            "confidence": 1.0,
+            "description_lyrics": [
+              "예배 공동체, 뉴크리에이션 워십의 자급자족 프로젝트 1탄 _주 예수 이름 높이어 feat.MEJ ‪#‎찬양영상‬ 인터뷰 입니다.",
+              "찬양이 생각날땐"
+            ],
+            "subtitle_lyrics": [
+              "[음악]",
+              "일단 저희가",
+              "201 3인가요 정규 앨범을 했고요",
+              "뉴크리에이션 워십으로 그래서 스튜디오",
+              "앨범 트랙들과 라이브트랙 두곡을",
+              "넣어가지고 했고 작년에는 이제",
+              "어쿠스틱으로 라이브 워십을 했었는데요",
+              "그때는 사실 약간 보너스 앨범 같은",
+              "느낌이 있었어요 지금이 세",
+              "번째 정규 앨범은 아니지만 그 정규",
+              "앨범은",
+              "꿈꾸는 첫을 뜨는 디 싱글 음반을",
+              "시작해서 저희가 나누려고",
+              "합니다 음원이 규라 하면 여곡",
+              "이상에서 14곡 뭐 12곡 정도",
+              "들어가는 음반인데 디지털 싱글은 말",
+              "그대로 싱글 음원 하나 사실 정규",
+              "앨범을 내고 싶었지만",
+              "저희가 정규 앨범을 하기에는 너무",
+              "많은 양의 시간과 돈과 에너지를",
+              "투자해야 되는 부담감이 있기도 했고요",
+              "그다음에 아직 저희 팀이 사역을 하는",
+              "팀이지만 또 공동체이기 때문에가",
+              "말씀을 공부하고 나누고 하는 시간도",
+              "필요하기 때문에 그 밸런스를 유지하기",
+              "위해서 싱글 하지",
+              "않았나 주예수 이름 높이라는 좀",
+              "오래된",
+              "송가요 저희가 이번에 오래된 찬송가를",
+              "조금 더 새롭게 요즘 색깔로",
+              "재해석해서 한번 편곡해서 불러 봤고요",
+              "또 그 뒤에 이제 저희 전도사님께서",
+              "쓰신 간단한 멜로디를 붙여서 또",
+              "새로운 곡으로 한번 제 탄생시켜",
+              "봤습니다 아 다시 좀 찬송가 부르고",
+              "싶다 그 고전들 다시 끝내서 하지만",
+              "거기에 저희의 신앙 고백과 또 새로운",
+              "편곡을 너무 과하지 않게 넣었으면",
+              "좋겠다라는 의도로 이번 작업을",
+              "해봤습니다네 어떻게 하다 보니까 제가",
+              "꾸 남의 곡기 브릿지를 부 붙이는",
+              "일을 좀 이렇게 많이 하게 되는데요",
+              "그런 걸 좋아하시더라고요 사실 모든",
+              "왕의 왕 주의 주라는 말은 성경에도",
+              "많이 나오고 우리가 많이 고백하는",
+              "거지만 하나님께서 자신의 아들을",
+              "보내셔서 우리를 우리를 하나님의 아들",
+              "삼으시고 예수 그리스도와 함께",
+              "치셨다고 말씀을 표현하고 있는데요",
+              "그럼에도 불구하고 우리가 예배할 대상",
+              "우리가 하나님의 자녀가 되었고 그분의",
+              "왕의 자녀가 되었지만 그럼에도",
+              "불구하고 우리 우리의 면류 내려서",
+              "예배할 대상이 누구신",
+              "그분이 우리 하나님의 자녀이면 동시에",
+              "왕이지만 그 왕들 중에 왕 그런 주인",
+              "중에 주라는 그분 높혀 드리는 그분에",
+              "대한 어떠 하심에 대한 고백을 좀",
+              "싶었습니다 대부분들은 모든 작업들이",
+              "전문 작업이다 보니까 그 전문"
+            ]
+          },
+          "fetched_at": "2026-05-21T15:29:24"
+        }
+      }
+    },
+    "geokrukasin-ju": {
+      "primary_title": "거룩하신 전능의 주 (You Are Holy / Prince Of Peace)",
+      "translations": {}
+    },
+    "juui-ireum-noopimyeo": {
+      "primary_title": "주의 이름 높이며",
+      "translations": {}
+    },
+    "immanuel-jus": {
+      "primary_title": "임마누엘",
+      "translations": {}
+    },
+    "dawideui-norae": {
+      "primary_title": "다윗의 노래",
+      "translations": {}
+    },
+    "juman-barabolji-rado": {
+      "primary_title": "주만 바라볼지라",
+      "translations": {}
+    },
+    "yeogi-kkaji-indo-hasin-ju": {
+      "primary_title": "여기까지 인도하신 주",
+      "translations": {}
+    },
+    "saranghaneun-nauui-abeoji": {
+      "primary_title": "사랑하는 나의 아버지",
+      "translations": {}
+    },
+    "gwangyaleul-jinamyeo": {
+      "primary_title": "광야를 지나며",
+      "translations": {}
+    },
+    "salahgyesinju": {
+      "primary_title": "살아계신 주 (Because He Lives)",
+      "translations": {}
+    },
+    "boryeoneun-jinaseo": {
+      "primary_title": "보혈을 지나",
+      "translations": {}
+    },
+    "yakhalttae-ganghamdoesinae": {
+      "primary_title": "약할 때 강함되시네 (You Are My All in All)",
+      "translations": {}
+    },
+    "ju-an-e-inneun-na-ege": {
+      "primary_title": "주 안에 있는 나에게",
+      "translations": {}
+    },
+    "sa-myeong": {
+      "primary_title": "사명",
+      "translations": {}
+    },
+    "noo-gu-ra-do": {
+      "primary_title": "누구라도",
+      "translations": {}
+    },
+    "ju-kke-ga-o-ni": {
+      "primary_title": "주께 가오니",
+      "translations": {}
+    },
+    "yeong-won-to-rok": {
+      "primary_title": "영원토록",
+      "translations": {}
+    },
+    "eun-hye-ro-da": {
+      "primary_title": "은혜로다",
+      "translations": {}
+    },
+    "boo-heung": {
+      "primary_title": "부흥",
+      "translations": {}
+    },
+    "ye-bae-ham-ni-da": {
+      "primary_title": "예배합니다",
+      "translations": {}
+    },
+    "ju-nim-han-bu-nman-eu-ro": {
+      "primary_title": "주님 한 분만으로",
+      "translations": {}
+    },
+    "ju-reul-ui-ji-ha-neun-ja-neun": {
+      "primary_title": "주를 의지하는 자는",
+      "translations": {}
+    },
+    "ship-ja-ga-ui-gil": {
+      "primary_title": "십자가의 길",
+      "translations": {}
+    },
+    "ju-eui-yeong-gwang-wi-hae-seo": {
+      "primary_title": "주의 영광 위해서",
+      "translations": {}
+    },
+    "yeong-hon-ui-norae": {
+      "primary_title": "영혼의 노래",
+      "translations": {}
+    },
+    "ju-eui-wi-eom": {
+      "primary_title": "주의 위엄",
+      "translations": {}
+    },
+    "bu-reu-sin-got-e-seo": {
+      "primary_title": "부르신 곳에서",
+      "translations": {}
+    },
+    "na-ui-an-ae-geo-ha-ra": {
+      "primary_title": "나의 안에 거하라",
+      "translations": {}
+    },
+    "ju-eui-son-ae-na-eui-son": {
+      "primary_title": "주의 손에 나의 손을 포개고",
+      "translations": {}
+    },
+    "ju-nim-ga-sin-gil": {
+      "primary_title": "주님 가신 길",
+      "translations": {}
+    },
+    "we-love-anthem": {
+      "primary_title": "주가 보고 계신데",
+      "translations": {}
+    },
+    "ju-yeo-na-ui-ip-sul-ro": {
+      "primary_title": "주여 나의 입술로",
+      "translations": {}
+    },
+    "na-eui-king-eun-soo-roe-um": {
+      "primary_title": "나의 기쁨 나의 소망되시며",
+      "translations": {}
+    },
+    "ho-san-na-jus": {
+      "primary_title": "호산나 (Hosanna)",
+      "translations": {
+        "마커스 워십": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=bSCLyRk-cEM",
+            "title": "호산나 - 마커스워십 | Hosanna | 심종호 인도",
+            "channel": "MARKERS WORSHIP",
+            "source_tag": "description",
+            "confidence": 0.7,
+            "description_lyrics": [
+              "마커스 목요예배 실황 [21.07.08]",
+              "\" 호산나 (Hosanna) \"",
+              "| Worship Leader 심종호 |",
+              "Piano 권미성 | Aux Keys 김민지",
+              "E.Guitar 임선호 | B.Guitar 정진웅 | Drums 김다니엘",
+              "Sop 박은선 이하은 | Alto 박은미 김민지 | Tenor 김이환 곽현승",
+              "• Video Editor : 엄항용, 이영",
+              "• Sound Editor : 최우재",
+              "#MARKERS #호산나 #Hosanna"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:29:36"
+        },
+        "Hillsong 한국어": {
+          "fetched_ok": true,
+          "best_hit": {
+            "url": "https://www.youtube.com/watch?v=StF9kzFiBM0",
+            "title": "호산나 Hosanna | 힐송 한국어 (Hillsong in Korean)",
+            "channel": "Hillsong 한국어 ",
+            "source_tag": "description",
+            "confidence": 0.844,
+            "description_lyrics": [
+              "승인 가사",
+              "난 보네 영광의 왕",
+              "구름 타고 오시네",
+              "주 위엄에 모두 떠네",
+              "난 보네 사랑의 주",
+              "우리 죄를 씻기네",
+              "노래하고 찬양하네",
+              "호산나 호산나",
+              "호산나 높은 곳에",
+              "호산나 호산나",
+              "호산나 높은 곳에",
+              "난 보네 이 세대가",
+              "주 위해 일어나네",
+              "믿음으로 믿음으로",
+              "난 보네 큰 부흥이",
+              "기도로 일어나네",
+              "무릎으로 무릎으로",
+              "나의 맘을 깨끗게",
+              "나의 눈 열어 보게 하소서",
+              "주 사랑으로 살게 하소서",
+              "주의 아픔 느끼며",
+              "주 나라 위해 모두 드리리",
+              "이 땅에서 영원한 그곳까지",
+              "작사 작곡 Brooke Ligertwood",
+              "#hillsong  #힐송 #찬양"
+            ],
+            "subtitle_lyrics": []
+          },
+          "fetched_at": "2026-05-21T15:29:48"
+        }
+      }
+    },
+    "sound-of-revival-anthem": {
+      "primary_title": "주의 불을 부으소서",
+      "translations": {}
+    },
+    "ne-mo-deun-go-yeo-ham": {
+      "primary_title": "내 모든 것 되시는",
+      "translations": {}
+    },
+    "ju-na-eui-mok-ja": {
+      "primary_title": "주 나의 목자",
+      "translations": {}
+    },
+    "yesu-ireum-eu-ro": {
+      "primary_title": "예수 이름으로",
+      "translations": {}
+    },
+    "yesu-na-ui-jueon-sin-ja": {
+      "primary_title": "예수 나의 친구되신",
+      "translations": {}
+    },
+    "spring-day-bts": {
+      "primary_title": "봄날",
+      "translations": {}
+    },
+    "dynamite-bts": {
+      "primary_title": "Dynamite",
+      "translations": {}
+    },
+    "ditto-newjeans": {
+      "primary_title": "Ditto",
+      "translations": {}
+    },
+    "hype-boy-newjeans": {
+      "primary_title": "Hype Boy",
+      "translations": {}
+    },
+    "good-day-iu": {
+      "primary_title": "좋은 날",
+      "translations": {}
+    },
+    "through-the-night-iu": {
+      "primary_title": "밤편지",
+      "translations": {}
+    },
+    "how-can-i-love-the-heartbreak-akmu": {
+      "primary_title": "어떻게 이별까지 사랑하겠어, 널 사랑하는 거지",
+      "translations": {}
+    },
+    "200-akmu": {
+      "primary_title": "200%",
+      "translations": {}
+    },
+    "yellow-coldplay": {
+      "primary_title": "Yellow",
+      "translations": {}
+    },
+    "fix-you-coldplay": {
+      "primary_title": "Fix You",
+      "translations": {}
+    },
+    "viva-la-vida-coldplay": {
+      "primary_title": "Viva La Vida",
+      "translations": {}
+    },
+    "perfect-ed-sheeran": {
+      "primary_title": "Perfect",
+      "translations": {}
+    },
+    "shape-of-you-ed-sheeran": {
+      "primary_title": "Shape of You",
+      "translations": {}
+    },
+    "hello-adele": {
+      "primary_title": "Hello",
+      "translations": {}
+    },
+    "someone-like-you-adele": {
+      "primary_title": "Someone Like You",
+      "translations": {}
+    },
+    "when-i-was-your-man-bruno-mars": {
+      "primary_title": "When I Was Your Man",
+      "translations": {}
+    },
+    "memories-maroon-5": {
+      "primary_title": "Memories",
+      "translations": {}
+    },
+    "easy-on-me-adele": {
+      "primary_title": "Easy On Me",
+      "translations": {}
+    },
+    "as-it-was-harry-styles": {
+      "primary_title": "As It Was",
+      "translations": {}
+    },
+    "stay-justin-bieber": {
+      "primary_title": "Stay",
+      "translations": {}
+    },
+    "autumn-leaves-jazz-standard": {
+      "primary_title": "Autumn Leaves",
+      "translations": {}
+    },
+    "fly-me-to-the-moon": {
+      "primary_title": "Fly Me to the Moon",
+      "translations": {}
+    },
+    "canon-in-d-pachelbel": {
+      "primary_title": "Canon in D",
+      "translations": {}
+    },
+    "my-way-sinatra": {
+      "primary_title": "My Way",
+      "translations": {}
+    },
+    "over-the-rainbow": {
+      "primary_title": "Over the Rainbow",
+      "translations": {}
+    },
+    "welove-deep": {
+      "primary_title": "깊은 곳에 나아가",
+      "translations": {}
+    },
+    "welove-empathy": {
+      "primary_title": "공감하시네",
+      "translations": {}
+    },
+    "welove-low-place": {
+      "primary_title": "낮은 곳으로",
+      "translations": {}
+    },
+    "welove-through-time": {
+      "primary_title": "시간을 뚫고",
+      "translations": {}
+    },
+    "welove-introit": {
+      "primary_title": "입례",
+      "translations": {}
+    },
+    "welove-dark-day-passed": {
+      "primary_title": "어둔 날 다 지나고",
+      "translations": {}
+    },
+    "welove-shout": {
+      "primary_title": "모든 생명들아 소리쳐",
+      "translations": {}
+    },
+    "markers-only-jesus": {
+      "primary_title": "오직 예수 뿐이네",
+      "translations": {}
+    },
+    "markers-hannah-song": {
+      "primary_title": "한나의 노래",
+      "translations": {}
+    },
+    "markers-jesus-always-with-me": {
+      "primary_title": "예수 늘 함께 하시네 (Jesus, Always With Me)",
+      "translations": {}
+    },
+    "markers-pure-gold-leading": {
+      "primary_title": "정금 같이 이끄시네",
+      "translations": {}
+    },
+    "markers-lord-is-perfect": {
+      "primary_title": "주는 완전합니다",
+      "translations": {}
+    },
+    "markers-lord-is-the-lord": {
+      "primary_title": "주가 주되심을 (The Lord is the Lord)",
+      "translations": {}
+    },
+    "markers-our-praise": {
+      "primary_title": "예수 우리의 노래",
+      "translations": {}
+    },
+    "anointing-all-nations": {
+      "primary_title": "모든 열방 주 볼 때까지",
+      "translations": {}
+    },
+    "anointing-waters-cover-sea": {
+      "primary_title": "물이 바다 덮음 같이",
+      "translations": {}
+    },
+    "anointing-everyday": {
+      "primary_title": "매일 매일",
+      "translations": {}
+    },
+    "anointing-i-made-as-owner": {
+      "primary_title": "내가 주인 삼은",
+      "translations": {}
+    },
+    "anointing-who-am-i": {
+      "primary_title": "온 땅의 주인 (Who Am I)",
+      "translations": {}
+    },
+    "anointing-saints-song": {
+      "primary_title": "성도의 노래",
+      "translations": {}
+    },
+    "anointing-abba-father": {
+      "primary_title": "아바 아버지",
+      "translations": {}
+    },
+    "anointing-joy-song": {
+      "primary_title": "기쁨의 노래",
+      "translations": {}
+    },
+    "teamluke-love-jesus-more": {
+      "primary_title": "주를 더욱 사랑 (Jesus I Love You More)",
+      "translations": {}
+    },
+    "teamluke-walking-with-lord": {
+      "primary_title": "주와 함께 걸어가네 (Walking With The Lord)",
+      "translations": {}
+    },
+    "teamluke-ever-since": {
+      "primary_title": "나는 너를 만나고 (Ever Since I Met You)",
+      "translations": {}
+    },
+    "teamluke-built-together": {
+      "primary_title": "함께 지어져 가네",
+      "translations": {}
+    },
+    "teamluke-invitation": {
+      "primary_title": "Invitation",
+      "translations": {}
+    },
+    "yeram-not-walking-alone": {
+      "primary_title": "혼자 걷지 않을 거예요",
+      "translations": {}
+    },
+    "yeram-zacchaeus": {
+      "primary_title": "삭개오의 노래 (Song of Zacchaeus)",
+      "translations": {}
+    },
+    "yeram-rest-on-us": {
+      "primary_title": "주의 사랑을 입어 (Rest On Us)",
+      "translations": {}
+    },
+    "yeram-because-of-you": {
+      "primary_title": "Because of You (한국어 공식 번안)",
+      "translations": {}
+    },
+    "jus-my-only-hope": {
+      "primary_title": "주님을 예배하는 것 (My Only Hope)",
+      "translations": {}
+    },
+    "jus-as-i-am": {
+      "primary_title": "내 모습 이대로",
+      "translations": {}
+    },
+    "jus-love-never-fails": {
+      "primary_title": "Love Never Fails",
+      "translations": {}
+    },
+    "jus-born-again": {
+      "primary_title": "Born Again",
+      "translations": {}
+    },
+    "jus-psalm-139": {
+      "primary_title": "시편 139편",
+      "translations": {}
+    },
+    "jus-love-here-is": {
+      "primary_title": "사랑은 여기 있으니",
+      "translations": {}
+    },
+    "jus-with-the-love": {
+      "primary_title": "주의 사랑으로",
+      "translations": {}
+    },
+    "hillsong-stronger": {
+      "primary_title": "Stronger",
+      "translations": {}
+    },
+    "hillsong-forever-reign": {
+      "primary_title": "Forever Reign",
+      "translations": {}
+    },
+    "hillsong-shout-to-the-lord": {
+      "primary_title": "Shout to the Lord",
+      "translations": {}
+    },
+    "bethel-you-make-me-brave": {
+      "primary_title": "You Make Me Brave",
+      "translations": {}
+    },
+    "bethel-pieces": {
+      "primary_title": "Pieces",
+      "translations": {}
+    },
+    "elevation-o-come-to-the-altar": {
+      "primary_title": "O Come to the Altar",
+      "translations": {}
+    },
+    "elevation-believe-for-it": {
+      "primary_title": "Believe for It",
+      "translations": {}
+    },
+    "maverick-most-beautiful": {
+      "primary_title": "The Most Beautiful (Million Little Miracles)",
+      "translations": {}
+    },
+    "maverick-million-little-miracles": {
+      "primary_title": "Million Little Miracles",
+      "translations": {}
+    },
+    "wickham-hymn-of-heaven": {
+      "primary_title": "Hymn of Heaven",
+      "translations": {}
+    },
+    "wickham-this-is-our-god": {
+      "primary_title": "This Is Our God",
+      "translations": {}
+    },
+    "wickham-great-things": {
+      "primary_title": "Great Things",
+      "translations": {}
+    },
+    "torwalt-god-with-us": {
+      "primary_title": "God With Us",
+      "translations": {}
+    },
+    "torwalt-praise-before-breakthrough": {
+      "primary_title": "Praise Before My Breakthrough",
+      "translations": {}
+    },
+    "bethel-ever-be": {
+      "primary_title": "Ever Be",
+      "translations": {}
+    },
+    "bethel-it-is-well-bethel": {
+      "primary_title": "It Is Well (Bethel Music)",
+      "translations": {}
+    },
+    "hillsong-cornerstone-young-free": {
+      "primary_title": "Alive",
+      "translations": {}
+    },
+    "tomlin-good-good-father": {
+      "primary_title": "Good Good Father",
+      "translations": {}
+    },
+    "tomlin-amazing-grace-my-chains": {
+      "primary_title": "Amazing Grace (My Chains Are Gone)",
+      "translations": {}
+    },
+    "brewster-today-is-the-day": {
+      "primary_title": "Today Is The Day",
+      "translations": {}
+    },
+    "brewster-everlasting-god": {
+      "primary_title": "Everlasting God",
+      "translations": {}
+    },
+    "brewster-love-the-lord": {
+      "primary_title": "Love The Lord",
+      "translations": {}
+    },
+    "brewster-god-you-reign": {
+      "primary_title": "God You Reign",
+      "translations": {}
+    },
+    "brewster-there-is-power": {
+      "primary_title": "There Is Power",
+      "translations": {}
+    },
+    "brewster-made-new": {
+      "primary_title": "Made New",
+      "translations": {}
+    },
+    "brewster-no-one-like-our-god": {
+      "primary_title": "No One Like Our God",
+      "translations": {}
+    },
+    "brewster-let-the-praises-ring": {
+      "primary_title": "Let The Praises Ring",
+      "translations": {}
+    },
+    "brewster-reaching-for-you": {
+      "primary_title": "Reaching For You",
+      "translations": {}
+    },
+    "jesus-image-all-is-for-your-glory": {
+      "primary_title": "All Is For Your Glory",
+      "translations": {}
+    },
+    "jesus-image-christ-has-overcome": {
+      "primary_title": "Christ Has Overcome",
+      "translations": {}
+    },
+    "gretzinger-riddle-king-of-my-heart": {
+      "primary_title": "King of My Heart",
+      "translations": {}
+    },
+    "gretzinger-riddle-give-me-jesus": {
+      "primary_title": "Give Me Jesus",
+      "translations": {}
+    },
+    "jesus-image-no-one-like-you": {
+      "primary_title": "No One Like You",
+      "translations": {}
+    },
+    "upperroom-joy-of-surrender": {
+      "primary_title": "The Joy of Surrender",
+      "translations": {}
+    },
+    "upperroom-our-father": {
+      "primary_title": "Our Father",
+      "translations": {}
+    },
+    "upperroom-to-the-one": {
+      "primary_title": "To the One",
+      "translations": {}
+    },
+    "upperroom-god-you-are": {
+      "primary_title": "God You Are",
+      "translations": {}
+    },
+    "jobe-revelation-song": {
+      "primary_title": "Revelation Song",
+      "translations": {}
+    },
+    "jobe-forever": {
+      "primary_title": "Forever",
+      "translations": {}
+    },
+    "jobe-healer": {
+      "primary_title": "Healer",
+      "translations": {}
+    },
+    "jobe-no-sweeter-name": {
+      "primary_title": "No Sweeter Name",
+      "translations": {}
+    },
+    "jobe-holy-spirit-redux": {
+      "primary_title": "Holy Spirit (Kari Jobe version)",
+      "translations": {}
+    },
+    "lake-gratitude": {
+      "primary_title": "Gratitude",
+      "translations": {}
+    },
+    "lake-house-of-miracles-album": {
+      "primary_title": "House of Miracles",
+      "translations": {}
+    },
+    "lake-praise-you-anywhere": {
+      "primary_title": "Praise You Anywhere",
+      "translations": {}
+    },
+    "lake-hard-fought-hallelujah": {
+      "primary_title": "Hard Fought Hallelujah",
+      "translations": {}
+    },
+    "lake-coat-of-many-colors": {
+      "primary_title": "Coat of Many Colors",
+      "translations": {}
+    },
+    "hillsong-united-touch-the-sky": {
+      "primary_title": "Touch the Sky",
+      "translations": {}
+    },
+    "hillsong-united-another-in-the-fire": {
+      "primary_title": "Another in the Fire",
+      "translations": {}
+    },
+    "hillsong-united-broken-vessels": {
+      "primary_title": "Broken Vessels (Amazing Grace)",
+      "translations": {}
+    },
+    "hillsong-united-empires": {
+      "primary_title": "Empires (Title track)",
+      "translations": {}
+    },
+    "hillsong-united-wonder": {
+      "primary_title": "Wonder",
+      "translations": {}
+    },
+    "vineyard-holy-and-anointed": {
+      "primary_title": "Holy and Anointed One",
+      "translations": {}
+    },
+    "vineyard-come-now-is-the-time": {
+      "primary_title": "Come, Now Is the Time to Worship",
+      "translations": {}
+    },
+    "vineyard-hungry-falling": {
+      "primary_title": "Hungry (Falling on My Knees)",
+      "translations": {}
+    },
+    "passion-glorious-day": {
+      "primary_title": "Glorious Day",
+      "translations": {}
+    },
+    "passion-even-so-come": {
+      "primary_title": "Even So Come",
+      "translations": {}
+    },
+    "passion-one-thing-remains": {
+      "primary_title": "One Thing Remains",
+      "translations": {}
+    },
+    "passion-god-of-this-city": {
+      "primary_title": "God Of This City",
+      "translations": {}
+    },
+    "passion-god-youre-so-good": {
+      "primary_title": "God, You're So Good",
+      "translations": {}
+    },
+    "daigle-you-say": {
+      "primary_title": "You Say",
+      "translations": {}
+    },
+    "daigle-trust-in-you": {
+      "primary_title": "Trust in You",
+      "translations": {}
+    },
+    "daigle-look-up-child": {
+      "primary_title": "Look Up Child",
+      "translations": {}
+    },
+    "daigle-how-can-it-be": {
+      "primary_title": "How Can It Be",
+      "translations": {}
+    },
+    "daigle-rescue": {
+      "primary_title": "Rescue",
+      "translations": {}
+    },
+    "carnes-run-to-the-father": {
+      "primary_title": "Run To The Father",
+      "translations": {}
+    },
+    "carnes-nothing-else": {
+      "primary_title": "Nothing Else",
+      "translations": {}
+    },
+    "carnes-christ-be-magnified": {
+      "primary_title": "Christ Be Magnified",
+      "translations": {}
+    },
+    "carnes-firm-foundation": {
+      "primary_title": "Firm Foundation (He Won't)",
+      "translations": {}
+    },
+    "maher-lord-i-need-you": {
+      "primary_title": "Lord, I Need You",
+      "translations": {}
+    },
+    "maher-because-he-lives-amen": {
+      "primary_title": "Because He Lives (Amen)",
+      "translations": {}
+    },
+    "maher-christ-is-risen": {
+      "primary_title": "Christ Is Risen",
+      "translations": {}
+    },
+    "maher-hold-us-together": {
+      "primary_title": "Hold Us Together",
+      "translations": {}
+    },
+    "maher-your-grace-is-enough": {
+      "primary_title": "Your Grace Is Enough",
+      "translations": {}
+    },
+    "crowder-how-he-loves": {
+      "primary_title": "How He Loves",
+      "translations": {}
+    },
+    "crowder-come-as-you-are": {
+      "primary_title": "Come As You Are",
+      "translations": {}
+    },
+    "crowder-o-praise-him": {
+      "primary_title": "O Praise Him (All This for a King)",
+      "translations": {}
+    },
+    "crowder-everything-glorious": {
+      "primary_title": "Everything Glorious",
+      "translations": {}
+    },
+    "crowder-i-am": {
+      "primary_title": "I Am",
+      "translations": {}
+    },
+    "fkc-god-only-knows": {
+      "primary_title": "God Only Knows",
+      "translations": {}
+    },
+    "fkc-burn-the-ships": {
+      "primary_title": "Burn the Ships",
+      "translations": {}
+    },
+    "fkc-joy": {
+      "primary_title": "Joy",
+      "translations": {}
+    },
+    "fkc-amen": {
+      "primary_title": "Amen",
+      "translations": {}
+    },
+    "fkc-little-drummer-boy": {
+      "primary_title": "Little Drummer Boy",
+      "translations": {}
+    },
+    "barrett-good-good-father-original": {
+      "primary_title": "Good Good Father (Housefires III)",
+      "translations": {}
+    },
+    "barrett-the-way": {
+      "primary_title": "The Way (New Horizon)",
+      "translations": {}
+    },
+    "barrett-canvas-and-clay": {
+      "primary_title": "Canvas and Clay",
+      "translations": {}
+    },
+    "barrett-better-place": {
+      "primary_title": "Better Place",
+      "translations": {}
+    },
+    "cityalight-yet-not-i": {
+      "primary_title": "Yet Not I But Through Christ in Me",
+      "translations": {}
+    },
+    "cityalight-christ-our-hope": {
+      "primary_title": "Christ Our Hope in Life and Death",
+      "translations": {}
+    },
+    "cityalight-jerusalem": {
+      "primary_title": "Jerusalem",
+      "translations": {}
+    },
+    "cityalight-grace": {
+      "primary_title": "Grace",
+      "translations": {}
+    },
+    "cobbs-break-every-chain": {
+      "primary_title": "Break Every Chain",
+      "translations": {}
+    },
+    "cobbs-royalty-album": {
+      "primary_title": "Royalty (Live At The Ryman)",
+      "translations": {}
+    },
+    "cobbs-fill-me-up": {
+      "primary_title": "Fill Me Up",
+      "translations": {}
+    },
+    "hyf-real-love": {
+      "primary_title": "Real Love",
+      "translations": {}
+    },
+    "hyf-peace": {
+      "primary_title": "P E A C E",
+      "translations": {}
+    },
+    "hyf-best-friends": {
+      "primary_title": "Best Friends",
+      "translations": {}
+    },
+    "hyf-lord-send-revival": {
+      "primary_title": "Lord Send Revival",
+      "translations": {}
+    },
+    "sg-all-i-have-is-christ": {
+      "primary_title": "All I Have Is Christ",
+      "translations": {}
+    },
+    "sg-behold-our-god": {
+      "primary_title": "Behold Our God",
+      "translations": {}
+    },
+    "sg-jesus-thank-you": {
+      "primary_title": "Jesus, Thank You",
+      "translations": {}
+    },
+    "boswell-his-mercy-is-more": {
+      "primary_title": "His Mercy Is More",
+      "translations": {}
+    },
+    "vertical-spirit-of-the-living-god": {
+      "primary_title": "Spirit of the Living God",
+      "translations": {}
+    },
+    "vertical-open-up-the-heavens": {
+      "primary_title": "Open Up the Heavens",
+      "translations": {}
+    },
+    "vertical-exalted-over-all": {
+      "primary_title": "Exalted Over All",
+      "translations": {}
+    },
+    "vertical-all-hail-the-king": {
+      "primary_title": "All Hail the King",
+      "translations": {}
+    },
+    "citipointe-mover-of-mountains": {
+      "primary_title": "Mover Of Mountains",
+      "translations": {}
+    },
+    "citipointe-into-the-deep": {
+      "primary_title": "Into The Deep",
+      "translations": {}
+    },
+    "citipointe-heart-on-fire": {
+      "primary_title": "Heart On Fire",
+      "translations": {}
+    },
+    "citipointe-providence": {
+      "primary_title": "Providence (Broke My Chains)",
+      "translations": {}
+    },
+    "citipointe-heart-open-wide": {
+      "primary_title": "Heart Open Wide",
+      "translations": {}
+    },
+    "northpoint-death-was-arrested": {
+      "primary_title": "Death Was Arrested",
+      "translations": {}
+    },
+    "northpoint-not-the-same": {
+      "primary_title": "Not the Same",
+      "translations": {}
+    },
+    "northpoint-wide-open": {
+      "primary_title": "Wide Open",
+      "translations": {}
+    },
+    "northpoint-unshakable-love": {
+      "primary_title": "Unshakable Love",
+      "translations": {}
+    },
+    "ligertwood-thousand-hallelujahs": {
+      "primary_title": "A Thousand Hallelujahs",
+      "translations": {}
+    },
+    "ligertwood-honey-in-the-rock": {
+      "primary_title": "Honey in the Rock",
+      "translations": {}
+    },
+    "ligertwood-bless-god": {
+      "primary_title": "Bless God",
+      "translations": {}
+    },
+    "gateway-revelation-song": {
+      "primary_title": "Revelation Song (Gateway Worship version)",
+      "translations": {}
+    },
+    "gateway-more-i-seek-you": {
+      "primary_title": "The More I Seek You",
+      "translations": {}
+    },
+    "gateway-you-are-god": {
+      "primary_title": "You, You Are God",
+      "translations": {}
+    },
+    "gateway-worship-great-i-am": {
+      "primary_title": "Worship the Great I Am",
+      "translations": {}
+    },
+    "gateway-come-thou-fount-king": {
+      "primary_title": "Come Thou Fount, Come Thou King",
+      "translations": {}
+    },
+    "jus-love-letter": {
+      "primary_title": "LOVE LETTER",
+      "translations": {}
+    },
+    "jus-arise-shine": {
+      "primary_title": "일어나 비추라 (Arise, Shine)",
+      "translations": {}
+    },
+    "jus-love-never-fails-album": {
+      "primary_title": "Love Never Fails (album)",
+      "translations": {}
+    },
+    "onnuri-winning-all": {
+      "primary_title": "온 세상 창조주 (Winning All)",
+      "translations": {}
+    },
+    "onnuri-more-love-to-thee": {
+      "primary_title": "내 구주 예수를 더욱 사랑 (More Love to Thee)",
+      "translations": {}
+    },
+    "onnuri-as-it-is-in-heaven": {
+      "primary_title": "하늘에 계신 아버지 (As It Is in Heaven)",
+      "translations": {}
+    },
+    "campusworship-no-turning-back": {
+      "primary_title": "돌아서지 않으리 (No Turning Back)",
+      "translations": {}
+    },
+    "campusworship-every-day": {
+      "primary_title": "날마다 (Every Day)",
+      "translations": {}
+    },
+    "campusworship-sing-sing-sing": {
+      "primary_title": "모두 찬양해 (Sing Sing Sing)",
+      "translations": {}
+    },
+    "campusworship-here-is-love": {
+      "primary_title": "바다 같은 주의 사랑 (Here Is Love)",
+      "translations": {}
+    },
+    "campusworship-glory-name-jesus": {
+      "primary_title": "영광의 이름 예수",
+      "translations": {}
+    },
+    "baloche-open-the-eyes": {
+      "primary_title": "Open the Eyes of My Heart",
+      "translations": {}
+    },
+    "baloche-hosanna-praise-is-rising": {
+      "primary_title": "Hosanna (Praise Is Rising)",
+      "translations": {}
+    },
+    "baloche-above-all": {
+      "primary_title": "Above All",
+      "translations": {}
+    },
+    "baloche-your-name": {
+      "primary_title": "Your Name",
+      "translations": {}
+    },
+    "baloche-today-is-the-day": {
+      "primary_title": "Today Is the Day (Paul Baloche)",
+      "translations": {}
+    },
+    "moen-god-will-make-a-way": {
+      "primary_title": "God Will Make A Way",
+      "translations": {}
+    },
+    "moen-give-thanks": {
+      "primary_title": "Give Thanks",
+      "translations": {}
+    },
+    "moen-thank-you-lord": {
+      "primary_title": "Thank You Lord",
+      "translations": {}
+    },
+    "moen-god-is-good-all-the-time": {
+      "primary_title": "God Is Good All The Time",
+      "translations": {}
+    },
+    "tomlin-forever": {
+      "primary_title": "Forever (Chris Tomlin)",
+      "translations": {}
+    },
+    "tomlin-indescribable": {
+      "primary_title": "Indescribable",
+      "translations": {}
+    },
+    "tomlin-our-god": {
+      "primary_title": "Our God",
+      "translations": {}
+    },
+    "tomlin-whom-shall-i-fear": {
+      "primary_title": "Whom Shall I Fear (God of Angel Armies)",
+      "translations": {}
+    },
+    "tomlin-holy-forever": {
+      "primary_title": "Holy Forever",
+      "translations": {}
+    },
+    "redman-heart-of-worship": {
+      "primary_title": "The Heart of Worship",
+      "translations": {}
+    },
+    "redman-blessed-be-your-name": {
+      "primary_title": "Blessed Be Your Name",
+      "translations": {}
+    },
+    "redman-better-is-one-day": {
+      "primary_title": "Better Is One Day",
+      "translations": {}
+    },
+    "redman-you-never-let-go": {
+      "primary_title": "You Never Let Go",
+      "translations": {}
+    },
+    "gretzinger-out-of-hiding": {
+      "primary_title": "Out of Hiding (Father's Song)",
+      "translations": {}
+    },
+    "gretzinger-forever-amen": {
+      "primary_title": "Forever Amen",
+      "translations": {}
+    },
+    "gretzinger-christ-lord-with-me": {
+      "primary_title": "Christ The Lord Is With Me",
+      "translations": {}
+    },
+    "gretzinger-center-of-universe": {
+      "primary_title": "Center Of The Universe",
+      "translations": {}
+    },
+    "gretzinger-cecils-lullaby": {
+      "primary_title": "Cecil's Lullaby",
+      "translations": {}
+    },
+    "feucht-let-us-worship": {
+      "primary_title": "Let Us Worship (movement)",
+      "translations": {}
+    },
+    "feucht-burn-247": {
+      "primary_title": "Burn 24-7 (movement)",
+      "translations": {}
+    },
+    "feucht-hold-the-line": {
+      "primary_title": "Hold The Line",
+      "translations": {}
+    },
+    "carnes-cross-has-final-word": {
+      "primary_title": "The Cross Has the Final Word",
+      "translations": {}
+    },
+    "parkjongho-living-god": {
+      "primary_title": "살아계신 하나님",
+      "translations": {}
+    },
+    "parkjongho-receive-me": {
+      "primary_title": "나를 받으옵소서",
+      "translations": {}
+    },
+    "parkjongho-narrow-road": {
+      "primary_title": "좁은 길",
+      "translations": {}
+    },
+    "parkjongho-for-the-lord": {
+      "primary_title": "주를 위해",
+      "translations": {}
+    },
+    "parkjongho-naming": {
+      "primary_title": "지명",
+      "translations": {}
+    },
+    "parkjongho-morning-wings": {
+      "primary_title": "새벽날개",
+      "translations": {}
+    },
+    "parkjongho-all-nations": {
+      "primary_title": "모든 열방 주 볼때까지 (박종호 ver.)",
+      "translations": {}
+    },
+    "parkjongho-love-on-the-floor": {
+      "primary_title": "바닥에 새긴 사랑",
+      "translations": {}
+    },
+    "parkjongho-abba": {
+      "primary_title": "Abba",
+      "translations": {}
+    },
+    "songjungmi-blessing-song": {
+      "primary_title": "축복송 (Blessing Song)",
+      "translations": {}
+    },
+    "songjungmi-only-you": {
+      "primary_title": "오직 주만이",
+      "translations": {}
+    },
+    "songjungmi-anointing": {
+      "primary_title": "기름 부으심",
+      "translations": {}
+    },
+    "songjungmi-evergreen": {
+      "primary_title": "상록수",
+      "translations": {}
+    },
+    "davidjonathan-juman-barabolji-rado": {
+      "primary_title": "주만 바라볼지라 (다윗과 요나단 원곡)",
+      "translations": {}
+    },
+    "sound-of-revival-let-revival-fall": {
+      "primary_title": "부흥의 불을 우리에게",
+      "translations": {}
+    },
+    "go-hyeongwon-promise": {
+      "primary_title": "약속",
+      "translations": {}
+    },
+    "go-hyeongwon-unify": {
+      "primary_title": "통일",
+      "translations": {}
+    },
+    "onggi-praise-offering": {
+      "primary_title": "찬양의 제사 드리며",
+      "translations": {}
+    },
+    "onggi-perfect-thanks": {
+      "primary_title": "온전한 감사를",
+      "translations": {}
+    },
+    "onggi-joyful-song": {
+      "primary_title": "참 기쁜 노래를",
+      "translations": {}
+    },
+    "onggi-precious-love": {
+      "primary_title": "주의 귀한 사랑",
+      "translations": {}
+    },
+    "onggi-always-with-me": {
+      "primary_title": "항상 함께 계신 주",
+      "translations": {}
+    },
+    "kang-myeongsik-victory": {
+      "primary_title": "승리",
+      "translations": {}
+    },
+    "kang-one-person-changing-world": {
+      "primary_title": "세상을 바꾸는 한 사람",
+      "translations": {}
+    },
+    "kang-look-up-at-sky": {
+      "primary_title": "하늘을 봐",
+      "translations": {}
+    },
+    "kang-passion": {
+      "primary_title": "Passion (강명식)",
+      "translations": {}
+    },
+    "kang-heavenly-father": {
+      "primary_title": "하늘아버지",
+      "translations": {}
+    },
+    "kang-walk-the-way": {
+      "primary_title": "주의 길을 가리라",
+      "translations": {}
+    },
+    "so-jinyoung-grace-only": {
+      "primary_title": "주 은혜임을",
+      "translations": {}
+    },
+    "so-jinyoung-flowers-too": {
+      "primary_title": "꽃들도",
+      "translations": {}
+    },
+    "so-jinyoung-before-the-word": {
+      "primary_title": "말씀 앞에서 (I Stand in Awe Before the Word)",
+      "translations": {}
+    },
+    "so-jinyoung-grain-of-my-life": {
+      "primary_title": "나의 삶의 결이",
+      "translations": {}
+    },
+    "so-jinyoung-belongs-to-lord": {
+      "primary_title": "나는 주님께 속한 자",
+      "translations": {}
+    },
+    "so-jinyoung-precious-lord-take-my-hand": {
+      "primary_title": "주님여 이 손을 (Precious Lord, Take My Hand)",
+      "translations": {}
+    },
+    "mercyme-i-can-only-imagine": {
+      "primary_title": "I Can Only Imagine",
+      "translations": {}
+    },
+    "mercyme-word-of-god-speak": {
+      "primary_title": "Word of God Speak",
+      "translations": {}
+    },
+    "mercyme-even-if": {
+      "primary_title": "Even If",
+      "translations": {}
+    },
+    "mercyme-flawless": {
+      "primary_title": "Flawless",
+      "translations": {}
+    },
+    "casting-crowns-voice-of-truth": {
+      "primary_title": "Voice of Truth",
+      "translations": {}
+    },
+    "casting-crowns-who-am-i": {
+      "primary_title": "Who Am I (Casting Crowns)",
+      "translations": {}
+    },
+    "casting-crowns-praise-you-storm": {
+      "primary_title": "Praise You in This Storm",
+      "translations": {}
+    },
+    "casting-crowns-lifesong": {
+      "primary_title": "Lifesong",
+      "translations": {}
+    },
+    "casting-crowns-east-to-west": {
+      "primary_title": "East to West",
+      "translations": {}
+    },
+    "tobymac-speak-life": {
+      "primary_title": "Speak Life",
+      "translations": {}
+    },
+    "tobymac-i-just-need-u": {
+      "primary_title": "I Just Need U.",
+      "translations": {}
+    },
+    "sanctus-real-confidence": {
+      "primary_title": "Confidence",
+      "translations": {}
+    }
+  }
+}

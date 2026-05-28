@@ -1,0 +1,301 @@
+/* Pretendard is bundled locally via the `pretendard` npm package — vite
+   resolves the woff2 subsets and emits hashed assets at build time.
+   Dynamic-subset variant ships unicode-range declarations so the browser
+   only downloads the slices actually used on the page (~70 KB initial). */
+@import 'pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css';
+
+/* Inter + JetBrains Mono stay on the Google CDN with display=swap so any
+   flash-of-fallback is brief, not blocking. They're tiny and benefit from
+   cross-origin caching. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-0: 10 10 22;
+    --bg-1: 19 19 42;
+    --bg-2: 28 24 58;
+    --fg: 235 236 246;
+    /* Bumped from 148→168 to clear WCAG AA 4.5:1 against bg-0 in body copy.
+       148 measured 3.9:1 which fails AA on smaller text. */
+    --fg-muted: 168 172 196;
+    --accent-violet: 139 92 246;
+    --accent-cyan: 6 182 212;
+    --accent-magenta: 236 72 153;
+    --accent-amber: 245 158 11;
+
+    /* Modular type scale (1.25 minor third). Use via .text-h1..h6 below. */
+    --t-display: 2.75rem;
+    --t-h1: 2.25rem;
+    --t-h2: 1.625rem;
+    --t-h3: 1.25rem;
+    --t-body: 0.9375rem;
+    --t-small: 0.8125rem;
+    --t-micro: 0.6875rem;
+  }
+
+  /* Light theme — high-contrast, print-friendly. Toggle via `useTheme`.
+     fg-muted lowered to (60,62,84) so the small mono labels keep WCAG AA
+     even when used with /70..80 opacity modifiers (Phase B audit). */
+  html.theme-light {
+    --bg-0: 245 246 252;
+    --bg-1: 232 234 246;
+    --bg-2: 220 222 240;
+    --fg: 22 22 36;
+    --fg-muted: 40 42 64;
+  }
+  html.theme-light body::before {
+    /* Dampen the background orbs in light mode so they read as paper grain. */
+    opacity: 0.35;
+    filter: blur(60px);
+  }
+  html.theme-light body::after {
+    /* Hide the dot grid on light — it's distracting on white. */
+    display: none;
+  }
+  html.theme-light .glass {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.65));
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.9) inset,
+      0 18px 40px -24px rgba(0, 0, 0, 0.15);
+  }
+  html.theme-light ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.18);
+  }
+
+  html, body, #root {
+    background: rgb(var(--bg-0));
+    color: rgb(var(--fg));
+    font-family: 'Pretendard Variable', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    /* Use dvh on browsers that support it so the layout doesn't get clipped
+       by the iOS Safari URL bar / Android Chrome address bar. */
+    min-height: 100dvh;
+    margin: 0;
+    /* Korean text reads much better with word-break: keep-all so lines wrap
+       at spaces, not in the middle of "악보 / 포맷 / 구간". */
+    word-break: keep-all;
+    overflow-wrap: break-word;
+    /* Fluid root font-size — 15px at 360 px viewport up to 17px at 1280 px.
+       Component-level Tailwind text-* utilities key off this so the whole
+       UI rescales without per-component clamps. */
+    font-size: clamp(15px, 0.85vw + 12.4px, 17px);
+  }
+
+  body {
+    overflow-x: hidden;
+    /* Honour notches / dynamic-island safe-area on iOS/Android. */
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Touch targets — on coarse pointers (phones, tablets) every primary
+     interactive control should hit 44 px so finger tapping isn't a
+     coin-flip. Reproduces Apple HIG / WCAG 2.5.5 enhanced minimums
+     without bloating tightly-packed icon clusters (.tap-tight opts out).
+     Form text inputs always upsize since the on-screen keyboard makes
+     small fields feel cramped regardless of density needs. */
+  @media (pointer: coarse) {
+    input:not([type]), input[type="text"], input[type="number"],
+    input[type="search"], input[type="email"], input[type="url"],
+    input[type="tel"], textarea, select {
+      min-height: 44px;
+    }
+    /* Primary actions: any button/link explicitly styled as a pill/CTA. */
+    button:not(.tap-tight),
+    a[role="button"]:not(.tap-tight),
+    [role="button"]:not(.tap-tight) {
+      min-height: 36px;        /* still comfortable, leaves room for dense rows */
+    }
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(60% 50% at 18% 10%, rgba(139, 92, 246, 0.20) 0%, transparent 60%),
+      radial-gradient(50% 50% at 82% 30%, rgba(6, 182, 212, 0.18) 0%, transparent 60%),
+      radial-gradient(60% 60% at 60% 95%, rgba(236, 72, 153, 0.16) 0%, transparent 60%);
+    z-index: -2;
+    animation: bg-drift 24s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+    background-size: 3px 3px;
+    z-index: -1;
+    pointer-events: none;
+  }
+
+  @keyframes bg-drift {
+    0%   { transform: translate3d(0%, 0%, 0) scale(1); }
+    50%  { transform: translate3d(2%, -1%, 0) scale(1.04); }
+    100% { transform: translate3d(-2%, 1%, 0) scale(1); }
+  }
+
+  ::selection {
+    background: rgba(139, 92, 246, 0.35);
+    color: rgb(var(--fg));
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(139, 92, 246, 0.35); }
+
+  code, pre, .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+  /* ── Accessibility primitives ──────────────────────────────────────── */
+
+  /* Visible focus ring for all interactive elements. Browser default rings
+     are inconsistent across user agents; we draw our own with the brand
+     violet so it's both visible and on-brand. Removed only for elements
+     that use :focus-visible to opt out (e.g. mouse-clicked buttons). */
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent-violet) / 0.85);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  /* Suppress the default ring on mouse focus — keyboard-only focus is
+     where the visual cue actually helps. */
+  :focus:not(:focus-visible) { outline: none; }
+
+  /* Skip-link target — see AppShell. Hidden until focused. */
+  .skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    padding: 0.625rem 1rem;
+    background: rgb(var(--bg-1));
+    color: rgb(var(--fg));
+    border-radius: 0 0 8px 0;
+    z-index: 100;
+    transition: top 150ms ease;
+  }
+  .skip-link:focus { top: 0; }
+
+  /* Respect users who prefer reduced motion: kill background drift, page
+     transitions and most non-essential framer-motion. */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+    body::before { animation: none !important; }
+  }
+
+  /* Print: clean white background so score PDF + lyrics preview prints
+     legibly when the user uses browser Print rather than our PDF export. */
+  @media print {
+    body::before, body::after { display: none !important; }
+    html, body, #root {
+      background: white !important;
+      color: black !important;
+    }
+    .glass {
+      background: white !important;
+      border-color: #ccc !important;
+      box-shadow: none !important;
+    }
+    /* Page-break helper — apply ``.page-break`` to any element you want
+       to force onto a new printed page (e.g. multi-page score SVGs). */
+    .page-break { page-break-after: always; break-after: page; }
+    /* Hide non-essential chrome when printing. */
+    .no-print, header, footer, button { display: none !important; }
+    .print-only { display: block !important; }
+    a { color: black !important; text-decoration: none !important; }
+    /* Page margin boxes — Chromium-class browsers honour these for the
+       printable footer (page number + copyright). The CSS variables are
+       set from React via document.documentElement.style at print-prep time
+       so the song title / year can change per job. */
+    @page {
+      margin: 18mm 14mm 22mm 14mm;
+      @bottom-left {
+        content: var(--print-copyright, "© Re:Chord — 듣는 음악에서 직접 연주하는 음악으로");
+        font-family: 'Pretendard Variable', 'Inter', sans-serif;
+        font-size: 9pt;
+        color: #777;
+      }
+      @bottom-right {
+        content: "page " counter(page) " / " counter(pages);
+        font-family: 'JetBrains Mono', ui-monospace, monospace;
+        font-size: 9pt;
+        color: #777;
+      }
+    }
+  }
+  .print-only { display: none; }
+
+  /* Shimmer keyframe used by Skeleton.jsx. */
+  @keyframes shimmer {
+    100% { transform: translateX(100%); }
+  }
+}
+
+@layer components {
+  .glass {
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.01));
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.05) inset,
+      0 30px 60px -30px rgba(0, 0, 0, 0.5);
+  }
+  .glow-violet  { box-shadow: 0 0 0 1px rgba(139,92,246,0.35), 0 12px 36px -12px rgba(139,92,246,0.55); }
+  .glow-cyan    { box-shadow: 0 0 0 1px rgba(6,182,212,0.35),  0 12px 36px -12px rgba(6,182,212,0.55); }
+  .glow-magenta { box-shadow: 0 0 0 1px rgba(236,72,153,0.35), 0 12px 36px -12px rgba(236,72,153,0.55); }
+  .glow-amber   { box-shadow: 0 0 0 1px rgba(245,158,11,0.35), 0 12px 36px -12px rgba(245,158,11,0.55); }
+  .gradient-text {
+    background: linear-gradient(110deg, #c4b5fd 0%, #67e8f9 45%, #f9a8d4 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+}
+
+@layer utilities {
+  .text-fg { color: rgb(var(--fg)); }
+  .text-fg-muted { color: rgb(var(--fg-muted)); }
+}
+
+/* Light-theme contrast override for tiny brand badges. The default
+   violet-500 text (#8b5cf6) on violet-tint background hits 3.28:1 in
+   light mode — below WCAG AA 4.5. We darken just on light-theme so the
+   dark-mode neon look is unchanged. */
+html.theme-light .lang-active-pill {
+  color: #5b21b6;            /* violet-800 — ~7:1 on violet-100 tint */
+}
+html.theme-light .lang-active-pill[aria-pressed="true"] {
+  background-color: rgba(139, 92, 246, 0.18);
+  --tw-ring-color: rgba(91, 33, 182, 0.45);
+}
+
+/* Verovio inline-score: highlight the measure currently being played.
+   Drawn underneath the staff via a subtle violet/cyan glow so notes stay
+   legible. ``g.measure`` is Verovio's stable bar grouping. */
+.rc-score-svg g.measure.rc-measure-active {
+  fill: rgba(139, 92, 246, 0.10);
+  outline: 1.5px solid rgba(34, 211, 238, 0.55);
+  filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.35));
+  transition: fill 120ms ease-out, filter 120ms ease-out;
+}
+.rc-score-svg g.measure.rc-measure-active * {
+  stroke: currentColor;
+}

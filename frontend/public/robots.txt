@@ -1,0 +1,15 @@
+# Re:Chord robots.txt
+#
+# Phase A: a local dev tool. We don't want search engines indexing
+# local instances or stale staging URLs. Phase B will replace this
+# file with a public-facing version that allows crawling on the
+# landing page only and blocks the app routes (user data).
+
+User-agent: *
+Disallow: /app
+Disallow: /library
+Disallow: /job/
+Disallow: /perform/
+
+# Allow the marketing landing.
+Allow: /$

@@ -1,0 +1,132 @@
+# Phase B SaaS compose — full stack for staging / self-hosted deploy.
+# Bring up:   docker compose up -d
+# Tear down:  docker compose down
+#
+# Phase A users keep using `uv run uvicorn ...` + `npm run dev` directly
+# and don't need this. This file is the path to production-grade deploy
+# (PostgreSQL persistence, Redis-backed Celery queue, dual frontend +
+# backend containers behind a single reverse proxy).
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: rechord
+      POSTGRES_USER: rechord
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-rechord_dev}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U rechord -d rechord"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--save", "60", "1"]
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: ./deploy/backend.Dockerfile
+    environment:
+      DATABASE_URL: postgresql+asyncpg://rechord:${POSTGRES_PASSWORD:-rechord_dev}@postgres:5432/rechord
+      REDIS_URL: redis://redis:6379/0
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      # The backend service owns Alembic migrations on startup; the worker
+      # piggybacks on the same image but skips them (see RUN_MIGRATIONS=0
+      # below) so it doesn't race the API on a cold cluster start.
+      RUN_MIGRATIONS: "1"
+      # AUTH_PROVIDER: clerk
+      # CLERK_ISSUER: https://clerk.example.com
+      # CLERK_JWKS_URL: https://clerk.example.com/.well-known/jwks.json
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data
+    ports:
+      - "7860:7860"
+    healthcheck:
+      test: ["CMD", "curl", "-fsS", "http://localhost:7860/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  worker:
+    build:
+      context: .
+      dockerfile: ./deploy/backend.Dockerfile
+    command: ["celery", "-A", "backend.app.workers.celery_app", "worker", "-l", "info", "-c", "2"]
+    environment:
+      DATABASE_URL: postgresql+asyncpg://rechord:${POSTGRES_PASSWORD:-rechord_dev}@postgres:5432/rechord
+      CELERY_BROKER_URL: redis://redis:6379/1
+      CELERY_RESULT_BACKEND: redis://redis:6379/2
+      RUN_MIGRATIONS: "0"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      backend:
+        condition: service_healthy
+    volumes:
+      - ./data:/app/data
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A backend.app.workers.celery_app inspect ping -d celery@$$HOSTNAME || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  frontend:
+    build:
+      context: .
+      dockerfile: ./deploy/frontend.Dockerfile
+      args:
+        VITE_API_BASE: ${VITE_API_BASE:-http://localhost:7860}
+    ports:
+      - "5173:80"
+    depends_on:
+      backend:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:80/healthz"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+
+volumes:
+  pg_data:
+  redis_data:

@@ -1,0 +1,157 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+dist/
+build/
+
+# uv — keep the lock file under version control so CI / Docker builds
+# resolve to byte-identical wheels (reproducibility >> repo size).
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+.turbo/
+
+# Data (user content, model weights, datasets, large binaries) — NEVER
+# in the repo. Applies to root `data/` AND `backend/data/`, AND any
+# other `data/` directory at any depth. Some specific subdirs we want
+# to keep the directory shape via .gitkeep markers.
+**/data/**
+!**/data/
+!**/data/uploads/
+!**/data/work/
+!**/data/stems/
+!**/data/output/
+!**/data/models/
+!**/data/logs/
+!**/data/qa/
+!**/data/datasets/
+!**/data/reference_db/
+!**/data/jobs/
+!**/data/feedback/
+!**/data/.gitkeep
+!**/data/**/.gitkeep
+
+# Backend curated seed data we DO want to track (chord/hymn JSON, tiny
+# config yaml). Whitelist only — never DLLs / model weights / audio.
+!backend/data/seed/
+!backend/data/seed/**
+!backend/data/aux_ref/
+!backend/data/aux_ref/**.json
+!backend/data/aux_ref/**.csv
+!backend/data/models/*.yaml
+!backend/data/models/*.json
+
+# Bundled local tooling (ollama runtime, etc.) — never in source
+bin/
+!bin/.gitkeep
+
+# Env / secrets — ignore everything except the .env.example template,
+# which IS meant to be checked in so collaborators know what to set.
+.env
+.env.local
+*.env
+!.env.example
+
+# Temporary scratch files (chat payloads, local debugging dumps)
+.tmp_*
+
+# Playwright artifacts (test-results, screenshots, traces, HTML reports)
+frontend/test-results/
+frontend/playwright-report/
+
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+._*
+.AppleDouble
+.LSOverride
+
+# IDE / editors
+.vscode/
+.idea/
+.vs/
+*.iml
+*.suo
+*.user
+*.swp
+*.swo
+.#*
+\#*#
+*.bak
+*.orig
+*~
+
+# AI coding tool detritus (memory/settings live OUTSIDE the repo)
+.claude/
+.aider*
+.cursor/
+.continue/
+
+# Python — additional coverage / build
+*.egg
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+pip-log.txt
+
+# Node — additional caches / logs
+.eslintcache
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.parcel-cache/
+.svelte-kit/
+
+# Build / archive — usually accidental commits
+*.tar.gz
+*.tgz
+*.zip
+*.7z
+*.rar
+
+# Local DBs (Phase B uses managed Postgres — never check in a sqlite dump)
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+
+# Secrets / certs (broaden beyond just .env)
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*.cer
+credentials.json
+service-account*.json
+google-credentials*.json
+client_secret*.json
+
+# Other Python lock files we don't use (uv.lock is the source of truth)
+Pipfile.lock
+poetry.lock
+
+# direnv / asdf
+.envrc
+.tool-versions
+
+# Docker / local cluster state
+.docker/
+
+# Logs (root-level dumps; data/logs is already covered)
+*.log

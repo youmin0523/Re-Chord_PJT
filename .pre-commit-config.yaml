@@ -1,0 +1,46 @@
+# Pre-commit hooks for Re:Chord.
+# Install:
+#   pip install pre-commit && pre-commit install
+# Run on every file once:
+#   pre-commit run --all-files
+#
+# Hooks are intentionally lightweight — heavy formatters that touch
+# every file create huge git history noise. Linters that catch real
+# bugs (ruff) + a sanity sweep (trim trailing whitespace, EOF, etc.).
+
+repos:
+  # ── general sanity sweep ──
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: '\.(svg|md)$'      # SVGs hold meaningful trailing space
+      - id: end-of-file-fixer
+        exclude: '\.svg$'
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-added-large-files
+        args: ["--maxkb=2048"]       # block accidental model-weight commits
+      - id: mixed-line-ending
+        args: ["--fix=lf"]
+      - id: detect-private-key
+
+  # ── ruff (formatter + linter, replaces flake8/black/isort) ──
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.7.4
+    hooks:
+      - id: ruff
+        args: ["--fix"]
+        files: '^(backend|scripts)/.*\.py$'
+      - id: ruff-format
+        files: '^(backend|scripts)/.*\.py$'
+
+  # ── frontend: format JS/JSX before commit (light pass via prettier) ──
+  # Disabled by default — uncomment once the team picks a style guide.
+  # - repo: https://github.com/pre-commit/mirrors-prettier
+  #   rev: v3.1.0
+  #   hooks:
+  #     - id: prettier
+  #       types_or: [javascript, jsx, css, json, markdown]
+  #       additional_dependencies: [prettier@3.1.0]

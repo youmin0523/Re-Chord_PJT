@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="theme-color" content="#0a0a16" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#f5f6fc" media="(prefers-color-scheme: light)" />
+    <meta name="color-scheme" content="dark light" />
+
+    <title>Re:Chord — 듣는 음악에서, 직접 연주하는 음악으로</title>
+    <meta name="description" content="Re:Chord — 듣는 음악에서, 직접 연주하는 음악으로. AI 보컬 분리, 키·템포 조절, 코드·섹션·악보·가사·연습 도구까지 한 화면에서." />
+    <meta name="author" content="Re:Chord" />
+
+    <!-- Open Graph (Facebook / Slack / KakaoTalk) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Re:Chord" />
+    <meta property="og:title" content="Re:Chord — AR을 MR로, 그리고 그 너머" />
+    <meta property="og:description" content="AI 보컬 분리 + 키·템포·코드·섹션·악보·가사 자동 분석. 워십팀 · 솔로 연습 · 스튜디오를 위한 통합 도구." />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:locale" content="ko_KR" />
+    <meta property="og:locale:alternate" content="en_US" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Re:Chord" />
+    <meta name="twitter:description" content="AI 보컬 분리 + 키·템포·코드·섹션·악보·가사 자동 분석." />
+    <meta name="twitter:image" content="/og-image.png" />
+
+    <!-- Preconnect to backend on first paint -->
+    <link rel="preconnect" href="http://127.0.0.1:7860" crossorigin />
+
+    <!-- Pretendard is bundled via the `pretendard` npm package (self-hosted
+         woff2 subsets with unicode-range), so no CDN preconnect needed.
+         Inter + JetBrains Mono still come from Google Fonts but with
+         font-display=swap so they don't block first paint. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <!-- Initial theme — flip the class before React boots to avoid FOUC -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("rechord:theme");
+          if (!t) {
+            t = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+          }
+          document.documentElement.classList.add("theme-" + t);
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) { /* default = dark */ }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <div style="padding:24px;font-family:system-ui;color:#eee;background:#0a0a16;height:100vh">
+        Re:Chord는 JavaScript가 필요합니다. 브라우저 설정에서 활성화 후 새로고침하세요.
+      </div>
+    </noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

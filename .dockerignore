@@ -1,0 +1,37 @@
+# Build context hygiene for deploy/*.Dockerfile.
+# Without this, the multi-GB .venv and node_modules end up in the image.
+
+.git
+.github
+.venv
+.pytest_cache
+.ruff_cache
+.mypy_cache
+__pycache__
+**/__pycache__
+**/*.pyc
+**/*.pyo
+
+# Frontend build artifacts (rebuilt in image)
+frontend/node_modules
+frontend/dist
+frontend/.vite
+
+# Local runtime data (mounted as a volume, not baked in)
+data
+backend/data
+
+# Editor / OS junk
+.vscode
+.idea
+.DS_Store
+Thumbs.db
+
+# Local secrets
+.env
+.env.local
+*.local
+
+# Heavy artifacts not needed by the image
+docs
+**/*.log

@@ -1,0 +1,33 @@
+{
+  "appId": "com.rechord.app",
+  "appName": "Re:Chord",
+  "webDir": "dist",
+  "bundledWebRuntime": false,
+  "server": {
+    "androidScheme": "https",
+    "iosScheme": "https",
+    "cleartext": false
+  },
+  "ios": {
+    "contentInset": "always",
+    "scrollEnabled": true,
+    "backgroundColor": "#0A0A16"
+  },
+  "android": {
+    "backgroundColor": "#0A0A16",
+    "captureInput": true,
+    "useLegacyBridge": false,
+    "webContentsDebuggingEnabled": false
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 1500,
+      "launchAutoHide": true,
+      "backgroundColor": "#0A0A16",
+      "showSpinner": false
+    },
+    "Filesystem": {
+      "iosScheme": "capacitor"
+    }
+  }
+}
