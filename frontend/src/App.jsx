@@ -13,6 +13,7 @@ const LibraryPage = lazy(() => import("@/pages/LibraryPage"));
 const PerformanceView = lazy(() => import("@/pages/PerformanceView"));
 const Login = lazy(() => import("@/pages/Login"));
 const AuthCallback = lazy(() => import("@/pages/AuthCallback"));
+const LegalDoc = lazy(() => import("@/pages/LegalDoc"));
 const SignupConsent = lazy(() =>
   import("@/components/auth/SignupConsent").then((m) => ({ default: m.SignupConsent })),
 );
@@ -51,6 +52,7 @@ export default function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/auth/callback" element={<AuthCallback />} />
               <Route path="/signup-consent" element={<SignupConsent />} />
+              <Route path="/legal/:docId" element={<LegalDoc />} />
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </Suspense>

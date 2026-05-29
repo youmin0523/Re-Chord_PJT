@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation, Trans } from "react-i18next";
 import { motion } from "framer-motion";
 import { Music2, AlertTriangle } from "lucide-react";
 import { useAuth } from "@/lib/useAuth";
@@ -15,6 +16,7 @@ import { isSupabaseConfigured, signInWithKakao } from "@/lib/supabase";
  */
 export default function Login() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const { user, isGuest, isPhaseA } = useAuth();
   const [pending, setPending] = useState(false);
   const [error, setError] = useState(null);
@@ -27,7 +29,7 @@ export default function Login() {
 
   const handleKakao = async () => {
     if (!isSupabaseConfigured) {
-      setError("Supabase가 설정되지 않았습니다 (.env의 VITE_SUPABASE_URL/ANON_KEY).");
+      setError(t("auth.supabase_unset"));
       return;
     }
     setError(null);
@@ -49,17 +51,14 @@ export default function Login() {
     return (
       <main className="max-w-md mx-auto px-4 py-16 text-center space-y-4">
         <Music2 className="size-10 mx-auto text-violet" />
-        <h1 className="text-2xl font-bold">게스트 모드로 사용 중</h1>
-        <p className="text-[13px] text-fg-muted break-keep">
-          베타 단계는 별도 로그인 없이 모든 기능을 사용할 수 있습니다.
-          정식 출시 시 카카오 로그인 + 동의 화면이 활성화됩니다.
-        </p>
+        <h1 className="text-2xl font-bold">{t("auth.phase_a_heading")}</h1>
+        <p className="text-[13px] text-fg-muted break-keep">{t("auth.phase_a_body")}</p>
         <button
           type="button"
           onClick={() => navigate("/app")}
           className="px-4 py-2 rounded-full bg-violet/20 hover:bg-violet/30 text-violet ring-1 ring-violet/40 text-[13px]"
         >
-          /app 으로 이동
+          {t("auth.go_to_app")}
         </button>
       </main>
     );
@@ -74,12 +73,10 @@ export default function Login() {
       >
         <Music2 className="size-10 mx-auto text-violet" />
         <h1 className="text-2xl font-extrabold tracking-tight">
-          <span className="gradient-text">Re:Chord</span> 시작
+          <span className="gradient-text">{t("auth.login_heading_a")}</span>
+          <span className="text-fg">{t("auth.login_heading_b")}</span>
         </h1>
-        <p className="text-[13px] text-fg-muted break-keep">
-          AI 보컬 분리 · 키·템포·코드·악보 자동 분석. 카카오로 1초 만에
-          시작하세요.
-        </p>
+        <p className="text-[13px] text-fg-muted break-keep">{t("auth.login_subtitle")}</p>
       </motion.div>
 
       <button
@@ -88,7 +85,7 @@ export default function Login() {
         disabled={pending}
         className="w-full py-3 rounded-xl bg-[#FEE500] text-[#3C1E1E] font-bold disabled:opacity-50 hover:brightness-95 transition flex items-center justify-center gap-2"
       >
-        {pending ? "카카오 로그인 진행 중…" : "카카오로 시작"}
+        {pending ? t("auth.kakao_pending") : t("auth.kakao_start")}
       </button>
 
       {error && (
@@ -99,9 +96,13 @@ export default function Login() {
       )}
 
       <div className="text-[10px] text-fg-muted/70 text-center break-keep">
-        가입 시 <a href="/legal/terms" className="underline">이용약관</a>과
-        <a href="/legal/privacy" className="underline mx-1">개인정보처리방침</a>
-        에 동의하게 됩니다 (다음 화면에서 확인).
+        <Trans
+          i18nKey="auth.agreement_notice"
+          components={{
+            terms: <a href="/legal/terms" className="underline" />,
+            privacy: <a href="/legal/privacy" className="underline mx-1" />,
+          }}
+        />
       </div>
     </main>
   );

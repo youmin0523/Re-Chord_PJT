@@ -75,13 +75,11 @@ _SOTA_DEPS: dict[str, list[DependencyHint]] = {
             impact="polyphonic piano F1 80-85% vs basic-pitch 65-75%",
         ),
     ],
-    "transcribe_drums": [
-        DependencyHint(
-            stage="transcribe_drums", missing="omnizart",
-            install_cmd="uv pip install omnizart (needs Python ≤ 3.10)",
-            impact="drum F1 88% vs heuristic ~70-75%",
-        ),
-    ],
+    # transcribe_drums: omnizart was the SOTA pick but it caps at Python 3.10
+    # and this project is pinned to py3.11.x (see pyproject.toml). Heuristic
+    # drum transcription stays as the active default. No installable upgrade
+    # to advertise here, so the stage is intentionally omitted from the
+    # install-hint matrix to keep the onboarding card honest.
     "transcribe_bass": [
         DependencyHint(
             stage="transcribe_bass", missing="crepe",

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { Loader2, AlertTriangle } from "lucide-react";
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase";
 import { listMyConsents } from "@/lib/api";
@@ -16,13 +17,14 @@ import { listMyConsents } from "@/lib/api";
  */
 export default function AuthCallback() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [error, setError] = useState(null);
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
       if (!isSupabaseConfigured) {
-        setError("Supabase 미설정 — /login 으로 돌아갑니다");
+        setError(t("auth.callback_no_supabase"));
         setTimeout(() => navigate("/login", { replace: true }), 1500);
         return;
       }
@@ -37,7 +39,7 @@ export default function AuthCallback() {
           await new Promise((r) => setTimeout(r, 100));
         }
         if (cancelled) return;
-        if (!session) throw new Error("로그인 세션을 받지 못했습니다");
+        if (!session) throw new Error(t("auth.callback_no_session"));
 
         // Token already cached by the useAuth onAuthChange listener;
         // listMyConsents now carries the Authorization header.
@@ -56,30 +58,28 @@ export default function AuthCallback() {
       }
     })();
     return () => { cancelled = true; };
-  }, [navigate]);
+  }, [navigate, t]);
 
   return (
     <main className="max-w-md mx-auto px-4 py-20 text-center space-y-4">
       {error ? (
         <>
           <AlertTriangle className="size-8 mx-auto text-rose-300" />
-          <h1 className="text-lg font-bold text-rose-200">로그인 처리 실패</h1>
+          <h1 className="text-lg font-bold text-rose-200">{t("auth.callback_failed_title")}</h1>
           <p className="text-[12px] text-fg-muted break-keep">{error}</p>
           <button
             type="button"
             onClick={() => navigate("/login", { replace: true })}
             className="px-3 py-1.5 rounded-full bg-white/5 hover:bg-white/10 text-[12px] text-fg-muted hover:text-fg"
           >
-            로그인 화면으로
+            {t("auth.callback_back_to_login")}
           </button>
         </>
       ) : (
         <>
           <Loader2 className="size-8 mx-auto text-violet animate-spin" />
-          <h1 className="text-lg font-bold">로그인 확인 중…</h1>
-          <p className="text-[12px] text-fg-muted break-keep">
-            카카오 인증 결과를 받아 동의 화면으로 안내합니다.
-          </p>
+          <h1 className="text-lg font-bold">{t("auth.callback_loading_title")}</h1>
+          <p className="text-[12px] text-fg-muted break-keep">{t("auth.callback_loading_body")}</p>
         </>
       )}
     </main>

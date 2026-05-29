@@ -54,6 +54,18 @@ export function revokeConsent(consent_type) {
   return jfetch(`/consents/${consent_type}`, { method: "DELETE" });
 }
 
+// ── Legal docs (markdown source from docs/legal/) ───────────────
+
+/** Fetch one legal doc by slug ('terms' | 'privacy' | 'copyright' | 'consent'). */
+export function getLegalDoc(docId) {
+  return jfetch(`/legal/${docId}`);
+}
+
+/** Index of available legal docs. */
+export function listLegalDocs() {
+  return jfetch(`/legal`);
+}
+
 export function getFormats() {
   return jfetch("/formats");
 }

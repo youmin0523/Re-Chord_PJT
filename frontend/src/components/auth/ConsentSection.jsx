@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -19,6 +20,7 @@ export function ConsentSection({
   docHref,
   description,
 }) {
+  const { t } = useTranslation();
   return (
     <label
       htmlFor={`consent-${id}`}
@@ -47,7 +49,7 @@ export function ConsentSection({
                 : "bg-white/5 text-fg-muted",
             )}
           >
-            {required ? "필수" : "선택"}
+            {required ? t("auth.consent_required_chip") : t("auth.consent_optional_chip")}
           </span>
           <span className="font-medium">{label}</span>
         </div>
@@ -65,7 +67,7 @@ export function ConsentSection({
           onClick={(e) => e.stopPropagation()}
           className="inline-flex items-center gap-1 text-[11px] text-cyan-300 hover:text-cyan-200 shrink-0"
         >
-          상세 <ExternalLink className="size-3" />
+          {t("auth.consent_detail")} <ExternalLink className="size-3" />
         </a>
       )}
     </label>

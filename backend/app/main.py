@@ -5,7 +5,10 @@ from __future__ import annotations
 import sys
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+import os
+import secrets as _secrets
+
+from fastapi import Depends, FastAPI, Header, HTTPException, status
 from fastapi.middleware.cors import CORSMiddleware
 
 if hasattr(sys.stdout, "reconfigure"):
@@ -21,6 +24,7 @@ from .api import consents as consents_api
 from .api import feedback as feedback_api
 from .api import formats as formats_api
 from .api import jobs as jobs_api
+from .api import legal as legal_api
 from .api import notes as notes_api
 from .api import performance as performance_api
 from .api import setlists as setlists_api
@@ -32,6 +36,33 @@ from .core.queue import get_queue, init_queue
 from .workers.orchestrator import run_job
 
 setup_logging()
+
+
+# ── /ops admin guard ─────────────────────────────────────────────
+#
+# Mutating ops endpoints (cleanup / prewarm) and the resource-inspection
+# /ops/disk should NOT be callable by anonymous users in Phase B. We
+# gate them with a shared-secret token (``RECHORD_OPS_TOKEN``) injected
+# via the ``X-Ops-Token`` header.
+#
+# When the env var is unset (Phase A dev), every caller passes — the
+# behaviour is identical to the pre-guard era. Setting the token in
+# production flips the lock without code changes.
+#
+# /ops/install_hints stays open because the AccuracyGuide UI fetches it
+# to surface "missing model weights" warnings; the response carries no
+# secrets and no mutation hooks.
+_OPS_TOKEN = os.environ.get("RECHORD_OPS_TOKEN", "").strip()
+
+
+async def require_ops_caller(x_ops_token: str | None = Header(default=None)) -> None:
+    if not _OPS_TOKEN:
+        return  # Phase A / unset → no gate
+    if not x_ops_token or not _secrets.compare_digest(x_ops_token, _OPS_TOKEN):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Missing or invalid X-Ops-Token",
+        )
 
 
 async def _scheduled_prewarm_loop():
@@ -91,6 +122,14 @@ async def lifespan(app: FastAPI):
     queue = init_queue(run_job, concurrency=settings.max_concurrent_jobs)
     await queue.start()
     prewarm_task = _asyncio.create_task(_scheduled_prewarm_loop())
+    # PIPA data-retention loop — daily sweep when not running Celery
+    # beat (Phase A / dev). Beat handles it in production.
+    try:
+        from .workers.retention import start_background_retention
+        start_background_retention()
+    except Exception:                                            # pragma: no cover
+        import logging
+        logging.getLogger("rechord").warning("retention loop failed to start", exc_info=True)
     try:
         yield
     finally:
@@ -151,6 +190,7 @@ app.include_router(billing_api.router)
 app.include_router(chat_api.router)
 app.include_router(consents_api.router)
 app.include_router(feedback_api.router)
+app.include_router(legal_api.router)
 
 
 @app.get("/ops/install_hints", tags=["ops"])
@@ -206,7 +246,7 @@ async def health() -> dict:
 
 
 @app.get("/ops/disk")
-async def ops_disk() -> dict:
+async def ops_disk(_admin: None = Depends(require_ops_caller)) -> dict:
     """Free disk space + the budget our pipeline expects."""
     from .core.ops import disk_preflight
     from .config import settings
@@ -222,7 +262,11 @@ async def ops_disk() -> dict:
 
 
 @app.post("/ops/cleanup")
-async def ops_cleanup(max_age_hours: float = 72.0, dry_run: bool = True) -> dict:
+async def ops_cleanup(
+    max_age_hours: float = 72.0,
+    dry_run: bool = True,
+    _admin: None = Depends(require_ops_caller),
+) -> dict:
     """Sweep old artifacts from the work / stems / output dirs."""
     from .core.ops import cleanup_old_artifacts
     from .config import settings
@@ -239,7 +283,10 @@ async def ops_cleanup(max_age_hours: float = 72.0, dry_run: bool = True) -> dict
 
 
 @app.post("/ops/prewarm")
-async def ops_prewarm(models: list[str] | None = None) -> dict:
+async def ops_prewarm(
+    models: list[str] | None = None,
+    _admin: None = Depends(require_ops_caller),
+) -> dict:
     """Pre-load heavy ML models so the first user-facing call doesn't pay
     the cold-start cost (CLAP ~2 GB, PTI ~150 MB, Whisper-turbo, …).
 

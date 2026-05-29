@@ -1,8 +1,7 @@
 """User-consent API (PIPA / GDPR audit trail).
 
-Phase B feature — depends on the Supabase/Clerk auth dependency and the
-``user_consents`` table (Alembic revision b3c0d5e1f9a2). Guest users
-hit 401 here because consent only makes sense once we know who's
+Phase B feature — depends on the Supabase/Clerk auth dependency. Guest
+users hit 401 here because consent only makes sense once we know who's
 agreeing.
 
 Routes:
@@ -10,15 +9,23 @@ Routes:
     GET    /consents/me         list this user's current consents
     DELETE /consents/{type}     revoke a consent (sets revoked_at)
 
-Allowed ``consent_type`` values are gated by ``CONSENT_TYPES`` so a
-typo in the frontend (or a malicious client) can't sneak a free-form
-string into the audit trail.
+Persistence:
+    * DATABASE_URL set     → SQLAlchemy AsyncSession + ``user_consents``
+                              table (Alembic revision b3c0d5e1f9a2).
+                              Survives restarts → PIPA audit trail.
+    * DATABASE_URL unset   → in-memory dict fallback (Phase A dev only).
+                              Lost on restart; warned at first write.
+
+Allowed ``consent_type`` values are gated by ``CONSENT_TYPES`` so a typo
+in the frontend (or a malicious client) can't sneak a free-form string
+into the audit trail.
 
 See docs/legal/consent_ui_spec.md for the spec.
 """
 
 from __future__ import annotations
 
+import logging
 from datetime import datetime, timezone
 from typing import Literal
 
@@ -26,7 +33,10 @@ from fastapi import APIRouter, Depends, HTTPException, Request, status
 from pydantic import BaseModel, Field
 
 from ..auth.auth import User, get_current_user
+from ..db.session import database_url, get_session
 
+
+log = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/consents", tags=["consents"])
 
@@ -55,7 +65,7 @@ ConsentType = Literal[
 class ConsentGrant(BaseModel):
     consent_type: ConsentType = Field(description="Whitelisted consent identifier")
     version: str = Field(min_length=1, max_length=40,
-                         description="Policy version (e.g. '2026-05-28-v0.1')")
+                         description="Policy version (e.g. '2026-05-29-v1.0')")
     granted: bool = Field(default=True, description="False = revoke")
 
 
@@ -69,11 +79,27 @@ class ConsentRecord(BaseModel):
 
 # ── In-memory store fallback ──────────────────────────────────────
 #
-# Phase A doesn't have a database, but the frontend will still want to
-# call these endpoints during dev. We keep a tiny in-process dict
-# keyed by user_id so the API contract is identical.
+# Used when DATABASE_URL is not set (Phase A). Phase B writes to the
+# ``user_consents`` table via SQLAlchemy; rows survive restarts.
 
 _MEM_CONSENTS: dict[tuple[str, str, str], dict] = {}
+_FALLBACK_WARNED = False
+
+
+def _persistent() -> bool:
+    """True when we should hit the DB; False → in-memory fallback."""
+    return bool(database_url())
+
+
+def _warn_fallback_once() -> None:
+    global _FALLBACK_WARNED
+    if not _FALLBACK_WARNED:
+        log.warning(
+            "consents API running in IN-MEMORY mode (DATABASE_URL unset). "
+            "Consent records will be lost on restart. "
+            "Configure DATABASE_URL and run alembic upgrade head for PIPA persistence.",
+        )
+        _FALLBACK_WARNED = True
 
 
 def _require_authenticated(user: User) -> User:
@@ -83,6 +109,169 @@ def _require_authenticated(user: User) -> User:
             detail="Authentication required for consent management",
         )
     return user
+
+
+# ── DB helpers ────────────────────────────────────────────────────
+
+
+async def _ensure_user_row(session, user: User) -> None:
+    """Insert a stub users row if it doesn't exist.
+
+    UserConsent FK ON DELETE CASCADE references users.id. New first-time
+    signups won't have a users row yet (auth provider verifies the JWT
+    but never writes through to our DB), so we upsert here.
+    """
+    from sqlalchemy import select
+    from ..db.models import User as DbUser
+
+    existing = await session.scalar(
+        select(DbUser).where(DbUser.id == user.id)
+    )
+    if existing is None:
+        session.add(DbUser(
+            id=user.id,
+            email=user.email,
+            display_name=user.name,
+        ))
+        await session.flush()
+
+
+async def _db_grant(user: User, body: ConsentGrant, ip: str | None, ua: str | None) -> ConsentRecord:
+    from sqlalchemy import select
+    from ..db.models import UserConsent
+
+    now = datetime.now(timezone.utc)
+    async with get_session() as session:
+        await _ensure_user_row(session, user)
+        existing = await session.scalar(
+            select(UserConsent).where(
+                UserConsent.user_id == user.id,
+                UserConsent.consent_type == body.consent_type,
+                UserConsent.version == body.version,
+            )
+        )
+        if existing is None:
+            row = UserConsent(
+                user_id=user.id,
+                consent_type=body.consent_type,
+                version=body.version,
+                granted=body.granted,
+                granted_at=now,
+                revoked_at=None if body.granted else now,
+                ip_address=ip,
+                user_agent=ua,
+            )
+            session.add(row)
+        else:
+            row = existing
+            if not body.granted and row.revoked_at is None:
+                row.revoked_at = now
+            elif body.granted and row.revoked_at is not None:
+                row.revoked_at = None
+                row.granted_at = now
+        await session.commit()
+        # Re-read to get any DB-managed defaults (granted_at server default).
+        await session.refresh(row)
+        return ConsentRecord(
+            consent_type=row.consent_type,
+            version=row.version,
+            granted=row.granted,
+            granted_at=row.granted_at,
+            revoked_at=row.revoked_at,
+        )
+
+
+async def _db_list(user: User) -> list[ConsentRecord]:
+    from sqlalchemy import select
+    from ..db.models import UserConsent
+    async with get_session() as session:
+        rows = (await session.scalars(
+            select(UserConsent)
+            .where(UserConsent.user_id == user.id)
+            .order_by(UserConsent.granted_at.desc())
+        )).all()
+        return [
+            ConsentRecord(
+                consent_type=r.consent_type, version=r.version,
+                granted=r.granted, granted_at=r.granted_at,
+                revoked_at=r.revoked_at,
+            ) for r in rows
+        ]
+
+
+async def _db_revoke(user: User, consent_type: str) -> int:
+    from sqlalchemy import select, update
+    from ..db.models import UserConsent
+    now = datetime.now(timezone.utc)
+    async with get_session() as session:
+        # Count active grants first so we can return how many we revoked.
+        active = (await session.scalars(
+            select(UserConsent.id).where(
+                UserConsent.user_id == user.id,
+                UserConsent.consent_type == consent_type,
+                UserConsent.revoked_at.is_(None),
+            )
+        )).all()
+        if not active:
+            return 0
+        await session.execute(
+            update(UserConsent)
+            .where(UserConsent.id.in_(active))
+            .values(revoked_at=now)
+        )
+        await session.commit()
+        return len(active)
+
+
+# ── In-memory fallback ────────────────────────────────────────────
+
+
+def _mem_grant(user: User, body: ConsentGrant, ip: str | None, ua: str | None) -> ConsentRecord:
+    _warn_fallback_once()
+    key = (user.id, body.consent_type, body.version)
+    now = datetime.now(timezone.utc)
+    existing = _MEM_CONSENTS.get(key)
+    if existing:
+        if not body.granted and existing.get("revoked_at") is None:
+            existing["revoked_at"] = now
+        elif body.granted and existing.get("revoked_at") is not None:
+            existing["revoked_at"] = None
+            existing["granted_at"] = now
+    else:
+        _MEM_CONSENTS[key] = {
+            "consent_type": body.consent_type,
+            "version": body.version,
+            "granted": body.granted,
+            "granted_at": now,
+            "revoked_at": None if body.granted else now,
+            "ip_address": ip,
+            "user_agent": ua,
+            "user_id": user.id,
+        }
+    rec = _MEM_CONSENTS[key]
+    return ConsentRecord(**{k: v for k, v in rec.items() if k in ConsentRecord.model_fields})
+
+
+def _mem_list(user: User) -> list[ConsentRecord]:
+    rows = [
+        rec for (uid, _t, _v), rec in _MEM_CONSENTS.items() if uid == user.id
+    ]
+    rows.sort(key=lambda r: r["granted_at"], reverse=True)
+    return [
+        ConsentRecord(**{k: v for k, v in r.items() if k in ConsentRecord.model_fields})
+        for r in rows
+    ]
+
+
+def _mem_revoke(user: User, consent_type: str) -> int:
+    _warn_fallback_once()
+    now = datetime.now(timezone.utc)
+    revoked = 0
+    for (uid, ctype, _v), rec in _MEM_CONSENTS.items():
+        if uid == user.id and ctype == consent_type and rec.get("revoked_at") is None:
+            rec["revoked_at"] = now
+            revoked += 1
+    return revoked
 
 
 # ── Routes ────────────────────────────────────────────────────────
@@ -105,32 +294,12 @@ async def grant_consent(
         # Defensive — pydantic Literal should catch this already.
         raise HTTPException(status_code=422, detail="Unknown consent_type")
 
-    key = (user.id, body.consent_type, body.version)
-    now = datetime.now(timezone.utc)
     ip = request.client.host if request.client else None
     ua = request.headers.get("user-agent")
 
-    existing = _MEM_CONSENTS.get(key)
-    if existing:
-        if not body.granted and existing.get("revoked_at") is None:
-            existing["revoked_at"] = now
-        elif body.granted and existing.get("revoked_at") is not None:
-            existing["revoked_at"] = None
-            existing["granted_at"] = now
-    else:
-        _MEM_CONSENTS[key] = {
-            "consent_type": body.consent_type,
-            "version": body.version,
-            "granted": body.granted,
-            "granted_at": now,
-            "revoked_at": None if body.granted else now,
-            "ip_address": ip,
-            "user_agent": ua,
-            "user_id": user.id,
-        }
-
-    rec = _MEM_CONSENTS[key]
-    return ConsentRecord(**{k: v for k, v in rec.items() if k in ConsentRecord.model_fields})
+    if _persistent():
+        return await _db_grant(user, body, ip, ua)
+    return _mem_grant(user, body, ip, ua)
 
 
 @router.get("/me", response_model=list[ConsentRecord])
@@ -139,14 +308,9 @@ async def list_my_consents(
 ) -> list[ConsentRecord]:
     """Return every consent row for the current user (newest first)."""
     _require_authenticated(user)
-    rows = [
-        rec for (uid, _t, _v), rec in _MEM_CONSENTS.items() if uid == user.id
-    ]
-    rows.sort(key=lambda r: r["granted_at"], reverse=True)
-    return [
-        ConsentRecord(**{k: v for k, v in r.items() if k in ConsentRecord.model_fields})
-        for r in rows
-    ]
+    if _persistent():
+        return await _db_list(user)
+    return _mem_list(user)
 
 
 @router.delete("/{consent_type}", status_code=status.HTTP_200_OK)
@@ -163,11 +327,8 @@ async def revoke_consent(
     if consent_type not in CONSENT_TYPES:
         raise HTTPException(status_code=422, detail="Unknown consent_type")
 
-    now = datetime.now(timezone.utc)
-    revoked = 0
-    for (uid, ctype, _v), rec in _MEM_CONSENTS.items():
-        if uid == user.id and ctype == consent_type and rec.get("revoked_at") is None:
-            rec["revoked_at"] = now
-            revoked += 1
-
+    if _persistent():
+        revoked = await _db_revoke(user, consent_type)
+    else:
+        revoked = _mem_revoke(user, consent_type)
     return {"consent_type": consent_type, "revoked": revoked}
