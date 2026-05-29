@@ -179,3 +179,38 @@ npx playwright test
 
 세션별 진행 기록은 `~/.claude/projects/.../memory/project_ui_ux_pass.md` 참조.
 초기 플랜: `C:\Users\Codelab\.claude\plans\glimmering-scribbling-plum.md`.
+
+---
+
+## 프로덕션 준비 상태 (2026-05-29)
+
+GitHub: <https://github.com/youmin0523/Re-Chord_PJT>
+
+### ✅ 코드/문서/검증 완료
+- pytest **220 + 1 skipped** (no-GPU lane) / Vitest **27** / axe a11y **2/2**
+- accuracy gate **synth + real-world(5곡 워십) PASSED** (chord_recall_transpose 1.0)
+- 인증 (Supabase 카카오 OAuth + Phase B Alembic `b3c0d5e1f9a2_add_user_consents`)
+- 챗봇 action 프로토콜 + 라이브 검증 (regenerate/loop/stop/한·영 locale)
+- 법률 docs v1.0 시행 (`docs/legal/{terms,privacy,copyright}.md`)
+- 운영 docs (`docs/operations/{deployment,monitoring,backup,secrets,db_setup}.md`)
+- DB 셋업 자동화 (`scripts/setup_postgres.{ps1,sh}` — Supabase/Neon/RDS 호환)
+- Phase B deploy 스캐폴드 (`deploy/{backend,frontend}.Dockerfile`, `nginx.conf` 보안 헤더 포함)
+- k6 부하 테스트 + WS 재연결 회귀 + 챗봇 저작권 라이브 검증
+
+### ⏳ 사용자 외부 작업 (인프라/계정)
+출시 시점에 사용자가 직접 진행:
+
+1. Supabase 프로젝트 생성 → URL / ANON_KEY / JWKS_URL 받기
+2. `.\scripts\setup_postgres.ps1 -PgHost <SUPABASE_HOST>` 1회
+3. `.env` (또는 secret manager)에 DATABASE_URL / VITE_SUPABASE_* 등록
+4. 카카오 디벨로퍼스 비즈앱 → Supabase Auth provider 활성
+5. R2 / Cloudflare 버킷 + API 토큰 (`AWS_*` env)
+6. Cloud Run / Vercel 에 deploy/*.Dockerfile 연결
+7. 도메인 / HTTPS / DNS
+8. KISA 자가진단 (<https://privacy.go.kr>, 무료, 출시 직전 권장)
+9. CPO·신고 채널 이메일 지정
+
+### 🚫 의도적 미진행
+- 결제(Toss) — 사용자 명시 제외 (출시 시 별도 의사결정)
+- 변호사 검토 — 매출 1억 / 사용자 5천명 / 결제 / 해외 진출 도달 시점에 재검토 (`docs/legal/*` 의 "향후 변호사 검토 시 우선 확인사항" 메모 활용)
+- CCLI / KOMCA 라이센싱 — 워십 가사 시드 DB 상업적 노출 시점
