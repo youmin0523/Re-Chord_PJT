@@ -26,9 +26,13 @@ if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
 # Inject DATABASE_URL into the config if the env var is set.
+# configparser uses %-interpolation, so URL-encoded chars in the password
+# (e.g. %40 for '@', %2C for ',') would be parsed as broken interpolation
+# tokens. Double them up so configparser collapses %% back to % and the
+# URL reaches SQLAlchemy intact.
 env_url = os.environ.get("DATABASE_URL")
 if env_url:
-    config.set_main_option("sqlalchemy.url", env_url)
+    config.set_main_option("sqlalchemy.url", env_url.replace("%", "%%"))
 
 # Import target metadata.
 from backend.app.db.models import Base  # noqa: E402
