@@ -67,6 +67,12 @@ bin/
 # Temporary scratch files (chat payloads, local debugging dumps)
 .tmp_*
 
+# Local deploy/run leftovers — transient job-id dumps the deploy scripts
+# write, and the extraction-output folder the app drops next to the repo.
+# Not part of the project; ignore so they never show as untracked.
+_job_ids.txt
+추출결과_MR/
+
 # Playwright artifacts (test-results, screenshots, traces, HTML reports)
 frontend/test-results/
 frontend/playwright-report/
