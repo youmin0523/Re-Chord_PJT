@@ -1545,6 +1545,22 @@ async def run_job(job: Job) -> None:
                     sp = settings.stems_dir / scratch
                     if sp.exists():
                         _shutil.rmtree(sp, ignore_errors=True)
+                # Drop any artifact key whose local file the cleanup just
+                # removed (e.g. the pre-encode ``instrumental``/``vocals`` keys
+                # can point into the deleted ``_post`` scratch when karaoke ran
+                # without polish). Keep keys that are mirrored to object
+                # storage — their URL is still serveable in Phase B. This stops
+                # /download/{kind} from advertising a 404'ing artifact and the
+                # UI from rendering a dead download button.
+                storage_urls = getattr(job, "storage_urls", {}) or {}
+                for _k in list(job.artifacts.keys()):
+                    try:
+                        if _k in storage_urls:
+                            continue
+                        if not Path(str(job.artifacts[_k])).exists():
+                            del job.artifacts[_k]
+                    except Exception:
+                        continue
         except Exception:
             pass
         # Always release GPU memory + run gc so the next job starts clean.

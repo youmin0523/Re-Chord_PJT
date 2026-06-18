@@ -41,6 +41,13 @@ class JobQueue:
         self._active: dict[str, asyncio.Task] = {}
 
     async def start(self) -> None:
+        # Reset the stop flag so a queue that was previously stopped (e.g. a
+        # lifespan teardown followed by a fresh boot — every TestClient does
+        # this, and some ASGI servers re-run lifespan on reload) comes back
+        # to life. Without this the new workers would see ``_stopped=True``
+        # and exit immediately, silently wedging every job. (Was the root
+        # cause of the e2e test failing only inside the full suite.)
+        self._stopped = False
         if self._workers:
             return
         for i in range(self._concurrency):
@@ -134,8 +141,14 @@ def get_queue() -> JobQueue:
 
 def init_queue(runner: JobRunner, concurrency: int = 1,
                max_pending: int = 0) -> JobQueue:
+    """Create the process-wide job queue. Always builds a *fresh* queue so
+    its internal ``asyncio.Queue`` binds to the event loop that is running
+    at startup. Reusing a previous instance across boots (every TestClient,
+    or an ASGI lifespan re-run) leaves the queue bound to a dead loop —
+    workers then raise "Queue is bound to a different event loop" and every
+    job hangs in ``queued``. Lifespan startup calls this exactly once per
+    boot, so replacing the global here is correct in production too."""
     global _global_queue
-    if _global_queue is None:
-        _global_queue = JobQueue(runner, concurrency=concurrency,
-                                 max_pending=max_pending)
+    _global_queue = JobQueue(runner, concurrency=concurrency,
+                             max_pending=max_pending)
     return _global_queue

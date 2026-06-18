@@ -172,8 +172,16 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+# Dev always allows localhost; production frontends are added via the
+# CORS_ALLOW_ORIGINS env var (comma-separated exact origins). Starlette
+# permits a request whose Origin matches the exact allow_origins list OR
+# the localhost regex, so both dev and prod work without code changes.
+_cors_exact_origins = [
+    o.strip() for o in settings.cors_allow_origins.split(",") if o.strip()
+]
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=_cors_exact_origins,
     allow_origin_regex=r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$",
     allow_credentials=True,
     allow_methods=["*"],

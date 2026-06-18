@@ -34,6 +34,14 @@ class Settings(BaseSettings):
     api_host: str = Field(default="127.0.0.1")
     api_port: int = Field(default=7860)
 
+    # Extra browser origins allowed to call the API cross-origin, on top of
+    # the always-allowed localhost/127.0.0.1 (dev). Comma-separated, exact
+    # scheme+host[+port], no trailing slash. The deployed frontend (Vercel /
+    # custom domain) MUST be listed here or the browser blocks every
+    # response. Example:
+    #   CORS_ALLOW_ORIGINS=https://youmin.site,https://www.youmin.site,https://re-chord.vercel.app
+    cors_allow_origins: str = Field(default="")
+
     log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR"] = Field(default="INFO")
 
     # Chat (OpenAI worship/music assistant)
