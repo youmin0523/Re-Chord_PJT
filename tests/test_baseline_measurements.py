@@ -174,6 +174,60 @@ def test_chord_tension_detection():
     assert no_halluc, "tension detector hallucinated on a plain triad"
 
 
+def test_chord_tension_root_invariance():
+    """The tension detector must behave the same in every key — its degree
+    maths is pitch-class arithmetic, so add9/sus/7/maj7/altered should fire
+    identically across all 12 roots. Locks this so a future change can't
+    silently introduce a root-dependent bug (only the 13-vs-11 boundary is
+    synthesis-fragile, so the 13 case is checked leniently as 'an upper
+    structure was detected', not strictly '13')."""
+    import math
+    import numpy as np
+    from backend.app.pipeline.chord_tension import detect_tensions
+
+    SR = 22050
+
+    def _chroma(offs, dur=2.0):
+        import librosa
+        t = np.arange(int(dur * SR)) / SR
+        sig = np.zeros(len(t), dtype=np.float32)
+        for st in offs:
+            f = 261.63 * 2 ** (st / 12.0)
+            sig += (0.25 * np.sin(2 * math.pi * f * t)
+                    + 0.1 * np.sin(2 * math.pi * 2 * f * t)).astype(np.float32)
+        y_h = librosa.effects.harmonic(sig, margin=4.0)
+        return librosa.feature.chroma_cqt(y=y_h, sr=SR, hop_length=512,
+                                          n_chroma=12).mean(axis=1)
+
+    # (name, base offsets from root, is_minor, key, expected) — strict cases
+    # that MUST hold for every one of the 12 roots.
+    strict = [
+        ("add9", [0, 4, 7, 14], False, "add", "add9"),
+        ("sus4", [0, 5, 7],     False, "sus", "sus4"),
+        ("sus2", [0, 2, 7],     False, "sus", "sus2"),
+        ("maj7", [0, 4, 7, 11], False, "seventh", "maj7"),
+        ("7",    [0, 4, 7, 10], False, "seventh", "7"),
+        ("7#11", [0, 4, 7, 10, 18], False, "alt", ["#11"]),
+        ("7b9",  [0, 4, 7, 10, 13], False, "alt", ["b9"]),
+    ]
+    failures = []
+    for name, offs, ism, key, exp in strict:
+        for r in range(12):
+            t = detect_tensions(r, ism, _chroma([x + r for x in offs]))
+            if t.get(key) != exp:
+                failures.append((name, r, t.get(key)))
+    assert not failures, f"root-dependent tension bug(s): {failures[:12]}"
+
+    # 13th: lenient — every root must at least detect an upper structure
+    # (11 or 13), never miss it entirely.
+    miss13 = []
+    for r in range(12):
+        t = detect_tensions(r, False, _chroma([x + r for x in [0, 4, 7, 10, 14, 17, 21]]))
+        if t.get("ext") not in ("11", "13"):
+            miss13.append((r, t.get("ext")))
+    assert not miss13, f"13-chord upper structure missed at roots: {miss13}"
+
+
 def test_chord_root_accuracy_synth():
     """Absolute chord root accuracy on a synthetic progression. Triads
     should be near-perfect; 7ths are weaker without CREMA (gated low)."""
@@ -331,20 +385,35 @@ def test_aux_classifier_accuracy_when_db_present():
             per_correct[true] += 1
     overall = correct / emb.shape[0]
 
-    # Well-populated categories (>=40 refs) must each stay above the floor.
-    well_pop_accs = [
+    # Well-populated categories (>=40 refs) must each stay above a floor.
+    # Synthetic timbres (synth_lead, fx) genuinely overlap in CLAP space —
+    # a saw lead vs a synth sweep are near-neighbours — so they carry a
+    # lower, honest floor than the cleanly-separable acoustic/sampled
+    # categories. (Before the 2026-06-18 weak-category fix, synth_lead/fx
+    # had <40 refs and were excluded entirely while sitting at 0.00/0.25 —
+    # the fix raised them to 0.80/0.93 and surfaces them to the gate.)
+    SYNTHETIC = {"synth_lead", "fx"}
+    acoustic_accs = [
         per_correct[c] / per_total[c]
-        for c in per_total if per_total[c] >= 40
+        for c in per_total if per_total[c] >= 40 and c not in SYNTHETIC
     ]
-    well_pop_min = min(well_pop_accs) if well_pop_accs else 1.0
+    synth_accs = [
+        per_correct[c] / per_total[c]
+        for c in per_total if per_total[c] >= 40 and c in SYNTHETIC
+    ]
+    acoustic_min = min(acoustic_accs) if acoustic_accs else 1.0
+    synth_min = min(synth_accs) if synth_accs else 1.0
 
     thr = THRESHOLDS["aux_classifier"]
     print(f"  AUX leave-one-out overall={overall:.3f}, "
-          f"well-populated min={well_pop_min:.3f}")
+          f"acoustic well-populated min={acoustic_min:.3f}, "
+          f"synthetic min={synth_min:.3f}")
     assert overall >= thr["leave_one_out_overall"]["min"], \
         f"AUX overall {overall:.3f} < min {thr['leave_one_out_overall']['min']}"
-    assert well_pop_min >= thr["well_populated_category_min"]["min"], \
-        f"AUX well-populated min {well_pop_min:.3f} below threshold"
+    assert acoustic_min >= thr["well_populated_category_min"]["min"], \
+        f"AUX acoustic well-populated min {acoustic_min:.3f} below threshold"
+    assert synth_min >= thr["synthetic_category_min"]["min"], \
+        f"AUX synthetic category min {synth_min:.3f} below threshold"
 
 
 def test_lyrics_align_iou_after_polish_meets_min():

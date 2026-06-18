@@ -37,7 +37,7 @@ FAMILY_TO_CATEGORY: dict[str, str | None] = {
     "brass": "brass",
     "flute": "pad",
     "guitar": "guitar_atmos",
-    "keyboard": "piano",
+    "keyboard": "piano",       # refined per-source below (electronic → epiano)
     "mallet": "bell",
     "organ": "organ",
     "reed": "brass",
@@ -45,6 +45,21 @@ FAMILY_TO_CATEGORY: dict[str, str | None] = {
     "synth_lead": "synth_lead",
     "vocal": "choir",
 }
+
+
+def _category_for(ex: dict) -> str | None:
+    """Map one NSynth example → AUX category.
+
+    The keyboard family is split by ``instrument_source``: the 1,751
+    *electronic* keyboards in the valid split are electric pianos
+    (Rhodes/Wurli/EP voices) and belong in ``epiano`` — lumping them into
+    ``piano`` (the old behaviour) left ``epiano`` with only 3 Arachno
+    presets (0% accuracy). Acoustic + synthetic keyboards stay ``piano``.
+    """
+    fam = ex.get("instrument_family_str", "")
+    if fam == "keyboard":
+        return "epiano" if ex.get("instrument_source_str", "") == "electronic" else "piano"
+    return FAMILY_TO_CATEGORY.get(fam)
 
 
 def fetch(out_dir: Path, *, max_per_family: int = 600) -> list[ReferenceItem]:
@@ -76,18 +91,18 @@ def fetch(out_dir: Path, *, max_per_family: int = 600) -> list[ReferenceItem]:
     )
     audio_dir = extract_root / "audio"
 
-    # Reservoir-style cap: keep the first N per family in dict-iteration order.
-    by_family: dict[str, list[str]] = {}
+    # Reservoir-style cap: keep the first N per *category* in dict-iteration
+    # order (keyboard is split into piano/epiano, so cap per category not per
+    # family — otherwise epiano would re-merge with piano under one cap).
+    by_cat: dict[str, list[str]] = {}
     for name, ex in examples.items():
-        fam = ex.get("instrument_family_str", "")
-        cat = FAMILY_TO_CATEGORY.get(fam)
+        cat = _category_for(ex)
         if cat is None:
             continue
-        by_family.setdefault(fam, []).append(name)
+        by_cat.setdefault(cat, []).append(name)
 
     items: list[ReferenceItem] = []
-    for fam, names in by_family.items():
-        cat = FAMILY_TO_CATEGORY[fam]
+    for cat, names in by_cat.items():
         keep = names if max_per_family <= 0 else names[:max_per_family]
         for n in keep:
             wav = audio_dir / f"{n}.wav"
@@ -101,5 +116,6 @@ def fetch(out_dir: Path, *, max_per_family: int = 600) -> list[ReferenceItem]:
             ))
 
     save_manifest(out_dir, items)
-    print(f"[nsynth] kept {len(items)} samples across {len(by_family)} families")
+    print(f"[nsynth] kept {len(items)} samples across {len(by_cat)} categories: "
+          f"{ {c: len(v) for c, v in by_cat.items()} }")
     return items

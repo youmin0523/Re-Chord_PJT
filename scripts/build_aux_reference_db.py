@@ -43,7 +43,7 @@ sys.path.insert(0, str(ROOT / "backend"))
 from scripts.sources._common import CATEGORIES, ReferenceItem  # noqa: E402
 
 
-SOURCES: list[str] = ["arachno", "nsynth"]
+SOURCES: list[str] = ["arachno", "arachno_aug", "nsynth"]
 
 
 def _run_source(name: str, raw_dir: Path, **kwargs) -> list[ReferenceItem]:

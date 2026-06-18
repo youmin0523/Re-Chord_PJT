@@ -56,7 +56,8 @@
     "timemap_drift_sec_per_min":     {"min": 0.5,  "target": 0.15, "unit": "sec",   "source": "variable-tempo songs"}
   },
   "aux_classifier": {
-    "leave_one_out_overall":         {"min": 0.90, "target": 0.97, "unit": "ratio", "source": "5178-vector reference DB, top-16 cosine vote. measured 0.983 (2026-05-27)"},
-    "well_populated_category_min":   {"min": 0.90, "target": 0.95, "unit": "ratio", "source": "min accuracy across categories with >=40 refs. measured 0.967 (2026-05-27)"}
+    "leave_one_out_overall":         {"min": 0.90, "target": 0.97, "unit": "ratio", "source": "5421-vector reference DB, top-16 cosine vote. measured 0.983 (2026-05-27), 0.979 after 2026-06-18 weak-category fix"},
+    "well_populated_category_min":   {"min": 0.90, "target": 0.95, "unit": "ratio", "source": "min accuracy across ACOUSTIC/sampled categories with >=40 refs. measured 0.961 (2026-06-18, guitar_atmos)"},
+    "synthetic_category_min":        {"min": 0.75, "target": 0.90, "unit": "ratio", "source": "synth_lead/fx overlap in CLAP space (saw lead vs synth sweep). measured 0.80 (2026-06-18, synth_lead); was 0.00/0.25 before the weak-category fix raised counts 8->80, 16->160"}
   }
 }
