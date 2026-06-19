@@ -52,7 +52,12 @@ setup_logging()
 # /ops/install_hints stays open because the AccuracyGuide UI fetches it
 # to surface "missing model weights" warnings; the response carries no
 # secrets and no mutation hooks.
-_OPS_TOKEN = os.environ.get("RECHORD_OPS_TOKEN", "").strip()
+# Raw env var wins (e.g. set by the shell / a secret manager); otherwise
+# fall back to the .env-loaded settings value. main.py reads os.environ
+# directly, but pydantic-settings only populates `settings`, NOT os.environ —
+# so without this fallback an RECHORD_OPS_TOKEN placed in .env would be
+# silently ignored and /ops/* would stay open in production.
+_OPS_TOKEN = (os.environ.get("RECHORD_OPS_TOKEN") or settings.rechord_ops_token or "").strip()
 
 
 async def require_ops_caller(x_ops_token: str | None = Header(default=None)) -> None:

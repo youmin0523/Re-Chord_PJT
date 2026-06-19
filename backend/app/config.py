@@ -42,6 +42,11 @@ class Settings(BaseSettings):
     #   CORS_ALLOW_ORIGINS=https://youmin.site,https://www.youmin.site,https://re-chord.vercel.app
     cors_allow_origins: str = Field(default="")
 
+    # Shared-secret that locks the mutating /ops/* endpoints once the API is
+    # publicly exposed. Read here (via .env) AND honoured as a raw env var by
+    # main.py. Empty = Phase A (no gate).
+    rechord_ops_token: str = Field(default="")
+
     log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR"] = Field(default="INFO")
 
     # Chat (OpenAI worship/music assistant)
