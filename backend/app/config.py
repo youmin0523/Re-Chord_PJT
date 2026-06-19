@@ -10,6 +10,8 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
+# NOTE: ``.env`` is loaded into os.environ by ``backend/app/__init__.py`` (the
+# earliest import point) so os.environ-readers see it before this module runs.
 
 
 class Settings(BaseSettings):

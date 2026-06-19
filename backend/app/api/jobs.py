@@ -7,11 +7,12 @@ import os
 from pathlib import Path
 from typing import Literal
 
-from fastapi import APIRouter, HTTPException, WebSocket, WebSocketDisconnect
+from fastapi import APIRouter, HTTPException, Request, WebSocket, WebSocketDisconnect
 from fastapi.responses import FileResponse, RedirectResponse
 from pydantic import BaseModel, Field
 
 from ..auth import User, get_current_user, get_quota
+from ..core.ratelimit import client_ip, jobs_global_daily, jobs_ip_limiter
 from ..config import settings
 from ..core.events import bus
 from ..core.jobs import Job, JobMode, JobOptions, registry
@@ -116,8 +117,25 @@ def _job_dict(job: Job) -> dict:
 @router.post("")
 async def create_job(
     body: JobCreate,
+    request: Request,
     user: User = Depends(get_current_user),
 ) -> dict:
+    # Abuse / single-GPU guard (public endpoint): per-IP/hour + global/day.
+    ip = client_ip(request)
+    ok_ip, retry_after = jobs_ip_limiter.allow(ip)
+    if not ok_ip:
+        raise HTTPException(
+            status_code=429,
+            detail="변환 요청이 너무 많아요. 잠시 후 다시 시도해주세요.",
+            headers={"Retry-After": str(int(retry_after) + 1)},
+        )
+    ok_global, _ = jobs_global_daily.allow("global")
+    if not ok_global:
+        raise HTTPException(
+            status_code=429,
+            detail="오늘 전체 변환 한도에 도달했어요. 내일 다시 시도해주세요.",
+        )
+
     # Quota gate (Phase A: unlimited; Phase B: tier-enforced).
     quota = get_quota(user)
     if body.options.mode not in quota.allowed_modes:

@@ -16,7 +16,7 @@ from __future__ import annotations
 import asyncio
 import json
 
-from fastapi import APIRouter, Body, Depends, File, HTTPException, UploadFile
+from fastapi import APIRouter, Body, Depends, File, HTTPException, Request, UploadFile
 from fastapi.responses import StreamingResponse
 
 from ..auth.auth import User, get_current_user
@@ -41,6 +41,7 @@ from ..chat.openai_client import (
     summarize_title,
 )
 from ..chat.ratelimit import get_limiter
+from ..core.ratelimit import client_ip, chat_global_daily, chat_ip_limiter
 from ..chat.tools import dispatch as dispatch_tool
 from ..chat.tools import get_tool, render_tools_block
 from ..chat.schemas import (
@@ -460,6 +461,7 @@ def _sse(event_type: str, payload: dict) -> bytes:
 async def post_message(
     session_id: str,
     body: ChatTurnRequest,
+    request: Request,
     user: User = Depends(get_current_user),
 ):
     """M2 streaming turn — returns ``text/event-stream``.
@@ -475,6 +477,25 @@ async def post_message(
     sess = reg.get_or_create(session_id, owner_user_id=user.id)
     if sess.owner_user_id != user.id:
         raise HTTPException(status_code=403, detail="not your session")
+
+    # Public-endpoint cost guard: a session is free to mint, so the
+    # per-session limit below is bypassable. Cap per-IP and globally per-day
+    # so a bot scraping the domain can't run up the OpenAI bill.
+    ip = client_ip(request)
+    ok_ip, ra_ip = chat_ip_limiter.allow(ip)
+    if not ok_ip:
+        raise HTTPException(
+            status_code=429,
+            detail={"reason": "rate_limited", "retry_after": round(ra_ip, 1)},
+            headers={"Retry-After": str(int(ra_ip) + 1)},
+        )
+    ok_global, _ = chat_global_daily.allow("global")
+    if not ok_global:
+        raise HTTPException(
+            status_code=429,
+            detail={"reason": "daily_quota",
+                    "message": "오늘 전체 챗봇 사용량 한도에 도달했어요. 내일 다시 시도해주세요."},
+        )
 
     # Rate-limit BEFORE we accept the message into history. Hitting 429 at
     # this layer means a plain HTTP error (the client renders a toast),
