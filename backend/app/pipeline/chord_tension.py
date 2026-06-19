@@ -163,6 +163,13 @@ def _upgrade_seventh(base: str, ext: str) -> str | None:
     low = base.lower()
     if any(x in low for x in ("9", "11", "13", "add", "sus", "dim", "aug")):
         return None
+    # Minor-major 7th (written "mM7", e.g. G#mM7): upgrade the major-7 part but
+    # KEEP the single minor 'm'. This MUST be checked case-sensitively and
+    # BEFORE the plain-m7 branch — lowercasing "mM7" → "mm7" would otherwise
+    # match m7 and reconstruct a DOUBLED 'm' (G#mM7 + 11 → "G#mm11"). [bugfix]
+    if "mM7" in base:
+        i = base.index("mM7")
+        return base[:i] + "mM" + ext
     if "maj7" in low:
         return base[: low.index("maj7")] + "maj" + ext
     if "m7" in low and "maj" not in low:        # minor 7th: Dm7, F#m7…

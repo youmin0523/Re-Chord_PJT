@@ -75,7 +75,11 @@ export function transposeChord(label, semitones, useFlats = false) {
     const bIdx = pitchIndex(parsed.bass);
     if (bIdx >= 0) bass = "/" + family[(bIdx + semitones + 1200) % 12];
   }
-  return newRoot + parsed.suffix + bass;
+  // Defensive: collapse a doubled minor 'm' that an upstream label-builder
+  // may have produced (e.g. "G#mm11"). The negative lookahead keeps the
+  // legitimate minor-major "mmaj7" ("Cmmaj7") intact — only "mm" NOT followed
+  // by "aj" is the erroneous form.
+  return (newRoot + parsed.suffix + bass).replace(/mm(?!aj)/g, "m");
 }
 
 /** Transpose every chord event in a chords.json payload. */

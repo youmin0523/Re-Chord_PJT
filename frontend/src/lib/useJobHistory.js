@@ -24,6 +24,11 @@ import {
 const HISTORY_KEY = "rechord:history:v1";
 const SETLISTS_KEY = "rechord:setlists:v1";
 const MAX_HISTORY = 200;
+// The DOM 'storage' event only fires in OTHER tabs, so a same-tab write (e.g.
+// the Job page upserting a finished job) wouldn't reach the sidebar's separate
+// useJobHistory() instance until an F5. We broadcast this custom event on every
+// write so all live instances re-read immediately.
+const CHANGE_EVENT = "rechord:history-changed";
 
 // Convert a server-shape setlist (snake_case + created_at unix int) into the
 // client-shape we use in localStorage.
@@ -50,6 +55,12 @@ function readJson(key, fallback) {
 function writeJson(key, value) {
   try {
     localStorage.setItem(key, JSON.stringify(value));
+    // Notify sibling instances AFTER the current React state update settles
+    // (queueMicrotask avoids a setState-during-update warning), so the sidebar
+    // refreshes the moment a job finishes — no manual reload.
+    queueMicrotask(() => {
+      try { window.dispatchEvent(new Event(CHANGE_EVENT)); } catch { /* SSR / none */ }
+    });
   } catch {
     /* quota or private-mode — silently ignore */
   }
@@ -63,14 +74,22 @@ export function useJobHistory() {
   const [items, setItems] = useState(() => readJson(HISTORY_KEY, []));
   const [setlists, setSetlists] = useState(() => readJson(SETLISTS_KEY, []));
 
-  // Cross-tab sync.
+  // Keep every instance in sync — across tabs ('storage') AND within the same
+  // tab (our CHANGE_EVENT), so the sidebar updates the instant a job finishes.
   useEffect(() => {
+    const resync = () => {
+      setItems(readJson(HISTORY_KEY, []));
+      setSetlists(readJson(SETLISTS_KEY, []));
+    };
     const onStorage = (e) => {
-      if (e.key === HISTORY_KEY) setItems(readJson(HISTORY_KEY, []));
-      if (e.key === SETLISTS_KEY) setSetlists(readJson(SETLISTS_KEY, []));
+      if (e.key === HISTORY_KEY || e.key === SETLISTS_KEY) resync();
     };
     window.addEventListener("storage", onStorage);
-    return () => window.removeEventListener("storage", onStorage);
+    window.addEventListener(CHANGE_EVENT, resync);
+    return () => {
+      window.removeEventListener("storage", onStorage);
+      window.removeEventListener(CHANGE_EVENT, resync);
+    };
   }, []);
 
   // Initial pull from server (best-effort). Server is authoritative when

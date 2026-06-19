@@ -29,9 +29,10 @@ import pytest
 
 @pytest.fixture(scope="module")
 def synth_wav(tmp_path_factory) -> Path:
-    """A 6-second stereo 'song': sine + saw + noise. Enough for analyze."""
+    """A 12-second stereo 'song': sine + saw + noise. Enough for analyze and
+    above the min-duration guard (clips <10s are rejected up front)."""
     sr = 48000
-    dur = 6.0
+    dur = 12.0
     t = np.linspace(0, dur, int(sr * dur), endpoint=False)
     L = 0.4 * np.sin(2 * np.pi * 220 * t) + 0.2 * np.sin(2 * np.pi * 440 * t)
     R = 0.4 * np.sin(2 * np.pi * 220 * t) + 0.2 * np.sin(2 * np.pi * 660 * t)

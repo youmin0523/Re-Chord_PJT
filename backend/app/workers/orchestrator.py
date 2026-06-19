@@ -213,6 +213,17 @@ async def run_job(job: Job) -> None:
                     f"{ingest_result.duration_sec:.1f}s",
                     source=str(ingest_result.source))
 
+        # Guard: clips shorter than the minimum break the separator models
+        # (bs_roformer's STFT/overlap windows assume >~8s) and would surface as
+        # an opaque tensor-size mismatch deep in inference. Fail fast with a
+        # clear message. Covers URL inputs that bypass the /uploads check.
+        _min_dur = float(getattr(settings, "min_audio_duration_sec", 10.0))
+        if 0 < ingest_result.duration_sec < _min_dur:
+            raise ValueError(
+                f"파일 길이가 너무 짧습니다. 최소 {int(_min_dur)}초 이상이어야 합니다 "
+                f"(현재 {ingest_result.duration_sec:.1f}초)."
+            )
+
         # --- 2. Decode --------------------------------------------------
         await _emit(job, "stage", "decode", _aggregate_progress(completed, 0.0),
                     "Decoding to working master")

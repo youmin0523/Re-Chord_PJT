@@ -103,6 +103,19 @@ async def upload_file(file: UploadFile = File(...)) -> dict:
         raise HTTPException(status_code=400, detail=f"unsupported media: {e!s}")
 
     fmt = probe.get("format", {})
+    duration = float(fmt.get("duration") or 0.0)
+    # Reject too-short clips up front (a 400) rather than letting them blow up
+    # 500-deep in the separator (bs_roformer tensor-size mismatch on <~8s audio).
+    # duration==0 means ffprobe couldn't read it — let the pipeline guard handle.
+    if duration and duration < settings.min_audio_duration_sec:
+        dest.unlink(missing_ok=True)
+        raise HTTPException(
+            status_code=400,
+            detail=(
+                f"파일 길이가 너무 짧습니다. 최소 {int(settings.min_audio_duration_sec)}초 "
+                f"이상이어야 합니다 (현재 {duration:.1f}초)."
+            ),
+        )
     return {
         "upload_id": upload_id,
         "path": str(dest),
@@ -112,5 +125,5 @@ async def upload_file(file: UploadFile = File(...)) -> dict:
         "audio_codec": audio.get("codec_name", "unknown"),
         "sample_rate": int(audio.get("sample_rate") or 0),
         "channels": int(audio.get("channels") or 0),
-        "duration_sec": float(fmt.get("duration") or 0.0),
+        "duration_sec": duration,
     }

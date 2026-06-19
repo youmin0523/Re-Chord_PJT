@@ -14,6 +14,8 @@ import {
   ChevronRight,
   Play,
   GripVertical,
+  Check,
+  X,
 } from "lucide-react";
 import { useJobHistory } from "@/lib/useJobHistory";
 import { EmptyState } from "@/components/ui/EmptyState";
@@ -43,6 +45,19 @@ export function JobLibrary({ compact = false }) {
   const [drag, setDrag] = useState(null);
   const [q, setQ] = useState("");
   const [openSetlists, setOpenSetlists] = useState({});
+  // Inline "new setlist" input (replaces the old window.prompt).
+  const [newSetOpen, setNewSetOpen] = useState(false);
+  const [newSetName, setNewSetName] = useState("");
+  const submitNewSet = () => {
+    const name = newSetName.trim();
+    if (name) createSetlist(name);
+    setNewSetName("");
+    setNewSetOpen(false);
+  };
+  const cancelNewSet = () => {
+    setNewSetName("");
+    setNewSetOpen(false);
+  };
 
   const filtered = useMemo(() => {
     const term = q.trim().toLowerCase();
@@ -81,16 +96,47 @@ export function JobLibrary({ compact = false }) {
             <span className="text-[10px] mono uppercase tracking-[0.18em] text-fg-muted">{t("library.setlists")}</span>
             <button
               type="button"
-              onClick={() => {
-                const name = window.prompt(t("library.setlist_name_prompt"));
-                if (name?.trim()) createSetlist(name.trim());
-              }}
+              onClick={() => setNewSetOpen((v) => !v)}
               title={t("library.new_setlist")}
+              aria-expanded={newSetOpen}
               className="ml-auto inline-flex items-center justify-center size-5 rounded hover:bg-white/5 text-fg-muted hover:text-fg"
             >
-              <Plus className="size-3" />
+              <Plus className={cn("size-3 transition-transform", newSetOpen && "rotate-45")} />
             </button>
           </div>
+          {newSetOpen && (
+            <div className="flex items-center gap-1 pb-0.5">
+              <input
+                autoFocus
+                value={newSetName}
+                onChange={(e) => setNewSetName(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") submitNewSet();
+                  else if (e.key === "Escape") cancelNewSet();
+                }}
+                onBlur={() => { if (!newSetName.trim()) cancelNewSet(); }}
+                placeholder={t("library.setlist_name_prompt")}
+                className="flex-1 min-w-0 px-2 py-1 rounded-md bg-white/[0.03] ring-1 ring-white/5 text-[12px] focus:outline-none focus:ring-violet/40"
+              />
+              <button
+                type="button"
+                onClick={submitNewSet}
+                disabled={!newSetName.trim()}
+                title={t("library.new_setlist")}
+                className="inline-flex items-center justify-center size-6 rounded shrink-0 hover:bg-violet/15 text-violet disabled:opacity-30 disabled:hover:bg-transparent"
+              >
+                <Check className="size-3.5" />
+              </button>
+              <button
+                type="button"
+                onClick={cancelNewSet}
+                title={t("common.cancel", { defaultValue: "취소" })}
+                className="inline-flex items-center justify-center size-6 rounded shrink-0 hover:bg-white/5 text-fg-muted hover:text-fg"
+              >
+                <X className="size-3.5" />
+              </button>
+            </div>
+          )}
           {setlists.length === 0 && (
             <div className="text-[11px] text-fg-muted/70 px-1 leading-relaxed">
               {t("library.setlists_empty")}
@@ -259,7 +305,7 @@ function JobRow({ item, onRemove, removeLabel, setlists, onAddToSetlist }) {
       tabIndex={0}
       onClick={() => navigate(`/job/${item.id}`)}
       onKeyDown={(e) => { if (e.key === "Enter") navigate(`/job/${item.id}`); }}
-      className="group flex items-center gap-2 rounded-md px-2 py-1.5 hover:bg-white/[0.04] cursor-pointer"
+      className="group relative flex items-center gap-2 rounded-md px-2 py-1.5 hover:bg-white/[0.04] cursor-pointer"
     >
       <div className="min-w-0 flex-1">
         <div className="text-[12px] text-fg truncate" title={title}>{title}</div>

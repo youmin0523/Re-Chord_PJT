@@ -29,6 +29,11 @@ class Settings(BaseSettings):
     max_upload_bytes: int = Field(default=1_073_741_824)
     max_concurrent_jobs: int = Field(default=1)
 
+    # Minimum source duration. Clips shorter than this break the separation
+    # models (e.g. bs_roformer's STFT/overlap windows expect >~8s) — reject
+    # early with a clear 400 instead of a 500 deep in model inference.
+    min_audio_duration_sec: float = Field(default=10.0)
+
     separator_use_cuda: bool = Field(default=True)
     separator_use_fp16: bool = Field(default=True)
     separator_default_model: str = Field(default="MDX23C-InstVoc-HQ.ckpt")
