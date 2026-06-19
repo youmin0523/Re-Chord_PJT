@@ -1,4 +1,4 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -26,6 +26,7 @@ import { SkeletonCard } from "@/components/ui/Skeleton";
 // Light, always-shown panels — keep eager.
 import { ABCompare } from "@/components/ABCompare";
 import { NotesEditor } from "@/components/NotesEditor";
+import { KeyControl } from "@/components/KeyControl";
 
 // Heavy / per-tab panels — split into separate chunks so the initial Job
 // page bundle stays small. Each chunk loads only when its tab is opened.
@@ -47,8 +48,12 @@ const AdvancedExportPanel = lazy(() => import("@/components/AdvancedExportPanel"
 
 /** Tab-specific skeletons — preview the layout that's about to appear so
  * the user doesn't see a generic shimmer card while a panel chunk loads. */
+function SkeletonBar({ h = "h-9" }) {
+  return <div className={`bg-white/[0.04] ${h} rounded-md animate-pulse`} />;
+}
+
 function PanelFallback({ kind = "default" }) {
-  const Item = ({ h = "h-9" }) => <div className={`bg-white/[0.04] ${h} rounded-md animate-pulse`} />;
+  const Item = SkeletonBar;
   if (kind === "play") {
     return (
       <div className="space-y-4">
@@ -238,6 +243,14 @@ function SummaryCard({ job }) {
   const instPath = job.artifacts["instrumental_final"];
   const vocPath = job.artifacts["vocals_final"];
 
+  // Vocal melody extent (score mode only) → unlocks the range-aware key
+  // planner: set your team's range, see the recommended key. Planning aid —
+  // applying a new key happens via "다시 변환" (avoids double-transpose).
+  const melodyRange = meta.vocals_low_midi != null && meta.vocals_high_midi != null
+    ? { lowMidi: meta.vocals_low_midi, highMidi: meta.vocals_high_midi }
+    : null;
+  const [planSemitones, setPlanSemitones] = useState(0);
+
   const regenerate = () => {
     navigate("/app", {
       state: {
@@ -300,6 +313,22 @@ function SummaryCard({ job }) {
           <Stat label={t("result.stat_duration")} value={`${(meta.source_duration / 60).toFixed(2)} ${t("result.minutes_suffix")}`} />
         )}
       </div>
+
+      {melodyRange && (
+        <div className="space-y-1.5">
+          <KeyControl
+            semitones={planSemitones}
+            onChange={setPlanSemitones}
+            detectedKey={meta.key_name}
+            melodyRange={melodyRange}
+          />
+          <p className="text-[10px] text-fg-muted/70 px-1 break-keep">
+            {t("result.key_planner_hint", {
+              defaultValue: "보컬 음역 기준 추천 키예요. '우리 팀' 음역을 설정하면 우리 팀에 맞는 키를 알려줘요. 실제 적용은 '다시 변환'에서 키를 지정하세요.",
+            })}
+          </p>
+        </div>
+      )}
 
       <div className="grid sm:grid-cols-2 gap-3">
         {instPath && (

@@ -25,6 +25,8 @@ import { FormatPicker } from "@/components/FormatPicker";
 import { Disclosure } from "@/components/ui/Disclosure";
 import { OnboardingTour } from "@/components/OnboardingTour";
 import { Glossary } from "@/components/ui/Tooltip";
+import { ImpactCard } from "@/components/ImpactCard";
+import { useJobHistory } from "@/lib/useJobHistory";
 import { createJob } from "@/lib/api";
 
 const DEFAULT_MODELS = {
@@ -111,6 +113,9 @@ export default function Home() {
   // the original blob across navigations), so we surface a hint banner.
   const regen = location.state?.regenerateFrom?.options || null;
   const regenSourceTitle = location.state?.regenerateFrom?.sourceTitle || null;
+
+  // Estimated-impact summary (renders nothing until there's activity).
+  const { items: historyItems, setlists: historySetlists } = useJobHistory();
 
   const [upload, setUpload] = useState(null);
   const [urlValue, setUrlValue] = useState(null);
@@ -281,6 +286,9 @@ export default function Home() {
           </div>
         </motion.div>
       )}
+
+      {/* "Welcome back" estimated-impact summary — self-hides when empty. */}
+      <ImpactCard items={historyItems} setlists={historySetlists} />
 
       {/* Pre-step accuracy hint: surface missing SOTA deps before the
           user invests minutes into a conversion. Dismissible. */}

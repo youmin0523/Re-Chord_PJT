@@ -20,6 +20,7 @@ import {
 import { useJobHistory } from "@/lib/useJobHistory";
 import { EmptyState } from "@/components/ui/EmptyState";
 import { SetlistWarnings } from "@/components/SetlistWarnings";
+import { ImpactCard } from "@/components/ImpactCard";
 import { cn } from "@/lib/utils";
 
 /**
@@ -75,6 +76,8 @@ export function JobLibrary({ compact = false }) {
         {!compact && <span className="text-sm font-semibold">{t("library.title")}</span>}
         {!compact && <span className="ml-auto mono text-[10px] text-fg-muted">{items.length}</span>}
       </div>
+
+      {!compact && <ImpactCard items={items} setlists={setlists} />}
 
       {!compact && (
         <div className="relative">
@@ -296,8 +299,10 @@ export function JobLibrary({ compact = false }) {
 function JobRow({ item, onRemove, removeLabel, setlists, onAddToSetlist }) {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  const date = new Date(item.createdAt || Date.now());
-  const dateStr = `${date.getMonth() + 1}/${date.getDate()}`;
+  // createdAt is set on upsert, so it's effectively always present; guard
+  // anyway and avoid calling Date.now() in render (react-hooks/purity).
+  const date = item.createdAt ? new Date(item.createdAt) : null;
+  const dateStr = date ? `${date.getMonth() + 1}/${date.getDate()}` : "—";
   const title = item.title || item.id;
   return (
     <div

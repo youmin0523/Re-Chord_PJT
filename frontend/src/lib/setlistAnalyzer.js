@@ -13,7 +13,9 @@
  * meta and feeds it in.
  */
 
-import { PITCH_CLASSES, PITCH_CLASSES_FLAT } from "./transpose";
+import {
+  PITCH_CLASSES, PITCH_CLASSES_FLAT, recommendTranspose, transposeKey,
+} from "./transpose";
 
 function pitchIndex(name) {
   const i = PITCH_CLASSES.indexOf(name);
@@ -142,4 +144,46 @@ export function analyzeSetlist(setlist) {
     }
   }
   return warnings;
+}
+
+/**
+ * Per-song key recommendation for a whole setlist, grounded in the team's own
+ * vocal range. This is the band-master's weekly "what key do we do each song
+ * in?" — computed in one pass instead of song-by-song trial and error.
+ *
+ * Needs each song's melody range (vocals_low_midi / vocals_high_midi from the
+ * backend — only present when the song was processed in score mode). Songs
+ * without a range are returned with hasRange=false so the UI can prompt for it
+ * rather than fake a number.
+ *
+ * @param {Array<{id:string,title:string,key_root?:string,key_mode?:string,
+ *                low_midi?:number,high_midi?:number}>} jobs
+ * @param {{low:number,high:number,label?:string}|null} teamRange  MIDI range
+ * @returns {Array<{id:string,title:string,hasRange:boolean,semitones?:number,
+ *                  fits?:boolean,recKey?:string|null,currentKey?:string|null,
+ *                  reason?:string}>}  empty array when no teamRange
+ */
+export function recommendSetlistKeys(jobs, teamRange) {
+  if (!teamRange || !Array.isArray(jobs)) return [];
+  return jobs.map((j) => {
+    const hasRange = j.low_midi != null && j.high_midi != null;
+    const currentKey = j.key_root
+      ? `${j.key_root}${j.key_mode === "minor" ? "m" : ""}`
+      : null;
+    if (!hasRange) return { id: j.id, title: j.title, hasRange: false, currentKey };
+    const rec = recommendTranspose({ lowMidi: j.low_midi, highMidi: j.high_midi }, teamRange);
+    const recKey = j.key_root && j.key_mode
+      ? transposeKey(`${j.key_root} ${j.key_mode}`, rec.semitones)
+      : null;
+    return {
+      id: j.id,
+      title: j.title,
+      hasRange: true,
+      semitones: rec.semitones,
+      fits: rec.fits,
+      recKey,
+      currentKey,
+      reason: rec.reason,
+    };
+  });
 }

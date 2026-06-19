@@ -237,7 +237,10 @@
     "range_check": "Vocal-range check",
     "step_down": "Key -1 semitone",
     "step_up": "Key +1 semitone",
-    "reset": "Reset to original key"
+    "reset": "Reset to original key",
+    "rec_apply": "Fit to best key",
+    "rec_applied": "Best key applied",
+    "team_edit": "Edit team range"
   },
   "tempo": {
     "title": "Tempo",
@@ -313,7 +316,8 @@
     "analyzing": "Analyzing…",
     "min_two": "Add 2+ songs to auto-check key/BPM jumps.",
     "header": "Progression analysis",
-    "all_good": "✓ No key/BPM jumps — smooth setlist"
+    "all_good": "✓ No key/BPM jumps — smooth setlist",
+    "team_keys": "Team key suggestions"
   },
   "library": {
     "title": "Library",
@@ -375,7 +379,8 @@
     "meta_src_codec": "Source codec",
     "meta_work_sr": "Work sr",
     "meta_models": "Models",
-    "meta_models_count_suffix": ""
+    "meta_models_count_suffix": "",
+    "key_planner_hint": "Suggested key from the vocal range. Set your team's range to get a key that fits your team. Apply it via “Regenerate”."
   },
   "job": {
     "back_to_new": "New job",
@@ -1142,5 +1147,14 @@
     "all_installed": "All SOTA backends are installed",
     "all_installed_detail": "Chords (170-class), CNN key detection, polyphonic piano, bass CREPE, madmom downbeats - all available. Converting at maximum accuracy.",
     "close": "Close"
+  },
+  "impact": {
+    "title": "Est. saved this month",
+    "hours": "hrs",
+    "songs": "songs",
+    "keyrecs": "key recs",
+    "setlist": "setlist songs",
+    "disclaimer": "Estimate, not measured · assumptions adjustable",
+    "assumptions": "Assumes {{song}}m/song · {{keyrec}}m/key rec · {{set}}m/setlist song"
   }
 }

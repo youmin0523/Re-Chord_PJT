@@ -170,7 +170,9 @@ export function midiToNote(midi, useFlats = false) {
  *     → { ok: false, overflow: 2, advice: "최고음 2 반음 초과 (F#5)" }
  */
 export function assessVocalRange(melody, semitones, audience = "mixed") {
-  const r = VOCAL_RANGES[audience];
+  // `audience` may be a preset id ("mixed") or a {low,high,label} range object
+  // — the latter lets callers pass a custom "our team" range.
+  const r = typeof audience === "string" ? VOCAL_RANGES[audience] : audience;
   if (!r || !melody || melody.lowMidi == null || melody.highMidi == null) return null;
   const lo = melody.lowMidi + semitones;
   const hi = melody.highMidi + semitones;
@@ -182,6 +184,101 @@ export function assessVocalRange(melody, semitones, audience = "mixed") {
     : tooLow > 0 ? `최저음 ${tooLow} 반음 부족 (${midiToNote(lo)})`
     : `${midiToNote(lo)} – ${midiToNote(hi)} (적정)`;
   return { ok: overflow === 0, overflow, advice, lo, hi, range: r };
+}
+
+// ── Key recommender (음역 → 최적 키) ─────────────────────────────────────────
+//
+// The band-master's #1 weekly chore: deciding what key to do a song in so the
+// lead singer / team can actually sing it. Today that's done by nudging ±1 by
+// ear. This computes the shift that best seats the melody inside a target
+// range, so the UI can offer one tap instead of trial-and-error.
+
+/**
+ * Recommend the optimal semitone shift to seat a song's melody inside a
+ * target vocal range.
+ *
+ * Searches integer shifts in [-12, +12] and costs each by how far the shifted
+ * melody spills past the ceiling (weighted heavier — straining on top is worse
+ * than a soft low note) or floor. Ties break toward leaving a little headroom
+ * under the ceiling, then toward the smallest change from the original key.
+ *
+ * @param {{lowMidi:number, highMidi:number}} melody  song's melody extent (MIDI)
+ * @param {{low:number, high:number, label?:string}} range  target range (MIDI)
+ * @returns {{semitones:number, lo:number, hi:number, fits:boolean,
+ *            highOverflow:number, lowOverflow:number, label?:string,
+ *            reason:string} | null}
+ */
+export function recommendTranspose(melody, range) {
+  if (!melody || melody.lowMidi == null || melody.highMidi == null) return null;
+  if (!range || range.low == null || range.high == null) return null;
+
+  const HIGH_WEIGHT = 1.4;   // exceeding the ceiling strains singers more
+  const HEADROOM = 1;        // prefer ~1 semitone of breathing room up top
+
+  let best = null;
+  for (let s = -12; s <= 12; s += 1) {
+    const lo = melody.lowMidi + s;
+    const hi = melody.highMidi + s;
+    const highOverflow = Math.max(0, hi - range.high);
+    const lowOverflow = Math.max(0, range.low - lo);
+    // Mild nudge so we don't sit right against the ceiling when we don't have to.
+    const tightness = Math.max(0, HEADROOM - (range.high - hi)) * 0.05;
+    const cost =
+      highOverflow * HIGH_WEIGHT +
+      lowOverflow +
+      tightness +
+      Math.abs(s) * 0.02;
+    if (!best || cost < best.cost) best = { s, lo, hi, highOverflow, lowOverflow, cost };
+  }
+
+  const fits = best.highOverflow === 0 && best.lowOverflow === 0;
+  const reason = fits
+    ? `${midiToNote(best.lo)}–${midiToNote(best.hi)} · 음역 안에 들어옵니다`
+    : best.highOverflow >= best.lowOverflow
+      ? `최고음 ${best.highOverflow} 반음 초과가 가장 적은 키예요`
+      : `최저음 ${best.lowOverflow} 반음 부족이 가장 적은 키예요`;
+
+  return {
+    semitones: best.s,
+    lo: best.lo,
+    hi: best.hi,
+    fits,
+    highOverflow: best.highOverflow,
+    lowOverflow: best.lowOverflow,
+    label: range.label,
+    reason,
+  };
+}
+
+// ── "우리 팀" range (게스트 모드 — localStorage, 로그인 불필요) ───────────────
+//
+// The FDE "ontology" piece: a church's *own* singer range, not a generic
+// preset. Phase A is guest-only, so this lives in localStorage; Phase B can
+// migrate it onto a Team row when auth lands.
+
+const TEAM_RANGE_KEY = "rechord.teamRange.v1";
+
+/** Load the saved team range as {low,high,label} (MIDI), or null. */
+export function loadTeamRange() {
+  try {
+    const raw = localStorage.getItem(TEAM_RANGE_KEY);
+    if (!raw) return null;
+    const v = JSON.parse(raw);
+    if (typeof v.low === "number" && typeof v.high === "number" && v.high > v.low) {
+      return { low: v.low, high: v.high, label: v.label || "우리 팀" };
+    }
+  } catch { /* ignore corrupt/blocked storage */ }
+  return null;
+}
+
+/** Persist the team range (MIDI low/high). Pass null to clear. */
+export function saveTeamRange(range) {
+  try {
+    if (!range) localStorage.removeItem(TEAM_RANGE_KEY);
+    else localStorage.setItem(TEAM_RANGE_KEY, JSON.stringify({
+      low: range.low, high: range.high, label: range.label || "우리 팀",
+    }));
+  } catch { /* ignore blocked storage */ }
 }
 
 // ── Capo recommender ───────────────────────────────────────────────────────

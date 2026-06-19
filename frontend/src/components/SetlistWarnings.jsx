@@ -1,8 +1,9 @@
 import { useEffect, useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { AlertTriangle, Info } from "lucide-react";
+import { AlertTriangle, Info, Users } from "lucide-react";
 import { getJob } from "@/lib/api";
-import { analyzeSetlist } from "@/lib/setlistAnalyzer";
+import { analyzeSetlist, recommendSetlistKeys } from "@/lib/setlistAnalyzer";
+import { loadTeamRange } from "@/lib/transpose";
 
 /**
  * Renders key / BPM / mode-jump warnings for a setlist.
@@ -38,6 +39,9 @@ export function SetlistWarnings({ setlist }) {
           key_root: j.meta?.key_root,
           key_mode: j.meta?.key_mode,
           bpm: j.meta?.bpm,
+          // Vocal melody extent (score mode only) → per-song key recommendation.
+          low_midi: j.meta?.vocals_low_midi,
+          high_midi: j.meta?.vocals_high_midi,
         }));
         setJobs(items);
         setLoading(false);
@@ -46,6 +50,9 @@ export function SetlistWarnings({ setlist }) {
   }, [setlist?.id, setlist?.jobIds, jobIdsKey]);
 
   const warnings = useMemo(() => analyzeSetlist(jobs), [jobs]);
+  // Per-song key recommendation for the team's own range (if they've set one).
+  const teamRange = useMemo(() => loadTeamRange(), []);
+  const keyRecs = useMemo(() => recommendSetlistKeys(jobs, teamRange), [jobs, teamRange]);
 
   if (!setlist) return null;
   if (loading) {
@@ -86,6 +93,27 @@ export function SetlistWarnings({ setlist }) {
             </div>
           );
         })
+      )}
+
+      {/* Per-song team key recommendation — only when a team range is set AND
+          at least one song carries a melody range (score mode). */}
+      {teamRange && keyRecs.some((r) => r.hasRange) && (
+        <div className="space-y-1 pt-1.5 mt-1.5 border-t border-white/5">
+          <div className="flex items-center gap-1.5 text-[10px] mono uppercase tracking-[0.18em] text-fg-muted">
+            <Users className="size-3" /> {t("setlist_warn.team_keys", { defaultValue: "우리 팀 추천 키" })}
+          </div>
+          {keyRecs.filter((r) => r.hasRange).map((r) => (
+            <div key={r.id} className="flex items-center justify-between gap-2 text-[11px]">
+              <span className="truncate text-fg-muted" title={r.title}>{r.title}</span>
+              <span className="mono shrink-0" title={r.reason}>
+                <span className={r.fits ? "text-cyan" : "text-amber-300"}>{r.recKey || "—"}</span>
+                <span className="text-fg-muted/70">
+                  {" "}{r.semitones > 0 ? "+" : ""}{r.semitones}{r.fits ? "" : " ⚠"}
+                </span>
+              </span>
+            </div>
+          ))}
+        </div>
       )}
     </div>
   );

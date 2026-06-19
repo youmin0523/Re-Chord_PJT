@@ -237,7 +237,10 @@
     "range_check": "음역 체크",
     "step_down": "키 -1 (반음 내리기)",
     "step_up": "키 +1 (반음 올리기)",
-    "reset": "원래 키로 되돌리기"
+    "reset": "원래 키로 되돌리기",
+    "rec_apply": "추천 키로 맞추기",
+    "rec_applied": "추천 키 적용됨",
+    "team_edit": "우리 팀 음역 수정"
   },
   "tempo": {
     "title": "템포",
@@ -313,7 +316,8 @@
     "analyzing": "분석 중…",
     "min_two": "곡 2개 이상이면 자동으로 키/BPM 점프를 검사합니다.",
     "header": "진행 분석",
-    "all_good": "✓ 키/BPM 점프 없음 — 자연스러운 셋리스트입니다"
+    "all_good": "✓ 키/BPM 점프 없음 — 자연스러운 셋리스트입니다",
+    "team_keys": "우리 팀 추천 키"
   },
   "library": {
     "title": "라이브러리",
@@ -375,7 +379,8 @@
     "meta_src_codec": "원본 codec",
     "meta_work_sr": "작업 sr",
     "meta_models": "모델",
-    "meta_models_count_suffix": "개"
+    "meta_models_count_suffix": "개",
+    "key_planner_hint": "보컬 음역 기준 추천 키예요. '우리 팀' 음역을 설정하면 우리 팀에 맞는 키를 알려줘요. 실제 적용은 '다시 변환'에서 키를 지정하세요."
   },
   "job": {
     "back_to_new": "새 작업",
@@ -1142,5 +1147,14 @@
     "all_installed": "모든 SOTA 백엔드가 설치되어 있습니다",
     "all_installed_detail": "코드(170-class), 키 검출 CNN, 폴리포닉 피아노, 베이스 CREPE, madmom 다운비트 — 모두 사용 가능. 최대 정확도로 변환됩니다.",
     "close": "닫기"
+  },
+  "impact": {
+    "title": "이번 달 절감 (추정)",
+    "hours": "시간",
+    "songs": "곡",
+    "keyrecs": "키추천",
+    "setlist": "셋리스트곡",
+    "disclaimer": "실측 아님 · 조정 가능한 추정치",
+    "assumptions": "가정: 곡 {{song}}분 · 키추천 {{keyrec}}분 · 셋리스트곡 {{set}}분 절감"
   }
 }
