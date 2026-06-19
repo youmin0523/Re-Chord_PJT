@@ -7,6 +7,7 @@ import { JobLibrary } from "@/components/JobLibrary";
 import { LangSwitcher } from "@/components/LangSwitcher";
 import { AuthMenu } from "@/components/AuthMenu";
 import { ChatWidget } from "@/components/chat/ChatWidget";
+import { Toaster } from "@/components/ui/Toaster";
 import { useTheme } from "@/lib/useTheme";
 
 export function AppShell({ children }) {
@@ -36,6 +37,7 @@ export function AppShell({ children }) {
       </div>
       <Footer />
       <ChatWidget />
+      <Toaster />
     </div>
   );
 }

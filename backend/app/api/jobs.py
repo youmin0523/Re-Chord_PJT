@@ -3,11 +3,12 @@
 from __future__ import annotations
 
 import asyncio
+import os
 from pathlib import Path
 from typing import Literal
 
 from fastapi import APIRouter, HTTPException, WebSocket, WebSocketDisconnect
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, RedirectResponse
 from pydantic import BaseModel, Field
 
 from ..auth import User, get_current_user, get_quota
@@ -175,10 +176,18 @@ async def cancel_job(job_id: str) -> dict:
 
 
 @router.get("/{job_id}/download/{kind}")
-async def download_artifact(job_id: str, kind: str) -> FileResponse:
-    """Stream a finished artifact.
+async def download_artifact(job_id: str, kind: str):
+    """Stream a finished artifact (or redirect to its cloud-storage copy).
 
-    `kind` is one of: instrumental, vocals, instrumental_final, vocals_final.
+    `kind` is one of: instrumental, vocals, instrumental_final, vocals_final,
+    stem_*, score_*, mixdown_*, … .
+
+    When STORAGE_BACKEND is cloud (r2/s3), we 307-redirect to a fresh
+    presigned/public URL so the download streams straight from R2 (free
+    egress, works even if this host has cleaned its local copy and even when
+    the host is briefly offline for the object itself). Falls back to the
+    local file otherwise. A 410 means the artifact existed but its retention
+    window (default 30 days) has passed — the client shows an "expired" notice.
     """
     job = registry.get(job_id)
     if job is None:
@@ -186,9 +195,27 @@ async def download_artifact(job_id: str, kind: str) -> FileResponse:
     path = job.artifacts.get(kind)
     if not path:
         raise HTTPException(status_code=404, detail=f"artifact {kind!r} not available")
+
+    # Cloud storage path: redirect to the R2/S3 object when it's there.
+    backend = (os.environ.get("STORAGE_BACKEND") or "local").strip().lower()
+    if backend not in ("", "local"):
+        try:
+            from ..storage.base import get_storage
+            object_key = f"jobs/{job_id}/{kind}{Path(path).suffix}"
+            storage = get_storage()
+            if storage.exists(object_key):
+                url = storage.get_url(object_key, signed=True, ttl_sec=3600)
+                return RedirectResponse(url, status_code=307)
+        except Exception:
+            pass  # fall through to local serving
+
     p = Path(path)
     if not p.exists():
-        raise HTTPException(status_code=404, detail="artifact file missing on disk")
+        # File was produced but has since been swept by data retention.
+        raise HTTPException(
+            status_code=410,
+            detail="이 음원은 보존기간(기본 30일)이 지나 삭제되었습니다. 다시 변환해 주세요.",
+        )
     return FileResponse(p, filename=p.name, media_type="application/octet-stream")
 
 

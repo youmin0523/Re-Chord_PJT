@@ -15,11 +15,13 @@ import {
 import { useTranslation } from "react-i18next";
 import {
   artifactUrl,
+  artifactUnavailableReason,
   createLoop,
   createSlowdown,
   downloadArtifact,
   getSections,
 } from "@/lib/api";
+import { toast } from "@/lib/toast";
 import { cn, formatDuration, trackFilename } from "@/lib/utils";
 import { SectionsTimeline } from "@/components/SectionsTimeline";
 import { ChordsPanel } from "@/components/ChordsPanel";
@@ -98,6 +100,13 @@ export function WaveformPanel({ job }) {
     regionsRef.current = regions;
 
     ws.on("ready", (d) => setDuration(d));
+    // Media failed to load — most often the artifact passed its 30-day
+    // retention window. Probe the reason and surface it as a toast instead
+    // of a silently dead player.
+    ws.on("error", async () => {
+      const reason = await artifactUnavailableReason(job.id, activeArtifact);
+      if (reason) toast.error(reason);
+    });
     ws.on("audioprocess", (t) => setCurrentTime(t));
     ws.on("seeking", (t) => setCurrentTime(t));
     ws.on("play", () => setPlaying(true));

@@ -1,5 +1,7 @@
 // Backend API client. All calls hit the FastAPI dev server on :7860 by default.
 
+import { toast } from "./toast";
+
 export const API_BASE =
   import.meta.env.VITE_API_BASE ?? "http://127.0.0.1:7860";
 
@@ -579,10 +581,64 @@ export function transcribeChatVoice(sessionId, blob, locale = "ko") {
   });
 }
 
+/** Pull the FastAPI ``{detail: ...}`` message off a non-ok response. */
+async function _errorDetail(resp) {
+  try {
+    const j = await resp.clone().json();
+    return typeof j?.detail === "string" ? j.detail : "";
+  } catch {
+    return "";
+  }
+}
+
+/** Probe whether an artifact can still be played/downloaded. Returns a
+ *  user-facing Korean message when it's gone (410 = retention-expired) or
+ *  otherwise unavailable, else ``null``. Uses a 1-byte Range so it never
+ *  pulls the whole file just to check. */
+export async function artifactUnavailableReason(jobId, kind) {
+  try {
+    const r = await fetch(`${API_BASE}/jobs/${jobId}/download/${kind}`, {
+      headers: { Range: "bytes=0-0" },
+    });
+    if (r.ok || r.status === 206) return null;
+    if (r.status === 410) {
+      return (await _errorDetail(r)) ||
+        "이 음원은 보존기간(기본 30일)이 지나 삭제되었어요. 다시 변환해주세요.";
+    }
+    if (r.status === 404) return "음원을 찾을 수 없어요. 다시 변환해주세요.";
+    return `재생할 수 없어요 (오류 ${r.status}).`;
+  } catch {
+    return "재생 실패: 서버에 연결할 수 없어요. 잠시 후 다시 시도해주세요.";
+  }
+}
+
 /** Download an artifact. On Chrome/Edge opens the native save dialog so the
- *  user can pick the destination folder + filename. */
+ *  user can pick the destination folder + filename.
+ *
+ *  Pre-flights the request so an expired artifact (HTTP 410, past the 30-day
+ *  retention window) raises a friendly toast instead of saving a JSON error
+ *  body or silently failing. */
 export async function downloadArtifact(jobId, kind, suggestedName) {
   const url = `${API_BASE}/jobs/${jobId}/download/${kind}`;
+
+  let resp;
+  try {
+    resp = await fetch(url);
+  } catch {
+    toast.error("다운로드 실패: 서버에 연결할 수 없어요. 잠시 후 다시 시도해주세요.");
+    return;
+  }
+  if (!resp.ok) {
+    const detail = await _errorDetail(resp);
+    toast.error(
+      resp.status === 410
+        ? (detail || "이 음원은 보존기간(기본 30일)이 지나 삭제되었어요. 다시 변환해주세요.")
+        : `다운로드 실패 (오류 ${resp.status})${detail ? ` — ${detail}` : ""}`,
+    );
+    return;
+  }
+
+  // Chrome/Edge: stream straight into the user-chosen file.
   if (typeof window.showSaveFilePicker === "function") {
     try {
       const ext = suggestedName.includes(".") ? suggestedName.split(".").pop() : "bin";
@@ -590,20 +646,28 @@ export async function downloadArtifact(jobId, kind, suggestedName) {
         suggestedName,
         types: [{ description: "Audio file", accept: { "audio/*": [`.${ext}`] } }],
       });
-      const r = await fetch(url);
-      if (!r.ok) throw new Error(`download failed: ${r.status}`);
       const writable = await handle.createWritable();
-      await r.body.pipeTo(writable);
+      await resp.body.pipeTo(writable);
       return;
     } catch (e) {
-      if (e.name === "AbortError") return;
-      console.warn("FS Access API failed; fallback to anchor", e);
+      if (e.name === "AbortError") return; // user cancelled the save dialog
+      // otherwise fall through to the anchor/blob path below
     }
   }
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = suggestedName;
-  document.body.appendChild(a);
-  a.click();
-  a.remove();
+
+  // Fallback: buffer to a blob so a cross-origin (R2) redirect still saves
+  // with the suggested filename instead of navigating to the object.
+  try {
+    const blob = await resp.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = blobUrl;
+    a.download = suggestedName;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 10000);
+  } catch {
+    toast.error("다운로드 저장 중 오류가 발생했어요.");
+  }
 }
